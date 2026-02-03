@@ -287,14 +287,11 @@ const CartaPage = () => {
             <header className="carta-header">
                 <div className="carta-header__bg"></div>
                 <div className="carta-header__content">
-                    <div className="carta-header__logo">
-                        <span className="carta-header__icon">🐐</span>
-                    </div>
                     <h1 className="carta-header__title">Los Cabritos</h1>
                     <p className="carta-header__tagline">Parrilla & Restaurante</p>
                     <div className="carta-header__badge">
-                        <span className="carta-header__badge-icon">📍</span>
-                        <span>Capilla del Monte, Córdoba</span>
+                        <span className="carta-header__badge-icon">🔥</span>
+                        <span>El auténtico sabor de la parrilla</span>
                     </div>
                 </div>
                 <div className="carta-header__wave">
