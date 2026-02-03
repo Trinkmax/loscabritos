@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './Hero.css';
 
 const Hero = () => {
@@ -36,9 +37,9 @@ const Hero = () => {
                 </p>
 
                 <div className="hero__cta animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
-                    <a href="#carta" className="btn btn--primary">
+                    <Link to="/carta" className="btn btn--primary">
                         Ver Carta
-                    </a>
+                    </Link>
                     <a href="#contacto" className="btn btn--secondary">
                         Cómo Llegar
                     </a>
@@ -49,3 +50,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
