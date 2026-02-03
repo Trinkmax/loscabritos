@@ -1,0 +1,184 @@
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-charcoal) 0%, var(--color-primary-dark) 50%, var(--color-charcoal) 100%);
+    overflow: hidden;
+}
+
+.hero__overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 20% 50%, rgba(226, 88, 34, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(212, 165, 116, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 50% 80%, rgba(139, 69, 19, 0.2) 0%, transparent 50%);
+    z-index: 1;
+}
+
+.hero__particles {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.hero__particle {
+    position: absolute;
+    bottom: -20px;
+    width: 4px;
+    height: 4px;
+    background: var(--color-fire);
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: particleRise 5s linear infinite;
+    box-shadow: 0 0 6px var(--color-fire-glow);
+}
+
+@keyframes particleRise {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.8;
+    }
+
+    90% {
+        opacity: 0.4;
+    }
+
+    100% {
+        transform: translateY(-100vh) scale(0);
+        opacity: 0;
+    }
+}
+
+.hero__content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: var(--color-cream);
+    padding: var(--space-4xl) var(--space-lg);
+}
+
+.hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    background: rgba(226, 88, 34, 0.2);
+    border: 1px solid rgba(226, 88, 34, 0.5);
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: var(--radius-full);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: var(--space-xl);
+    backdrop-filter: blur(10px);
+}
+
+.hero__badge-icon {
+    color: var(--color-fire-glow);
+}
+
+.hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 10vw, 7rem);
+    font-weight: 700;
+    color: var(--color-cream);
+    margin-bottom: var(--space-md);
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-accent-light) 50%, var(--color-cream) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% 100%;
+    animation: shimmer 4s linear infinite;
+}
+
+.hero__subtitle {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    font-weight: 400;
+    color: var(--color-accent-light);
+    margin-bottom: var(--space-lg);
+    font-style: italic;
+}
+
+.hero__description {
+    font-size: 1.1rem;
+    color: var(--color-gray-300);
+    max-width: 600px;
+    margin: 0 auto var(--space-2xl);
+    line-height: 1.8;
+}
+
+.hero__cta {
+    display: flex;
+    gap: var(--space-lg);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        min-height: 100svh;
+    }
+
+    .hero__content {
+        padding: 100px var(--space-md) var(--space-2xl);
+    }
+
+    .hero__badge {
+        font-size: 0.8rem;
+        padding: var(--space-xs) var(--space-md);
+    }
+
+    .hero__title {
+        font-size: clamp(2.5rem, 12vw, 4rem);
+        line-height: 1.1;
+    }
+
+    .hero__subtitle {
+        font-size: clamp(1rem, 4vw, 1.25rem);
+    }
+
+    .hero__description {
+        font-size: 0.95rem;
+        padding: 0 var(--space-sm);
+        line-height: 1.7;
+    }
+
+    .hero__description br {
+        display: none;
+    }
+
+    .hero__cta {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-md);
+        width: 100%;
+        padding: 0 var(--space-lg);
+    }
+
+    .hero__cta .btn {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero__content {
+        padding: 80px var(--space-sm) var(--space-xl);
+    }
+
+    .hero__title {
+        font-size: clamp(2rem, 14vw, 3rem);
+    }
+
+    .hero__badge {
+        font-size: 0.75rem;
+    }
+}

@@ -1,0 +1,41 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app main {
+  flex: 1;
+}
+
+/* Smooth scroll offset for fixed navbar */
+html {
+  scroll-padding-top: 80px;
+}
+
+/* Selection color */
+::selection {
+  background: var(--color-fire);
+  color: var(--color-white);
+}
+
+/* Focus states */
+:focus-visible {
+  outline: 2px solid var(--color-fire);
+  outline-offset: 2px;
+}
+
+/* Loading state for images */
+img {
+  background: linear-gradient(90deg,
+      var(--color-gray-200) 0%,
+      var(--color-gray-100) 50%,
+      var(--color-gray-200) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+img[src] {
+  animation: none;
+  background: none;
+}
