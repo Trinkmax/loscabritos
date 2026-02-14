@@ -30,11 +30,7 @@ const LocationIcon = () => (
     </svg>
 );
 
-const GoatIcon = () => (
-    <svg width="32" height="32" viewBox="0 0 64 64" fill="currentColor">
-        <path d="M52 20c-2-4-6-8-12-8-2 0-4 1-6 2-2-1-4-2-6-2-6 0-10 4-12 8-4 8-2 18 4 24 2 2 6 4 10 4h8c4 0 8-2 10-4 6-6 8-16 4-24z" />
-    </svg>
-);
+
 
 const About = () => {
     const features = [
