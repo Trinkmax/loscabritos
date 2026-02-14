@@ -1,18 +1,40 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Los Cabritos - Restaurante tradicional de San Luis. Especialistas en cabrito y chivito a la parrilla desde 1970. Villa de la Quebrada." />
-    <meta name="keywords" content="Los Cabritos, restaurante, cabrito, chivito, parrilla, Villa de la Quebrada, San Luis, comida argentina, asado" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <title>Los Cabritos | Restaurante Tradicional de San Luis</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Favicon & Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="theme-color" content="#E25822" />
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="/manifest.json" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Title/description/OG managed dynamically by react-helmet-async -->
+  <title>Los Cabritos</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <noscript>
+    <div
+      style="padding: 2rem; text-align: center; font-family: sans-serif; color: #ccc; background: #1a1a1a; min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+      <p>Este sitio requiere JavaScript para funcionar correctamente. Por favor habilitalo en tu navegador para
+        disfrutar de la experiencia completa de Los Cabritos.</p>
+    </div>
+  </noscript>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
 </html>

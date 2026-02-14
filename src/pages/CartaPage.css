@@ -129,6 +129,46 @@
 }
 
 /* =================================
+   Breadcrumb
+   ================================= */
+.carta-breadcrumb {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 0.6rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.carta-breadcrumb__list {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.8rem;
+}
+
+.carta-breadcrumb__link {
+    color: rgba(253, 245, 230, 0.6);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.carta-breadcrumb__link:hover {
+    color: #FF6B35;
+}
+
+.carta-breadcrumb__separator {
+    color: rgba(253, 245, 230, 0.3);
+    font-size: 0.9rem;
+}
+
+.carta-breadcrumb__item--current {
+    color: #DEB887;
+    font-weight: 500;
+}
+
+/* =================================
    Navigation
    ================================= */
 .carta-nav {

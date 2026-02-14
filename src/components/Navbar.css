@@ -37,6 +37,21 @@
     transform: scale(1.05);
 }
 
+.navbar__logo-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(226, 88, 34, 0.5);
+    box-shadow: 0 0 12px rgba(226, 88, 34, 0.2);
+    transition: all var(--transition-fast);
+}
+
+.navbar__logo:hover .navbar__logo-img {
+    border-color: var(--color-fire-glow);
+    box-shadow: 0 0 20px rgba(226, 88, 34, 0.4);
+}
+
 .navbar__logo-icon {
     color: var(--color-fire);
     animation: float 3s ease-in-out infinite;

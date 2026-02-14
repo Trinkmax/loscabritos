@@ -67,7 +67,6 @@ const About = () => {
                     <h2 className="section__title">Nuestra Historia</h2>
                     <div className="divider">
                         <span className="divider__line"></span>
-                        <GoatIcon />
                         <span className="divider__line"></span>
                     </div>
                     <p className="section__subtitle">
@@ -79,9 +78,10 @@ const About = () => {
                     <div className="about__story">
                         <div className="about__image-container">
                             <img
-                                src="/Foto Carlos para noti paple.JPG"
+                                src="/fundador-juan-carlos-woronko-los-cabritos.webp"
                                 alt="Juan Carlos Woronko - Fundador de Los Cabritos"
                                 className="about__image"
+                                loading="lazy"
                             />
                             <div className="about__image-badge">
                                 <span>Fundador</span>

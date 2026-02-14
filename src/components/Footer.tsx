@@ -1,3 +1,6 @@
+import { Link } from 'react-router-dom';
+import { businessProfile, getPhone, getEmail } from '../data/businessProfile';
+import { trackReserveCallClick } from '../lib/analytics';
 import './Footer.css';
 
 // SVG Icons
@@ -18,12 +21,6 @@ const MapPinIcon = () => (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
         <circle cx="12" cy="10" r="3" />
-    </svg>
-);
-
-const GoatIcon = ({ className }: { className?: string }) => (
-    <svg className={className} width="40" height="40" viewBox="0 0 64 64" fill="currentColor">
-        <path d="M52 20c-2-4-6-8-12-8-2 0-4 1-6 2-2-1-4-2-6-2-6 0-10 4-12 8-4 8-2 18 4 24 2 2 6 4 10 4h8c4 0 8-2 10-4 6-6 8-16 4-24z" />
     </svg>
 );
 
@@ -48,6 +45,12 @@ const HeartIcon = () => (
 );
 
 const Footer = () => {
+    const phone = getPhone();
+    const email = getEmail();
+    const loc0 = businessProfile.locations[0];
+    const social = businessProfile.socialMedia;
+    const hasSocial = social.instagram || social.facebook;
+
     return (
         <footer className="footer">
             <div className="footer__wave">
@@ -63,14 +66,12 @@ const Footer = () => {
                 <div className="footer__content">
                     <div className="footer__brand">
                         <div className="footer__logo">
-                            <GoatIcon className="footer__logo-icon" />
-                            <span className="footer__logo-text">Los Cabritos</span>
+                            <img src={businessProfile.logo} alt={businessProfile.brandName} className="footer__logo-img" />
+                            <span className="footer__logo-text">{businessProfile.brandName}</span>
                         </div>
-                        <p className="footer__tagline">Tradición y sabor desde 1970</p>
+                        <p className="footer__tagline">{businessProfile.slogan}</p>
                         <p className="footer__description">
-                            Restaurante tradicional de parrilla argentina en Villa de la Quebrada,
-                            San Luis. Especialistas en cabrito y chivito a las brasas, cocinado
-                            con técnicas que pasaron de generación en generación.
+                            {businessProfile.description}
                         </p>
                     </div>
 
@@ -79,7 +80,7 @@ const Footer = () => {
                         <ul>
                             <li><a href="#inicio">Inicio</a></li>
                             <li><a href="#nosotros">Nuestra Historia</a></li>
-                            <li><a href="#carta">Carta</a></li>
+                            <li><Link to="/carta">Carta</Link></li>
                             <li><a href="#contacto">Contacto</a></li>
                         </ul>
                     </div>
@@ -89,46 +90,57 @@ const Footer = () => {
                         <ul>
                             <li>
                                 <MapPinIcon />
-                                <span>Villa de la Quebrada, San Luis</span>
+                                <span>{loc0.locality}, {loc0.region}</span>
                             </li>
                             <li>
                                 <PhoneIcon />
-                                <a href="tel:+542664269673">+54 266 426-9673</a>
+                                <a
+                                    href={phone.href}
+                                    onClick={() => trackReserveCallClick('footer')}
+                                >
+                                    {phone.value}
+                                </a>
                             </li>
                             <li>
                                 <MailIcon />
-                                <a href="mailto:loscabritosv.q@gmail.com">loscabritosv.q@gmail.com</a>
+                                <a href={email.href}>{email.value}</a>
                             </li>
                         </ul>
                     </div>
 
-                    <div className="footer__social">
-                        <h4>Seguinos</h4>
-                        <div className="footer__social-links">
-                            <a
-                                href="https://instagram.com"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="footer__social-link"
-                                aria-label="Instagram"
-                            >
-                                <InstagramIcon />
-                            </a>
-                            <a
-                                href="https://facebook.com"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="footer__social-link"
-                                aria-label="Facebook"
-                            >
-                                <FacebookIcon />
-                            </a>
+                    {hasSocial && (
+                        <div className="footer__social">
+                            <h4>Seguinos</h4>
+                            <div className="footer__social-links">
+                                {social.instagram && (
+                                    <a
+                                        href={social.instagram}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="footer__social-link"
+                                        aria-label="Instagram"
+                                    >
+                                        <InstagramIcon />
+                                    </a>
+                                )}
+                                {social.facebook && (
+                                    <a
+                                        href={social.facebook}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="footer__social-link"
+                                        aria-label="Facebook"
+                                    >
+                                        <FacebookIcon />
+                                    </a>
+                                )}
+                            </div>
                         </div>
-                    </div>
+                    )}
                 </div>
 
                 <div className="footer__bottom">
-                    <p>&copy; {new Date().getFullYear()} Los Cabritos. Todos los derechos reservados.</p>
+                    <p>&copy; {new Date().getFullYear()} {businessProfile.brandName}. Todos los derechos reservados.</p>
                     <p className="footer__credits">
                         Hecho con <span className="footer__heart"><HeartIcon /></span> en San Luis, Argentina
                     </p>

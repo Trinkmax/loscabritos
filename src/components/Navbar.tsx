@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { getPhone } from '../data/businessProfile';
+import { trackReserveCallClick } from '../lib/analytics';
 import './Navbar.css';
 
 interface NavLink {
@@ -29,9 +31,10 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className={`navbar ${isScrolled ? 'navbar--scrolled' : ''}`}>
+    <nav className={`navbar ${isScrolled ? 'navbar--scrolled' : ''}`} aria-label="Navegación principal">
       <div className="navbar__container container">
         <a href="#inicio" className="navbar__logo">
+          <img src="/logo-los-cabritos-restaurante.webp" alt="Los Cabritos" className="navbar__logo-img" />
           <span className="navbar__logo-text">Los Cabritos</span>
         </a>
 
@@ -58,7 +61,11 @@ const Navbar = () => {
             </li>
           ))}
           <li className="navbar__item navbar__item--cta">
-            <a href="tel:+542664269673" className="btn btn--primary navbar__cta">
+            <a
+              href={getPhone().href}
+              className="btn btn--primary navbar__cta"
+              onClick={() => trackReserveCallClick('navbar')}
+            >
               Reservar
             </a>
           </li>

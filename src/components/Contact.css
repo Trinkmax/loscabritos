@@ -275,6 +275,19 @@
     color: var(--color-primary);
 }
 
+.contact__directions-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-fire);
+    transition: color var(--transition-fast);
+}
+
+.contact__directions-link:hover {
+    color: var(--color-primary-dark);
+}
+
 @media (max-width: 768px) {
     .contact__header {
         margin-bottom: var(--space-xl);

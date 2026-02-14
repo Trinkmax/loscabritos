@@ -1,4 +1,9 @@
 import { useState, useEffect } from 'react';
+import { businessProfile, getPhone, getWhatsApp } from '../data/businessProfile';
+import { trackReserveCallClick, trackReserveWhatsAppClick } from '../lib/analytics';
+import SeoHead from '../components/SeoHead';
+import StructuredData from '../components/StructuredData';
+import { generateCartaSchema } from '../seo/schema';
 import './CartaPage.css';
 
 interface MenuItem {
@@ -253,6 +258,10 @@ const CartaPage = () => {
     const [activeCategory, setActiveCategory] = useState('combos');
     const [showScrollTop, setShowScrollTop] = useState(false);
 
+    const phone = getPhone();
+    const wa = getWhatsApp();
+    const cartaSchema = generateCartaSchema();
+
     const filteredItems = menuItems.filter(item => item.category === activeCategory);
     const activeCategObj = categories.find(c => c.id === activeCategory);
 
@@ -281,13 +290,31 @@ const CartaPage = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
+    // Build hours display from businessProfile
+    const hoursLabel = (() => {
+        // Group days by hours
+        const groups = new Map<string, string[]>();
+        businessProfile.openingHoursDisplay.forEach(h => {
+            const existing = groups.get(h.hours) || [];
+            existing.push(h.day);
+            groups.set(h.hours, existing);
+        });
+        return Array.from(groups.entries()).map(([hours, days]) => {
+            if (days.length === 1) return `${days[0]}: ${hours}`;
+            return `${days[0]} a ${days[days.length - 1]}: ${hours}`;
+        }).join(' | ');
+    })();
+
     return (
         <div className="carta-page">
+            <SeoHead routeKey="carta" />
+            <StructuredData schema={cartaSchema} />
+
             {/* Header */}
             <header className="carta-header">
                 <div className="carta-header__bg"></div>
                 <div className="carta-header__content">
-                    <h1 className="carta-header__title">Los Cabritos</h1>
+                    <h1 className="carta-header__title">{businessProfile.brandName}</h1>
                     <p className="carta-header__tagline">Parrilla & Restaurante</p>
                     <div className="carta-header__badge">
                         <span className="carta-header__badge-icon">🔥</span>
@@ -302,6 +329,19 @@ const CartaPage = () => {
                     </svg>
                 </div>
             </header>
+
+            {/* Breadcrumb visible — matches BreadcrumbList in JSON-LD */}
+            <nav className="carta-breadcrumb" aria-label="Breadcrumb">
+                <ol className="carta-breadcrumb__list">
+                    <li className="carta-breadcrumb__item">
+                        <a href="/" className="carta-breadcrumb__link">Inicio</a>
+                        <span className="carta-breadcrumb__separator" aria-hidden="true">›</span>
+                    </li>
+                    <li className="carta-breadcrumb__item carta-breadcrumb__item--current" aria-current="page">
+                        Carta
+                    </li>
+                </ol>
+            </nav>
 
             {/* Categories Navigation */}
             <nav className="carta-nav" role="navigation" aria-label="Categorías del menú">
@@ -388,11 +428,21 @@ const CartaPage = () => {
                 </div>
 
                 <div className="carta-footer__contact">
-                    <a href="tel:+5493548123456" className="carta-footer__btn carta-footer__btn--call">
+                    <a
+                        href={phone.href}
+                        className="carta-footer__btn carta-footer__btn--call"
+                        onClick={() => trackReserveCallClick('carta')}
+                    >
                         <span>📞</span>
                         <span>Llamar</span>
                     </a>
-                    <a href="https://wa.me/5493548123456" className="carta-footer__btn carta-footer__btn--whatsapp" target="_blank" rel="noopener noreferrer">
+                    <a
+                        href={wa.href}
+                        className="carta-footer__btn carta-footer__btn--whatsapp"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => trackReserveWhatsAppClick('carta')}
+                    >
                         <span>💬</span>
                         <span>WhatsApp</span>
                     </a>
@@ -405,15 +455,14 @@ const CartaPage = () => {
                 <div className="carta-footer__hours">
                     <span className="carta-footer__hours-icon">🕐</span>
                     <div className="carta-footer__hours-info">
-                        <span>Mar a Dom: 12:00 - 15:00 | 20:00 - 00:00</span>
-                        <span className="carta-footer__hours-closed">Lunes cerrado</span>
+                        <span>{hoursLabel}</span>
                     </div>
                 </div>
 
                 <div className="carta-footer__brand">
                     <span>🐐</span>
-                    <span>Los Cabritos</span>
-                    <span className="carta-footer__year">© 2026</span>
+                    <span>{businessProfile.brandName}</span>
+                    <span className="carta-footer__year">© {new Date().getFullYear()}</span>
                 </div>
             </footer>
 

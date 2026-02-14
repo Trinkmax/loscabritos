@@ -38,13 +38,13 @@
     margin-bottom: var(--space-md);
 }
 
-.footer__logo-icon {
-    color: var(--color-fire);
-}
-
-.footer__logo-icon svg {
-    width: 40px;
-    height: 40px;
+.footer__logo-img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(226, 88, 34, 0.5);
+    box-shadow: 0 0 16px rgba(226, 88, 34, 0.2);
 }
 
 .footer__logo-text {
@@ -208,8 +208,9 @@
         text-align: center;
     }
 
-    .footer__logo-icon {
-        font-size: 2rem;
+    .footer__logo-img {
+        width: 40px;
+        height: 40px;
     }
 
     .footer__logo-text {

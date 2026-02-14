@@ -1,38 +1,79 @@
+/* ===========================
+   Hero Section - Video Background
+   =========================== */
 .hero {
     position: relative;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--color-charcoal) 0%, var(--color-primary-dark) 50%, var(--color-charcoal) 100%);
     overflow: hidden;
+    background: var(--color-charcoal);
 }
 
+/* YouTube Video Background */
+.hero__video-container {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.hero__video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120vw;
+    height: 120vh;
+    min-width: 120%;
+    min-height: 120%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.hero__video-thumbnail {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120vw;
+    height: 120vh;
+    min-width: 120%;
+    min-height: 120%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    pointer-events: none;
+    filter: brightness(0.7);
+}
+
+/* Cinematic overlay */
 .hero__overlay {
     position: absolute;
     inset: 0;
-    background:
-        radial-gradient(circle at 20% 50%, rgba(226, 88, 34, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(212, 165, 116, 0.1) 0%, transparent 40%),
-        radial-gradient(circle at 50% 80%, rgba(139, 69, 19, 0.2) 0%, transparent 50%);
     z-index: 1;
+    background:
+        linear-gradient(to top, rgba(26, 26, 26, 0.95) 0%, rgba(26, 26, 26, 0.6) 30%, rgba(26, 26, 26, 0.3) 60%, rgba(26, 26, 26, 0.5) 100%),
+        radial-gradient(circle at 50% 60%, rgba(226, 88, 34, 0.08) 0%, transparent 70%);
 }
 
+/* Ember particles */
 .hero__particles {
     position: absolute;
     inset: 0;
-    z-index: 1;
+    z-index: 2;
     overflow: hidden;
+    pointer-events: none;
 }
 
 .hero__particle {
     position: absolute;
     bottom: -20px;
-    width: 4px;
-    height: 4px;
+    width: 3px;
+    height: 3px;
     background: var(--color-fire);
     border-radius: 50%;
-    opacity: 0.6;
+    opacity: 0.5;
     animation: particleRise 5s linear infinite;
     box-shadow: 0 0 6px var(--color-fire-glow);
 }
@@ -44,11 +85,11 @@
     }
 
     10% {
-        opacity: 0.8;
+        opacity: 0.6;
     }
 
     90% {
-        opacity: 0.4;
+        opacity: 0.3;
     }
 
     100% {
@@ -57,20 +98,31 @@
     }
 }
 
+/* Hero content */
 .hero__content {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     text-align: center;
     color: var(--color-cream);
     padding: var(--space-4xl) var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.6s ease;
 }
 
+.hero__content--loaded {
+    opacity: 1;
+}
+
+/* Badge */
 .hero__badge {
     display: inline-flex;
     align-items: center;
     gap: var(--space-sm);
-    background: rgba(226, 88, 34, 0.2);
-    border: 1px solid rgba(226, 88, 34, 0.5);
+    background: rgba(226, 88, 34, 0.15);
+    border: 1px solid rgba(226, 88, 34, 0.4);
     padding: var(--space-sm) var(--space-lg);
     border-radius: var(--radius-full);
     font-size: 0.9rem;
@@ -83,13 +135,14 @@
     color: var(--color-fire-glow);
 }
 
+/* Title */
 .hero__title {
     font-family: var(--font-display);
     font-size: clamp(3rem, 10vw, 7rem);
     font-weight: 700;
     color: var(--color-cream);
     margin-bottom: var(--space-md);
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
     background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-accent-light) 50%, var(--color-cream) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -98,6 +151,7 @@
     animation: shimmer 4s linear infinite;
 }
 
+/* Subtitle */
 .hero__subtitle {
     font-family: var(--font-display);
     font-size: clamp(1.25rem, 3vw, 1.75rem);
@@ -107,6 +161,7 @@
     font-style: italic;
 }
 
+/* Description */
 .hero__description {
     font-size: 1.1rem;
     color: var(--color-gray-300);
@@ -115,6 +170,7 @@
     line-height: 1.8;
 }
 
+/* CTA Buttons */
 .hero__cta {
     display: flex;
     gap: var(--space-lg);
@@ -122,9 +178,17 @@
     flex-wrap: wrap;
 }
 
+/* ===========================
+   Mobile Responsive
+   =========================== */
 @media (max-width: 768px) {
     .hero {
         min-height: 100svh;
+    }
+
+    .hero__video {
+        width: 300vw;
+        height: 100vh;
     }
 
     .hero__content {
