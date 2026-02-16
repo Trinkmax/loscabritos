@@ -1,3 +1,4 @@
+import { useScrollReveal, useStaggerReveal } from '../hooks/useScrollReveal';
 import './About.css';
 
 // SVG Icons
@@ -33,6 +34,13 @@ const LocationIcon = () => (
 
 
 const About = () => {
+    const headerReveal = useScrollReveal<HTMLDivElement>();
+    const storyImageReveal = useScrollReveal<HTMLDivElement>({ rootMargin: '0px 0px -80px 0px' });
+    const storyTextReveal = useScrollReveal<HTMLDivElement>({ rootMargin: '0px 0px -80px 0px' });
+    const quoteReveal = useScrollReveal<HTMLQuoteElement>();
+    const familyReveal = useScrollReveal<HTMLImageElement>();
+    const featuresStagger = useStaggerReveal<HTMLDivElement>();
+
     const features = [
         {
             icon: <ClockIcon />,
@@ -59,7 +67,10 @@ const About = () => {
     return (
         <section id="nosotros" className="about section">
             <div className="container">
-                <div className="about__header">
+                <div
+                    ref={headerReveal.ref}
+                    className={`about__header reveal reveal--up ${headerReveal.isVisible ? 'reveal--visible' : ''}`}
+                >
                     <h2 className="section__title">Nuestra Historia</h2>
                     <div className="divider">
                         <span className="divider__line"></span>
@@ -71,11 +82,14 @@ const About = () => {
                 </div>
 
                 <div className="about__content">
-                    <div className="about__story">
+                    <div
+                        ref={storyImageReveal.ref}
+                        className={`about__story reveal reveal--left ${storyImageReveal.isVisible ? 'reveal--visible' : ''}`}
+                    >
                         <div className="about__image-container">
                             <img
                                 src="/images/fundador/fundador-juan-carlos-woronko-los-cabritos.webp"
-                                alt="Juan Carlos Woronko - Fundador de Los Cabritos"
+                                alt="Juan Carlos Woronko - Fundador de Los Cabritos De Oro"
                                 className="about__image"
                                 loading="lazy"
                             />
@@ -85,14 +99,17 @@ const About = () => {
                         </div>
                     </div>
 
-                    <div className="about__text">
+                    <div
+                        ref={storyTextReveal.ref}
+                        className={`about__text reveal reveal--right ${storyTextReveal.isVisible ? 'reveal--visible' : ''}`}
+                    >
                         <h3 className="about__title">
                             El Legado de Juan Carlos Woronko
                         </h3>
                         <p className="about__paragraph">
                             En 1970, con tan solo <strong>21 años de edad</strong>, Juan Carlos Woronko tuvo la visión
                             de crear un lugar donde la tradición culinaria de San Luis pudiera brillar. Así nació
-                            <strong> Los Cabritos</strong>, un restaurante que se convertiría en sinónimo de autenticidad
+                            <strong> Los Cabritos De Oro</strong>, un restaurante que se convertiría en sinónimo de autenticidad
                             y sabor en la región.
                         </p>
                         <p className="about__paragraph">
@@ -103,9 +120,10 @@ const About = () => {
                         </p>
 
                         <img
+                            ref={familyReveal.ref}
                             src="/images/fundador/familia.jpeg"
                             alt="Familia Woronko - Juan Carlos, Estrella e hijos"
-                            className="about__family-image"
+                            className={`about__family-image reveal reveal--scale ${familyReveal.isVisible ? 'reveal--visible' : ''}`}
                             loading="lazy"
                         />
 
@@ -120,18 +138,22 @@ const About = () => {
                             <strong> 50 años de tradición</strong> y el calor de nuestra gran familia.
                         </p>
 
-                        <blockquote className="about__quote">
-                            <p>"Si vas a Villa de la Quebrada y no comés en Los Cabritos, te falta una parte del viaje."</p>
+                        <blockquote
+                            ref={quoteReveal.ref}
+                            className={`about__quote reveal reveal--blur ${quoteReveal.isVisible ? 'reveal--visible' : ''}`}
+                        >
+                            <p>"Si vas a Villa de la Quebrada y no comés en Los Cabritos De Oro, te falta una parte del viaje."</p>
                         </blockquote>
                     </div>
                 </div>
 
-                <div className="about__features">
+                <div ref={featuresStagger.containerRef} className="about__features">
                     {features.map((feature, index) => (
                         <div
                             key={feature.title}
-                            className="about__feature"
-                            style={{ animationDelay: `${index * 0.1}s` }}
+                            data-reveal-item={index}
+                            className={`about__feature reveal reveal--up ${featuresStagger.visibleItems.has(index) ? 'reveal--visible' : ''}`}
+                            style={{ transitionDelay: `${index * 0.1}s` }}
                         >
                             <div className="about__feature-icon">{feature.icon}</div>
                             <h4 className="about__feature-title">{feature.title}</h4>

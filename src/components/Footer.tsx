@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { businessProfile, getPhone, getEmail } from '../data/businessProfile';
 import { trackReserveCallClick } from '../lib/analytics';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 import './Footer.css';
 
 // SVG Icons
@@ -51,6 +52,8 @@ const Footer = () => {
     const social = businessProfile.socialMedia;
     const hasSocial = social.instagram || social.facebook;
 
+    const contentReveal = useScrollReveal<HTMLDivElement>({ threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
+
     return (
         <footer className="footer">
             <div className="footer__wave">
@@ -63,7 +66,10 @@ const Footer = () => {
             </div>
 
             <div className="container">
-                <div className="footer__content">
+                <div
+                    ref={contentReveal.ref}
+                    className={`footer__content reveal reveal--up ${contentReveal.isVisible ? 'reveal--visible' : ''}`}
+                >
                     <div className="footer__brand">
                         <div className="footer__logo">
                             <img src={businessProfile.logo} alt={businessProfile.brandName} className="footer__logo-img" />

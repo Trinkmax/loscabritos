@@ -18,11 +18,31 @@
     border-radius: var(--radius-lg);
     padding: var(--space-2xl);
     box-shadow: var(--shadow-md);
-    transition: all var(--transition-base);
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact__card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-gold), var(--color-gold-light), var(--color-gold));
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .contact__card:hover {
-    box-shadow: var(--shadow-xl);
+    box-shadow: var(--shadow-xl), 0 4px 30px rgba(184, 134, 11, 0.08);
+    transform: translateY(-4px);
+}
+
+.contact__card:hover::after {
+    transform: scaleX(1);
 }
 
 .contact__card-title {
@@ -146,7 +166,7 @@
 }
 
 .contact__schedule-item--special {
-    background: rgba(226, 88, 34, 0.1);
+    background: rgba(184, 134, 11, 0.1);
     padding: var(--space-sm);
     margin: 0 calc(var(--space-sm) * -1);
     border-radius: var(--radius-sm);

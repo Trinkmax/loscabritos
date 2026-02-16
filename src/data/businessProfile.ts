@@ -54,8 +54,8 @@ export interface BusinessProfile {
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
 export const businessProfile: BusinessProfile = {
-    brandName: 'Los Cabritos',
-    legalName: 'Los Cabritos',
+    brandName: 'Los Cabritos De Oro',
+    legalName: 'Los Cabritos De Oro',
     slogan: 'Tradición y sabor desde 1970',
     description:
         'Restaurante tradicional de parrilla argentina en San Luis. Especialistas en cabrito y chivito a las brasas, con dos sucursales: Villa de la Quebrada (casa matriz desde 1970) y La Carolina (Los Cabritos de Oro). Cocina con técnicas que pasaron de generación en generación.',
@@ -142,7 +142,7 @@ export const businessProfile: BusinessProfile = {
         // facebook: 'https://www.facebook.com/loscabritos',
     },
 
-    logo: '/images/branding/logo-los-cabritos-restaurante.webp',
+    logo: '/images/branding/logo-los-cabritos-de-oro.png',
 };
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────

@@ -34,8 +34,8 @@ const Navbar = () => {
     <nav className={`navbar ${isScrolled ? 'navbar--scrolled' : ''}`} aria-label="Navegación principal">
       <div className="navbar__container container">
         <a href="#inicio" className="navbar__logo">
-          <img src="/images/branding/logo-los-cabritos-restaurante.webp" alt="Los Cabritos" className="navbar__logo-img" />
-          <span className="navbar__logo-text">Los Cabritos</span>
+          <img src="/images/branding/logo-los-cabritos-de-oro.png" alt="Los Cabritos De Oro" className="navbar__logo-img" />
+          <span className="navbar__logo-text">Los Cabritos De Oro</span>
         </a>
 
         <ul className={`navbar__menu ${isMobileMenuOpen ? 'navbar__menu--open' : ''}`}>

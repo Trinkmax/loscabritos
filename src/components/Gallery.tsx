@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useScrollReveal, useStaggerReveal } from '../hooks/useScrollReveal';
 import './Gallery.css';
 
 const GoatIcon = () => (
@@ -17,7 +18,7 @@ interface GalleryImage {
 const galleryImages: GalleryImage[] = [
     {
         src: '/images/restaurante/frente-restaurante-los-cabritos-villa-quebrada.webp',
-        alt: 'Frente del restaurante Los Cabritos - Villa de la Quebrada',
+        alt: 'Frente del restaurante Los Cabritos De Oro - Villa de la Quebrada',
         category: 'Nuestro Restaurante',
         span: 'wide',
     },
@@ -44,13 +45,18 @@ const galleryImages: GalleryImage[] = [
     },
     {
         src: '/images/restaurante/vista-lateral-los-cabritos-san-luis.webp',
-        alt: 'Vista lateral del restaurante Los Cabritos',
+        alt: 'Vista lateral del restaurante Los Cabritos De Oro',
         category: 'Nuestro Restaurante',
         span: 'wide',
     },
     {
         src: '/images/restaurante/cartel-los-cabritos-de-oro-parrilla.webp',
-        alt: 'Cartel del restaurante Los Cabritos de Oro Parrilla',
+        alt: 'Cartel del restaurante Los Cabritos De Oro Parrilla',
+        category: 'Nuestro Restaurante',
+    },
+    {
+        src: '/images/restaurante/interior-restaurante-los-cabritos-de-oro.webp',
+        alt: 'Interior del restaurante Los Cabritos De Oro - Salón principal',
         category: 'Nuestro Restaurante',
     },
 ];
@@ -58,6 +64,8 @@ const galleryImages: GalleryImage[] = [
 const Gallery = () => {
     const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
     const [imageLoadStates, setImageLoadStates] = useState<Record<number, boolean>>({});
+    const headerReveal = useScrollReveal<HTMLDivElement>();
+    const gridStagger = useStaggerReveal<HTMLDivElement>({ threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
 
     const handleImageLoad = (index: number) => {
         setImageLoadStates(prev => ({ ...prev, [index]: true }));
@@ -66,7 +74,10 @@ const Gallery = () => {
     return (
         <section id="galeria" className="gallery section">
             <div className="container">
-                <div className="gallery__header">
+                <div
+                    ref={headerReveal.ref}
+                    className={`gallery__header reveal reveal--up ${headerReveal.isVisible ? 'reveal--visible' : ''}`}
+                >
                     <h2 className="section__title">Nuestra Galería</h2>
                     <div className="divider">
                         <span className="divider__line"></span>
@@ -78,12 +89,13 @@ const Gallery = () => {
                     </p>
                 </div>
 
-                <div className="gallery__grid">
+                <div ref={gridStagger.containerRef} className="gallery__grid">
                     {galleryImages.map((image, index) => (
                         <div
                             key={index}
-                            className={`gallery__item ${image.span ? `gallery__item--${image.span}` : ''} ${imageLoadStates[index] ? 'gallery__item--loaded' : ''}`}
-                            style={{ animationDelay: `${index * 0.1}s` }}
+                            data-reveal-item={index}
+                            className={`gallery__item ${image.span ? `gallery__item--${image.span}` : ''} ${imageLoadStates[index] ? 'gallery__item--loaded' : ''} reveal reveal--scale ${gridStagger.visibleItems.has(index) ? 'reveal--visible' : ''}`}
+                            style={{ transitionDelay: `${index * 0.08}s` }}
                             onClick={() => setSelectedImage(image)}
                         >
                             <img

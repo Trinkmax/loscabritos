@@ -1,5 +1,6 @@
 import { businessProfile, getPhone, getWhatsApp, getEmail, isCurrentlyOpen } from '../data/businessProfile';
 import { trackReserveCallClick, trackReserveWhatsAppClick, trackDirectionsClick } from '../lib/analytics';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 import './Contact.css';
 
 // SVG Icons
@@ -57,10 +58,20 @@ const Contact = () => {
     const loc0 = businessProfile.locations[0];
     const loc1 = businessProfile.locations[1];
 
+    const headerReveal = useScrollReveal<HTMLDivElement>();
+    const infoCardReveal = useScrollReveal<HTMLDivElement>({ rootMargin: '0px 0px -60px 0px' });
+    const scheduleCardReveal = useScrollReveal<HTMLDivElement>({ rootMargin: '0px 0px -60px 0px' });
+    const mapsHeaderReveal = useScrollReveal<HTMLHeadingElement>();
+    const mapCard0Reveal = useScrollReveal<HTMLDivElement>({ rootMargin: '0px 0px -40px 0px' });
+    const mapCard1Reveal = useScrollReveal<HTMLDivElement>({ rootMargin: '0px 0px -40px 0px' });
+
     return (
         <section id="contacto" className="contact section">
             <div className="container">
-                <div className="contact__header">
+                <div
+                    ref={headerReveal.ref}
+                    className={`contact__header reveal reveal--up ${headerReveal.isVisible ? 'reveal--visible' : ''}`}
+                >
                     <h2 className="section__title">Visitanos</h2>
                     <div className="divider">
                         <span className="divider__line"></span>
@@ -74,7 +85,10 @@ const Contact = () => {
 
                 <div className="contact__grid">
                     {/* Info Card */}
-                    <div className="contact__card contact__card--info">
+                    <div
+                        ref={infoCardReveal.ref}
+                        className={`contact__card contact__card--info reveal reveal--left ${infoCardReveal.isVisible ? 'reveal--visible' : ''}`}
+                    >
                         <div className="contact__status">
                             <span className={`contact__status-dot ${isCurrentlyOpen() ? 'contact__status-dot--open' : ''}`}></span>
                             <span>{isCurrentlyOpen() ? 'Abierto ahora' : 'Cerrado'}</span>
@@ -144,7 +158,10 @@ const Contact = () => {
                     </div>
 
                     {/* Schedule Card */}
-                    <div className="contact__card contact__card--schedule">
+                    <div
+                        ref={scheduleCardReveal.ref}
+                        className={`contact__card contact__card--schedule reveal reveal--right ${scheduleCardReveal.isVisible ? 'reveal--visible' : ''}`}
+                    >
                         <h3 className="contact__card-title">Horarios</h3>
 
                         <div className="contact__schedule-list">
@@ -169,11 +186,19 @@ const Contact = () => {
 
                 {/* Maps Section */}
                 <div className="contact__maps">
-                    <h3 className="contact__maps-title">Nuestras Ubicaciones</h3>
+                    <h3
+                        ref={mapsHeaderReveal.ref}
+                        className={`contact__maps-title reveal reveal--up ${mapsHeaderReveal.isVisible ? 'reveal--visible' : ''}`}
+                    >
+                        Nuestras Ubicaciones
+                    </h3>
 
                     <div className="contact__maps-grid">
                         {/* Villa de la Quebrada */}
-                        <div className="contact__map-card">
+                        <div
+                            ref={mapCard0Reveal.ref}
+                            className={`contact__map-card reveal reveal--left ${mapCard0Reveal.isVisible ? 'reveal--visible' : ''}`}
+                        >
                             <div className="contact__map-header">
                                 <span className="contact__map-icon"><GoatIcon /></span>
                                 <div>
@@ -210,7 +235,10 @@ const Contact = () => {
                         </div>
 
                         {/* La Carolina */}
-                        <div className="contact__map-card">
+                        <div
+                            ref={mapCard1Reveal.ref}
+                            className={`contact__map-card reveal reveal--right ${mapCard1Reveal.isVisible ? 'reveal--visible' : ''}`}
+                        >
                             <div className="contact__map-header">
                                 <span className="contact__map-icon"><StarIcon /></span>
                                 <div>

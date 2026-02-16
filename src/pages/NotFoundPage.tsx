@@ -6,7 +6,7 @@ const NotFoundPage = () => {
     return (
         <div className="not-found">
             <Helmet>
-                <title>Página no encontrada | Los Cabritos</title>
+                <title>Página no encontrada | Los Cabritos De Oro</title>
                 <meta name="robots" content="noindex, follow" />
             </Helmet>
 

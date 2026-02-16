@@ -26,7 +26,7 @@ const SeoHead = ({ routeKey }: SeoHeadProps) => {
             <meta property="og:image" content={meta.ogImage} />
             <meta property="og:url" content={meta.ogUrl} />
             <meta property="og:locale" content="es_AR" />
-            <meta property="og:site_name" content="Los Cabritos" />
+            <meta property="og:site_name" content="Los Cabritos De Oro" />
 
             {/* Twitter */}
             <meta name="twitter:card" content={meta.twitterCard} />

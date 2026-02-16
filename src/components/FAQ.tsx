@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { getPhone, getWhatsApp } from '../data/businessProfile';
 import { faqData } from '../data/faqData';
 import { trackReserveCallClick, trackReserveWhatsAppClick } from '../lib/analytics';
+import { useScrollReveal, useStaggerReveal } from '../hooks/useScrollReveal';
 import './FAQ.css';
 
 // SVG Icons
@@ -24,6 +25,10 @@ const FAQ = () => {
     const phone = getPhone();
     const wa = getWhatsApp();
 
+    const headerReveal = useScrollReveal<HTMLDivElement>();
+    const faqStagger = useStaggerReveal<HTMLDivElement>({ threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+    const ctaReveal = useScrollReveal<HTMLDivElement>();
+
     const toggle = (index: number) => {
         setOpenIndex(openIndex === index ? null : index);
     };
@@ -31,7 +36,10 @@ const FAQ = () => {
     return (
         <section id="faq" className="faq section">
             <div className="container">
-                <div className="faq__header">
+                <div
+                    ref={headerReveal.ref}
+                    className={`faq__header reveal reveal--up ${headerReveal.isVisible ? 'reveal--visible' : ''}`}
+                >
                     <h2 className="section__title">Preguntas Frecuentes</h2>
                     <div className="divider">
                         <span className="divider__line"></span>
@@ -43,11 +51,13 @@ const FAQ = () => {
                     </p>
                 </div>
 
-                <div className="faq__list">
+                <div ref={faqStagger.containerRef} className="faq__list">
                     {faqData.map((item, index) => (
                         <div
                             key={index}
-                            className={`faq__item ${openIndex === index ? 'faq__item--open' : ''}`}
+                            data-reveal-item={index}
+                            className={`faq__item ${openIndex === index ? 'faq__item--open' : ''} reveal reveal--up ${faqStagger.visibleItems.has(index) ? 'reveal--visible' : ''}`}
+                            style={{ transitionDelay: `${index * 0.07}s` }}
                         >
                             <button
                                 className="faq__question"
@@ -72,7 +82,10 @@ const FAQ = () => {
                 </div>
 
                 {/* CTA de reservas */}
-                <div className="faq__cta">
+                <div
+                    ref={ctaReveal.ref}
+                    className={`faq__cta reveal reveal--blur ${ctaReveal.isVisible ? 'reveal--visible' : ''}`}
+                >
                     <p className="faq__cta-text">¿Tenés más consultas? ¡Contactanos!</p>
                     <div className="faq__cta-buttons">
                         <a
