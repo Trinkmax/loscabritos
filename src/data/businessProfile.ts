@@ -142,7 +142,7 @@ export const businessProfile: BusinessProfile = {
         // facebook: 'https://www.facebook.com/loscabritos',
     },
 
-    logo: '/logo-los-cabritos-restaurante.webp',
+    logo: '/images/branding/logo-los-cabritos-restaurante.webp',
 };
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────

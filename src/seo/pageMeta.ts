@@ -26,7 +26,7 @@ export const pageMeta: Record<string, PageMeta> = {
         ogDescription:
             'Más de 50 años sirviendo cabrito y chivito a las brasas. Villa de la Quebrada y La Carolina, San Luis.',
         ogType: 'website',
-        ogImage: `${BASE}/logo-los-cabritos-restaurante.webp`,
+        ogImage: `${BASE}/images/branding/logo-los-cabritos-restaurante.webp`,
         ogUrl: `${BASE}/`,
         twitterCard: 'summary_large_image',
         robots: 'index, follow',
@@ -44,7 +44,7 @@ export const pageMeta: Record<string, PageMeta> = {
         ogDescription:
             'Parrilla completa, chivito a las brasas, empanadas, pastas caseras y más. Precios actualizados.',
         ogType: 'website',
-        ogImage: `${BASE}/logo-los-cabritos-restaurante.webp`,
+        ogImage: `${BASE}/images/branding/logo-los-cabritos-restaurante.webp`,
         ogUrl: `${BASE}/carta`,
         twitterCard: 'summary_large_image',
         robots: 'index, follow',
@@ -60,7 +60,7 @@ export const pageMeta: Record<string, PageMeta> = {
         ogTitle: 'Página no encontrada | Los Cabritos',
         ogDescription: 'La página que buscás no existe.',
         ogType: 'website',
-        ogImage: `${BASE}/logo-los-cabritos-restaurante.webp`,
+        ogImage: `${BASE}/images/branding/logo-los-cabritos-restaurante.webp`,
         ogUrl: `${BASE}/`,
         twitterCard: 'summary',
         robots: 'noindex, follow',

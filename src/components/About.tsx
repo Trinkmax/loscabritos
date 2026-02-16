@@ -74,7 +74,7 @@ const About = () => {
                     <div className="about__story">
                         <div className="about__image-container">
                             <img
-                                src="/fundador-juan-carlos-woronko-los-cabritos.webp"
+                                src="/images/fundador/fundador-juan-carlos-woronko-los-cabritos.webp"
                                 alt="Juan Carlos Woronko - Fundador de Los Cabritos"
                                 className="about__image"
                                 loading="lazy"
@@ -101,10 +101,23 @@ const About = () => {
                             el cabrito y chivito a la parrilla, se prepara siguiendo las técnicas que aprendimos
                             de nuestros mayores.
                         </p>
+
+                        <img
+                            src="/images/fundador/familia.jpeg"
+                            alt="Familia Woronko - Juan Carlos, Estrella e hijos"
+                            className="about__family-image"
+                            loading="lazy"
+                        />
+
                         <p className="about__paragraph">
-                            Cada plato que servimos lleva consigo más de <strong>50 años de pasión</strong> por
-                            la buena comida. Te invitamos a formar parte de nuestra historia y a disfrutar de
-                            una experiencia gastronómica única.
+                            Esta historia de esfuerzo y pasión no sería posible sin el incondicional apoyo de su esposa,
+                            <strong> Estrella de los Ángeles Rodríguez Rojos</strong>, quien ha acompañado a Juan Carlos durante
+                            28 años de arduo trabajo. Juntos han forjado un verdadero negocio familiar.
+                        </p>
+                        <p className="about__paragraph">
+                            Hoy, el legado continúa creciendo junto a sus hijos <strong>Kía (20), Vladimir (18) y Karol (20)</strong>,
+                            y su nieto <strong>Ludwing (19)</strong>. Cada plato que servimos lleva consigo más de
+                            <strong> 50 años de tradición</strong> y el calor de nuestra gran familia.
                         </p>
 
                         <blockquote className="about__quote">

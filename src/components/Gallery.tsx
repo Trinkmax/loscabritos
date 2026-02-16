@@ -16,40 +16,40 @@ interface GalleryImage {
 
 const galleryImages: GalleryImage[] = [
     {
-        src: '/frente-restaurante-los-cabritos-villa-quebrada.webp',
+        src: '/images/restaurante/frente-restaurante-los-cabritos-villa-quebrada.webp',
         alt: 'Frente del restaurante Los Cabritos - Villa de la Quebrada',
         category: 'Nuestro Restaurante',
         span: 'wide',
     },
     {
-        src: '/parrilla-tradicional-mejor-chivito-san-luis.webp',
+        src: '/images/comida/parrilla-tradicional-mejor-chivito-san-luis.webp',
         alt: 'Parrilla tradicional con cartel "El Mejor Chivito de San Luis"',
         category: 'La Parrilla',
         span: 'tall',
     },
     {
-        src: '/cabrito-asado-brasas-san-luis.webp',
+        src: '/images/comida/cabrito-asado-brasas-san-luis.webp',
         alt: 'Cabrito asándose a las brasas',
         category: 'Nuestros Platos',
     },
     {
-        src: '/parrillada-completa-mesa-los-cabritos.webp',
+        src: '/images/comida/parrillada-completa-mesa-los-cabritos.webp',
         alt: 'Parrillada completa servida en la mesa',
         category: 'Nuestros Platos',
     },
     {
-        src: '/cava-vinos-restaurante-san-luis.webp',
+        src: '/images/restaurante/cava-vinos-restaurante-san-luis.webp',
         alt: 'Cava de vinos del restaurante',
         category: 'Nuestro Restaurante',
     },
     {
-        src: '/vista-lateral-los-cabritos-san-luis.webp',
+        src: '/images/restaurante/vista-lateral-los-cabritos-san-luis.webp',
         alt: 'Vista lateral del restaurante Los Cabritos',
         category: 'Nuestro Restaurante',
         span: 'wide',
     },
     {
-        src: '/cartel-los-cabritos-de-oro-parrilla.webp',
+        src: '/images/restaurante/cartel-los-cabritos-de-oro-parrilla.webp',
         alt: 'Cartel del restaurante Los Cabritos de Oro Parrilla',
         category: 'Nuestro Restaurante',
     },

@@ -43,6 +43,17 @@
     transform: rotate(-5deg);
 }
 
+.about__family-image {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    margin: var(--space-lg) 0;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    object-position: center;
+}
+
 .about__text {
     padding: var(--space-lg) 0;
 }

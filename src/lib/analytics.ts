@@ -67,3 +67,25 @@ export function trackReserveWhatsAppClick(location?: string) {
 export function trackDirectionsClick(location: string) {
     trackEvent('directions_click', { location });
 }
+
+// ─── QR Menu analytics ───────────────────────────────────────────────────────
+
+export function trackQrMenuOpen() {
+    trackEvent('qr_menu_open');
+}
+
+export function trackMenuCategorySelect(category: string) {
+    trackEvent('menu_category_select', { category });
+}
+
+export function trackMenuSearch(query: string) {
+    trackEvent('menu_search', { query });
+}
+
+export function trackMenuNoResults(query: string) {
+    trackEvent('menu_no_results', { query });
+}
+
+export function trackMenuItemView(itemId: string, itemName: string) {
+    trackEvent('menu_item_view', { item_id: itemId, item_name: itemName });
+}

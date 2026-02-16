@@ -1,37 +1,184 @@
-/* =================================
-   CartaPage - Premium Responsive Menu
-   Mobile-First with Desktop Excellence
-   ================================= */
+/* =============================================================================
+   CartaPage v2  –  Premium Restaurant Menu Experience
+   Completely redesigned from scratch — Feb 2026
+   Mobile-first, immersive, app-like feel
+   ============================================================================= */
 
+/* ─── CSS Custom Properties ──────────────────────────────────────────────────── */
+.carta-page {
+    --carta-bg: #0C0A09;
+    --carta-surface: #1C1917;
+    --carta-surface-hover: #292524;
+    --carta-surface-elevated: #1E1B19;
+    --carta-border: rgba(255, 255, 255, 0.06);
+    --carta-border-hover: rgba(255, 255, 255, 0.12);
+    --carta-text: #FAFAF9;
+    --carta-text-secondary: rgba(250, 250, 249, 0.6);
+    --carta-text-muted: rgba(250, 250, 249, 0.4);
+    --carta-accent: #E25822;
+    --carta-accent-light: #FF6B35;
+    --carta-accent-glow: rgba(226, 88, 34, 0.25);
+    --carta-gold: #D4A574;
+    --carta-gold-light: #E8C9A0;
+    --carta-radius-sm: 8px;
+    --carta-radius-md: 14px;
+    --carta-radius-lg: 20px;
+    --carta-radius-xl: 28px;
+    --carta-font-display: 'Playfair Display', Georgia, serif;
+    --carta-font-body: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    --carta-transition: 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    --carta-max-w: 780px;
+}
+
+/* ─── Page Shell ─────────────────────────────────────────────────────────────── */
 .carta-page {
     min-height: 100vh;
     min-height: 100dvh;
-    background: linear-gradient(180deg, #1a1512 0%, #2C2C2C 100%);
-    color: #FDF5E6;
-    padding-bottom: env(safe-area-inset-bottom, 0);
+    background: var(--carta-bg);
+    color: var(--carta-text);
+    font-family: var(--carta-font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
 }
 
-/* =================================
-   Header
-   ================================= */
-.carta-header {
+/* ─── Hero Section ───────────────────────────────────────────────────────────── */
+.carta-hero {
     position: relative;
-    background: linear-gradient(135deg, #8B4513 0%, #654321 50%, #3D2817 100%);
-    padding: 3rem 1.5rem 4rem;
+    padding: 2.5rem 1.25rem 1.75rem;
     text-align: center;
     overflow: hidden;
+    background: linear-gradient(165deg,
+            #1a1210 0%,
+            #1c1510 30%,
+            #221a12 60%,
+            #0C0A09 100%);
 }
 
-.carta-header__bg {
+.carta-hero::before {
+    content: '';
     position: absolute;
     inset: 0;
     background:
-        radial-gradient(circle at 20% 80%, rgba(226, 88, 34, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 107, 53, 0.2) 0%, transparent 50%);
-    animation: pulse-bg 8s ease-in-out infinite;
+        radial-gradient(ellipse 80% 60% at 50% 20%, rgba(226, 88, 34, 0.08), transparent),
+        radial-gradient(ellipse 60% 40% at 30% 80%, rgba(212, 165, 116, 0.05), transparent);
+    pointer-events: none;
 }
 
-@keyframes pulse-bg {
+.carta-hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--carta-gold), transparent);
+    opacity: 0.25;
+}
+
+.carta-hero__logo {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    object-fit: cover;
+    border: 2px solid rgba(212, 165, 116, 0.25);
+    margin: 0 auto 0.85rem;
+    display: block;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    position: relative;
+    z-index: 1;
+}
+
+.carta-hero__title {
+    font-family: var(--carta-font-display);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--carta-text);
+    margin: 0 0 0.25rem;
+    letter-spacing: -0.01em;
+    position: relative;
+    z-index: 1;
+}
+
+.carta-hero__subtitle {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--carta-gold);
+    margin: 0 0 1rem;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+}
+
+.carta-hero__divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin: 0.5rem auto 0;
+    position: relative;
+    z-index: 1;
+}
+
+.carta-hero__divider-line {
+    width: 40px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--carta-gold), transparent);
+    opacity: 0.4;
+}
+
+.carta-hero__divider-icon {
+    color: var(--carta-accent);
+    display: flex;
+    align-items: center;
+}
+
+/* Open/Closed status badge */
+.carta-hero__status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 100px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    margin-top: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.carta-hero__status--open {
+    background: rgba(74, 124, 89, 0.15);
+    color: #6EE7A5;
+    border: 1px solid rgba(74, 124, 89, 0.3);
+}
+
+.carta-hero__status--closed {
+    background: rgba(220, 80, 80, 0.12);
+    color: #F97066;
+    border: 1px solid rgba(220, 80, 80, 0.2);
+}
+
+.carta-hero__status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    animation: statusPulse 2s ease-in-out infinite;
+}
+
+.carta-hero__status--open .carta-hero__status-dot {
+    background: #6EE7A5;
+    box-shadow: 0 0 8px rgba(110, 231, 165, 0.5);
+}
+
+.carta-hero__status--closed .carta-hero__status-dot {
+    background: #F97066;
+    box-shadow: 0 0 8px rgba(249, 112, 102, 0.5);
+}
+
+@keyframes statusPulse {
 
     0%,
     100% {
@@ -39,626 +186,792 @@
     }
 
     50% {
-        opacity: 0.7;
+        opacity: 0.4;
     }
 }
 
-.carta-header__content {
-    position: relative;
-    z-index: 2;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.carta-header__logo {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 1rem;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 255, 255, 0.25);
-    animation: float 4s ease-in-out infinite;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-}
-
-@keyframes float {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-8px);
-    }
-}
-
-.carta-header__icon {
-    font-size: 2.5rem;
-}
-
-.carta-header__title {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 2.25rem;
-    font-weight: 700;
-    margin-bottom: 0.25rem;
-    color: #FDF5E6;
-    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-}
-
-.carta-header__tagline {
-    font-size: 0.95rem;
-    color: rgba(253, 245, 230, 0.8);
-    margin-bottom: 1rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-}
-
-.carta-header__badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
-    padding: 0.5rem 1rem;
-    border-radius: 100px;
-    font-size: 0.8rem;
-    color: rgba(253, 245, 230, 0.9);
-}
-
-.carta-header__badge-icon {
-    font-size: 1rem;
-}
-
-.carta-header__wave {
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    right: 0;
-    color: #1a1512;
-    line-height: 0;
-}
-
-.carta-header__wave svg {
-    width: 100%;
-    height: 40px;
-}
-
-/* =================================
-   Breadcrumb
-   ================================= */
-.carta-breadcrumb {
-    background: rgba(0, 0, 0, 0.2);
-    padding: 0.6rem 1rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.carta-breadcrumb__list {
-    display: flex;
-    align-items: center;
-    gap: 0.35rem;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    font-size: 0.8rem;
-}
-
-.carta-breadcrumb__link {
-    color: rgba(253, 245, 230, 0.6);
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-.carta-breadcrumb__link:hover {
-    color: #FF6B35;
-}
-
-.carta-breadcrumb__separator {
-    color: rgba(253, 245, 230, 0.3);
-    font-size: 0.9rem;
-}
-
-.carta-breadcrumb__item--current {
-    color: #DEB887;
-    font-weight: 500;
-}
-
-/* =================================
-   Navigation
-   ================================= */
-.carta-nav {
+/* ─── Sticky Controls ────────────────────────────────────────────────────────── */
+.carta-controls {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: linear-gradient(180deg, #1a1512 0%, rgba(26, 21, 18, 0.98) 100%);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    padding: 0.75rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    background: rgba(12, 10, 9, 0.92);
+    backdrop-filter: blur(20px) saturate(1.5);
+    -webkit-backdrop-filter: blur(20px) saturate(1.5);
+    padding: 0.65rem 1rem;
+    border-bottom: 1px solid var(--carta-border);
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    transition: box-shadow 0.3s;
 }
 
-.carta-nav__container {
+.carta-controls--scrolled {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* ─── Search Bar ─────────────────────────────────────────────────────────────── */
+.carta-search {
+    position: relative;
+    max-width: var(--carta-max-w);
+    margin: 0 auto;
+    width: 100%;
+}
+
+.carta-search__icon {
+    position: absolute;
+    left: 0.85rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--carta-text-muted);
+    pointer-events: none;
+    transition: color var(--carta-transition);
+}
+
+.carta-search__input {
+    width: 100%;
+    background: var(--carta-surface);
+    border: 1px solid var(--carta-border);
+    border-radius: var(--carta-radius-md);
+    padding: 0.7rem 2.5rem 0.7rem 2.75rem;
+    font-size: 0.88rem;
+    color: var(--carta-text);
+    font-family: inherit;
+    outline: none;
+    transition: border-color var(--carta-transition), box-shadow var(--carta-transition), background var(--carta-transition);
+    -webkit-appearance: none;
+}
+
+.carta-search__input::placeholder {
+    color: var(--carta-text-muted);
+}
+
+.carta-search__input:focus {
+    border-color: rgba(226, 88, 34, 0.4);
+    box-shadow: 0 0 0 3px var(--carta-accent-glow);
+    background: var(--carta-surface-hover);
+}
+
+.carta-search__input:focus~.carta-search__icon {
+    color: var(--carta-accent);
+}
+
+.carta-search__input::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+}
+
+.carta-search__clear {
+    position: absolute;
+    right: 0.55rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
     display: flex;
-    gap: 0.5rem;
-    padding: 0 1rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--carta-text-secondary);
+    border: none;
+    cursor: pointer;
+    transition: background var(--carta-transition), color var(--carta-transition), transform var(--carta-transition);
+}
+
+.carta-search__clear:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--carta-text);
+}
+
+.carta-search__clear:active {
+    transform: translateY(-50%) scale(0.88);
+}
+
+/* ─── Category Navigation ────────────────────────────────────────────────────── */
+.carta-categories {
+    max-width: var(--carta-max-w);
+    margin: 0 auto;
+    width: 100%;
+}
+
+.carta-categories__scroll {
+    display: flex;
+    gap: 0.35rem;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     scroll-snap-type: x mandatory;
-    scroll-padding: 0 1rem;
-    max-width: 1200px;
-    margin: 0 auto;
+    scroll-padding: 0 0.5rem;
+    padding: 0.15rem 0.25rem 0.15rem;
 }
 
-.carta-nav__container::-webkit-scrollbar {
+.carta-categories__scroll::-webkit-scrollbar {
     display: none;
 }
 
-.carta-nav__item {
+.carta-cat-btn {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 0.25rem;
-    min-width: 60px;
-    padding: 0.5rem 0.75rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    color: rgba(253, 245, 230, 0.7);
-    font-size: 0.65rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-    transition: all 0.25s ease;
-    scroll-snap-align: start;
+    gap: 0.35rem;
+    padding: 0.5rem 0.85rem;
+    border-radius: var(--carta-radius-sm);
+    font-size: 0.72rem;
+    font-weight: 600;
+    white-space: nowrap;
     flex-shrink: 0;
+    scroll-snap-align: start;
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--carta-text-secondary);
     cursor: pointer;
+    transition: all var(--carta-transition);
+    position: relative;
+    overflow: hidden;
+    min-height: 38px;
 }
 
-.carta-nav__item:hover {
-    background: rgba(255, 255, 255, 0.12);
-    color: #FDF5E6;
-    transform: translateY(-2px);
+.carta-cat-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    opacity: 0;
+    background: var(--chip-color, var(--carta-accent));
+    transition: opacity var(--carta-transition);
 }
 
-.carta-nav__item--active {
-    background: linear-gradient(135deg, var(--category-color, #E25822), color-mix(in srgb, var(--category-color, #E25822) 70%, #000));
-    border-color: var(--category-color, #E25822);
-    color: #fff;
-    box-shadow: 0 4px 20px rgba(226, 88, 34, 0.4);
-    transform: scale(1.02);
+.carta-cat-btn:hover {
+    color: var(--carta-text);
+    background: var(--carta-surface);
+    border-color: var(--carta-border);
 }
 
-.carta-nav__icon {
-    font-size: 1.35rem;
+.carta-cat-btn--active {
+    background: var(--carta-surface);
+    border-color: var(--chip-color, var(--carta-accent));
+    color: var(--carta-text);
+    box-shadow: 0 0 0 1px var(--chip-color, var(--carta-accent)),
+        inset 0 0 12px rgba(0, 0, 0, 0.2);
+}
+
+.carta-cat-btn--active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 15%;
+    right: 15%;
+    height: 2px;
+    background: var(--chip-color, var(--carta-accent));
+    border-radius: 2px 2px 0 0;
+}
+
+.carta-cat-btn__icon {
+    font-size: 1.05rem;
     line-height: 1;
+    position: relative;
+    z-index: 1;
 }
 
-.carta-nav__name {
-    line-height: 1.2;
+.carta-cat-btn__label {
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    position: relative;
+    z-index: 1;
 }
 
-/* =================================
-   Category Title
-   ================================= */
-.carta-category-title {
+.carta-cat-btn__count {
+    font-size: 0.6rem;
+    font-weight: 500;
+    color: var(--carta-text-muted);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.1rem 0.35rem;
+    border-radius: 100px;
+    position: relative;
+    z-index: 1;
+    transition: all var(--carta-transition);
+}
+
+.carta-cat-btn--active .carta-cat-btn__count {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--carta-text-secondary);
+}
+
+/* ─── Section Header ─────────────────────────────────────────────────────────── */
+.carta-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem 0.5rem;
+    max-width: var(--carta-max-w);
+    margin: 0 auto;
+}
+
+.carta-section-header__left {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.carta-section-header__icon {
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.75rem;
-    padding: 1.5rem 1rem;
-    animation: fadeIn 0.3s ease;
-    max-width: 1200px;
-    margin: 0 auto;
+    border-radius: var(--carta-radius-sm);
+    font-size: 1.2rem;
+    background: linear-gradient(135deg, rgba(212, 165, 116, 0.12), rgba(226, 88, 34, 0.08));
+    border: 1px solid rgba(212, 165, 116, 0.1);
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.carta-category-title__icon {
-    font-size: 1.75rem;
-}
-
-.carta-category-title__text {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 1.5rem;
+.carta-section-header__title {
+    font-family: var(--carta-font-display);
+    font-size: 1.25rem;
     font-weight: 600;
-    color: #FDF5E6;
+    color: var(--carta-text);
     margin: 0;
 }
 
-.carta-category-title__count {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 0.25rem 0.6rem;
+.carta-section-header__count {
+    background: var(--carta-surface);
+    padding: 0.25rem 0.65rem;
     border-radius: 100px;
-    font-size: 0.7rem;
-    color: rgba(253, 245, 230, 0.6);
+    font-size: 0.68rem;
+    color: var(--carta-text-muted);
+    border: 1px solid var(--carta-border);
 }
 
-/* =================================
-   Main Content / Items
-   ================================= */
+/* ─── Main Content Area ──────────────────────────────────────────────────────── */
 .carta-main {
-    padding: 0 1rem 2rem;
-    max-width: 1200px;
+    padding: 0.25rem 0.75rem 2rem;
+    max-width: var(--carta-max-w);
     margin: 0 auto;
 }
 
-.carta-items {
+.carta-grid {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.6rem;
 }
 
-.carta-item {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
-    padding: 1rem;
-    transition: all 0.3s ease;
-    animation: slideUp 0.4s ease forwards;
-    animation-delay: var(--animation-delay, 0s);
-    opacity: 0;
-    position: relative;
-    overflow: hidden;
+/* ─── Card Entry Animation ───────────────────────────────────────────────────── */
+.carta-grid__item {
+    animation: menuItemIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--i, 0) * 0.045s);
 }
 
-@keyframes slideUp {
+@keyframes menuItemIn {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(16px) scale(0.98);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
     }
 }
 
+@media (prefers-reduced-motion: reduce) {
+    .carta-grid__item {
+        animation: none;
+        opacity: 1;
+    }
+}
+
+/* ─── Menu Item Card ─────────────────────────────────────────────────────────── */
+.carta-item {
+    background: var(--carta-surface);
+    border: 1px solid var(--carta-border);
+    border-radius: var(--carta-radius-lg);
+    position: relative;
+    overflow: hidden;
+    transition: border-color var(--carta-transition), background var(--carta-transition), transform var(--carta-transition), box-shadow var(--carta-transition);
+}
+
 .carta-item:hover {
-    background: rgba(255, 255, 255, 0.07);
-    border-color: rgba(226, 88, 34, 0.3);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    border-color: var(--carta-border-hover);
+    background: var(--carta-surface-hover);
 }
 
-.carta-item--special {
-    background: linear-gradient(135deg, rgba(226, 88, 34, 0.15), rgba(255, 107, 53, 0.08));
-    border-color: rgba(226, 88, 34, 0.3);
+.carta-item:active {
+    transform: scale(0.985);
 }
 
-.carta-item--special::before {
+/* Recommended highlight */
+.carta-item--recommended {
+    background: linear-gradient(135deg, rgba(226, 88, 34, 0.06), rgba(212, 165, 116, 0.04));
+    border-color: rgba(226, 88, 34, 0.15);
+}
+
+.carta-item--recommended::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, #E25822, #FF6B35);
+    background: linear-gradient(90deg, var(--carta-accent), var(--carta-accent-light), var(--carta-gold));
+    z-index: 2;
 }
 
+.carta-item--recommended:hover {
+    border-color: rgba(226, 88, 34, 0.3);
+    box-shadow: 0 4px 24px rgba(226, 88, 34, 0.08);
+}
+
+/* Badge */
 .carta-item__badge {
     position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    background: linear-gradient(135deg, #E25822, #FF6B35);
+    top: 0.65rem;
+    right: 0.65rem;
+    background: linear-gradient(135deg, var(--carta-accent), var(--carta-accent-light));
     color: #fff;
-    padding: 0.25rem 0.6rem;
+    padding: 0.2rem 0.55rem;
     border-radius: 6px;
-    font-size: 0.65rem;
-    font-weight: 600;
-    box-shadow: 0 2px 10px rgba(226, 88, 34, 0.4);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    box-shadow: 0 2px 8px rgba(226, 88, 34, 0.3);
 }
 
-.carta-item__main {
-    display: grid;
-    grid-template-columns: 48px 1fr auto;
+/* Card content */
+.carta-item__content {
+    display: flex;
     gap: 0.75rem;
+    padding: 0.9rem;
     align-items: flex-start;
 }
 
-.carta-item__icon-wrapper {
-    width: 48px;
-    height: 48px;
-    background: linear-gradient(135deg, rgba(139, 69, 19, 0.4), rgba(212, 165, 116, 0.2));
-    border-radius: 12px;
+/* Image */
+.carta-item__visual {
+    width: 72px;
+    height: 72px;
+    border-radius: var(--carta-radius-md);
+    overflow: hidden;
+    flex-shrink: 0;
+    position: relative;
+    background: linear-gradient(135deg, rgba(139, 69, 19, 0.3), rgba(212, 165, 116, 0.1));
+}
+
+.carta-item__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.carta-item:hover .carta-item__img {
+    transform: scale(1.08);
+}
+
+/* Fallback icon when no image */
+.carta-item__icon-fallback {
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
+    font-size: 1.75rem;
 }
 
-.carta-item__icon {
-    font-size: 1.5rem;
-}
-
+/* Info section */
 .carta-item__info {
     flex: 1;
     min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
 }
 
 .carta-item__header {
     display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
+    align-items: flex-start;
+    justify-content: space-between;
     gap: 0.5rem;
-    margin-bottom: 0.35rem;
 }
 
 .carta-item__name {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 1rem;
+    font-family: var(--carta-font-display);
+    font-size: 0.98rem;
     font-weight: 600;
-    color: #FDF5E6;
+    color: var(--carta-text);
     margin: 0;
     line-height: 1.3;
 }
 
-.carta-item__serves {
-    background: rgba(255, 255, 255, 0.1);
-    color: rgba(253, 245, 230, 0.7);
-    padding: 0.15rem 0.5rem;
-    border-radius: 6px;
-    font-size: 0.65rem;
-    font-weight: 500;
+.carta-item__price {
+    font-family: var(--carta-font-display);
+    font-size: 1.08rem;
+    font-weight: 700;
+    color: var(--carta-accent-light);
     white-space: nowrap;
+    flex-shrink: 0;
+    line-height: 1.3;
 }
 
-.carta-item__description {
-    font-size: 0.8rem;
-    color: rgba(253, 245, 230, 0.6);
+.carta-item__meta {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+}
+
+.carta-item__serves {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    background: rgba(212, 165, 116, 0.08);
+    color: var(--carta-gold);
+    padding: 0.12rem 0.45rem;
+    border-radius: 5px;
+    font-size: 0.62rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.carta-item__desc {
+    font-size: 0.78rem;
+    color: var(--carta-text-secondary);
     line-height: 1.4;
-    margin: 0;
+    margin: 0.1rem 0 0;
     display: -webkit-box;
     -webkit-line-clamp: 2;
-    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
-.carta-item__price {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: #FF6B35;
-    white-space: nowrap;
-    padding-left: 0.5rem;
-}
-
-/* Includes list */
+/* Includes section */
 .carta-item__includes {
-    margin-top: 0.75rem;
-    padding-top: 0.75rem;
-    border-top: 1px dashed rgba(255, 255, 255, 0.1);
+    margin: 0;
+    padding: 0.65rem 0.9rem 0.75rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    background: rgba(0, 0, 0, 0.15);
 }
 
 .carta-item__includes-label {
     display: block;
-    font-size: 0.7rem;
-    color: rgba(253, 245, 230, 0.5);
-    margin-bottom: 0.5rem;
+    font-size: 0.58rem;
+    color: var(--carta-text-muted);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
 }
 
-.carta-item__includes-list {
+.carta-item__tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.35rem;
+    gap: 0.3rem;
 }
 
-.carta-item__include-tag {
-    background: rgba(212, 165, 116, 0.15);
-    color: #DEB887;
-    padding: 0.2rem 0.5rem;
-    border-radius: 6px;
-    font-size: 0.7rem;
+.carta-item__tag {
+    background: rgba(212, 165, 116, 0.08);
+    color: var(--carta-gold-light);
+    padding: 0.18rem 0.5rem;
+    border-radius: 5px;
+    font-size: 0.65rem;
     font-weight: 500;
+    border: 1px solid rgba(212, 165, 116, 0.08);
+    transition: background var(--carta-transition), border-color var(--carta-transition);
 }
 
-/* =================================
-   Footer
-   ================================= */
-.carta-footer {
-    background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.3));
-    padding: 1.5rem 1rem 2rem;
-    margin-top: 1rem;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
+.carta-item:hover .carta-item__tag {
+    background: rgba(212, 165, 116, 0.12);
+    border-color: rgba(212, 165, 116, 0.15);
 }
 
-.carta-footer__note {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px dashed rgba(255, 255, 255, 0.15);
-    border-radius: 12px;
-    padding: 1rem;
-    margin-bottom: 1.5rem;
-}
-
-.carta-footer__note .carta-footer__icon {
-    font-size: 1.25rem;
-    flex-shrink: 0;
-}
-
-.carta-footer__note p {
-    font-size: 0.8rem;
-    color: rgba(253, 245, 230, 0.7);
-    margin: 0;
-    line-height: 1.5;
-}
-
-.carta-footer__note strong {
-    color: #DEB887;
-}
-
-/* Contact Buttons */
-.carta-footer__contact {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
-}
-
-.carta-footer__btn {
+/* ─── Empty State ────────────────────────────────────────────────────────────── */
+.carta-empty {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0.35rem;
+    text-align: center;
+    padding: 4rem 1.5rem;
+    gap: 0.85rem;
+}
+
+.carta-empty__icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--carta-surface);
+    border: 1px solid var(--carta-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--carta-text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.carta-empty__title {
+    font-family: var(--carta-font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--carta-text);
+    margin: 0;
+}
+
+.carta-empty__text {
+    font-size: 0.88rem;
+    color: var(--carta-text-secondary);
+    margin: 0;
+    max-width: 280px;
+}
+
+.carta-empty__text strong {
+    color: var(--carta-accent-light);
+}
+
+/* ─── Footer ─────────────────────────────────────────────────────────────────── */
+.carta-footer {
+    max-width: var(--carta-max-w);
+    margin: 0 auto;
+    padding: 0 0.75rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Info banner */
+.carta-footer__info {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    background: var(--carta-surface);
+    border: 1px solid var(--carta-border);
+    border-radius: var(--carta-radius-md);
+    padding: 0.85rem;
+}
+
+.carta-footer__info-icon {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(212, 165, 116, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--carta-gold);
+}
+
+.carta-footer__info-text {
+    font-size: 0.78rem;
+    color: var(--carta-text-secondary);
+    margin: 0;
+    line-height: 1.45;
+}
+
+.carta-footer__info-text strong {
+    color: var(--carta-gold-light);
+    font-weight: 600;
+}
+
+/* CTA Buttons */
+.carta-footer__cta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+}
+
+.carta-cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
     padding: 0.85rem 0.5rem;
-    border-radius: 12px;
-    font-size: 0.75rem;
+    border-radius: var(--carta-radius-md);
+    font-size: 0.78rem;
     font-weight: 600;
     text-decoration: none;
-    transition: all 0.25s ease;
+    transition: transform var(--carta-transition), box-shadow var(--carta-transition), filter var(--carta-transition);
+    position: relative;
+    overflow: hidden;
 }
 
-.carta-footer__btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+.carta-cta-btn:active {
+    transform: scale(0.96);
 }
 
-.carta-footer__btn:active {
-    transform: scale(0.95);
-}
-
-.carta-footer__btn span:first-child {
-    font-size: 1.25rem;
-}
-
-.carta-footer__btn--call {
+.carta-cta-btn--call {
     background: linear-gradient(135deg, #4A7C59, #3D6B4A);
     color: #fff;
-    box-shadow: 0 4px 15px rgba(74, 124, 89, 0.3);
+    border: none;
 }
 
-.carta-footer__btn--whatsapp {
+.carta-cta-btn--call:hover {
+    box-shadow: 0 4px 16px rgba(74, 124, 89, 0.3);
+}
+
+.carta-cta-btn--wa {
     background: linear-gradient(135deg, #25D366, #128C7E);
     color: #fff;
-    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    border: none;
 }
 
-.carta-footer__btn--web {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-    color: #FDF5E6;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+.carta-cta-btn--wa:hover {
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
 }
 
-/* Hours */
-.carta-footer__hours {
+.carta-cta-btn--web {
+    background: var(--carta-surface);
+    color: var(--carta-text);
+    border: 1px solid var(--carta-border);
+    grid-column: 1 / -1;
+}
+
+.carta-cta-btn--web:hover {
+    background: var(--carta-surface-hover);
+    border-color: var(--carta-border-hover);
+}
+
+/* Hours & Location strip */
+.carta-footer__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.carta-footer__meta-row {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.75rem;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    padding: 1rem;
-    margin-bottom: 1.5rem;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background: var(--carta-surface);
+    border-radius: var(--carta-radius-sm);
+    border: 1px solid var(--carta-border);
+    font-size: 0.72rem;
+    color: var(--carta-text-secondary);
 }
 
-.carta-footer__hours-icon {
-    font-size: 1.5rem;
+.carta-footer__meta-row svg {
+    flex-shrink: 0;
+    color: var(--carta-gold);
+    opacity: 0.7;
 }
 
-.carta-footer__hours-info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-    font-size: 0.8rem;
-    color: rgba(253, 245, 230, 0.8);
-}
-
-.carta-footer__hours-closed {
-    color: rgba(226, 88, 34, 0.9);
-    font-weight: 600;
-}
-
-/* Brand */
+/* Brand footer */
 .carta-footer__brand {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    font-size: 0.9rem;
-    color: rgba(253, 245, 230, 0.5);
+    padding: 1rem 0 0;
+    border-top: 1px solid var(--carta-border);
 }
 
-.carta-footer__brand span:first-child {
-    font-size: 1.25rem;
+.carta-footer__brand-name {
+    font-family: var(--carta-font-display);
+    font-weight: 600;
+    font-size: 0.82rem;
+    color: var(--carta-text-muted);
 }
 
-.carta-footer__year {
-    font-size: 0.75rem;
+.carta-footer__brand-year {
+    font-size: 0.68rem;
+    color: var(--carta-text-muted);
     opacity: 0.6;
 }
 
-/* =================================
-   Scroll to Top Button
-   ================================= */
-.carta-scroll-top {
+/* ─── FAB (Scroll to Top) ────────────────────────────────────────────────────── */
+.carta-fab {
     position: fixed;
-    bottom: 1.5rem;
-    right: 1.5rem;
-    width: 48px;
-    height: 48px;
-    background: linear-gradient(135deg, #E25822, #FF6B35);
-    border: none;
+    bottom: 1.25rem;
+    right: 1rem;
+    width: 46px;
+    height: 46px;
+    background: var(--carta-surface);
+    border: 1px solid var(--carta-border-hover);
     border-radius: 50%;
-    color: #fff;
+    color: var(--carta-text);
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 20px rgba(226, 88, 34, 0.5);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     opacity: 0;
     visibility: hidden;
-    transform: translateY(20px);
-    transition: all 0.3s ease;
+    transform: translateY(16px) scale(0.8);
+    transition: opacity 0.3s, visibility 0.3s, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
     cursor: pointer;
-    z-index: 1000;
+    z-index: 200;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
-.carta-scroll-top--visible {
+.carta-fab--visible {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
 }
 
-.carta-scroll-top:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(226, 88, 34, 0.6);
+.carta-fab:hover {
+    background: var(--carta-surface-hover);
+    border-color: var(--carta-accent);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 0 3px var(--carta-accent-glow);
 }
 
-.carta-scroll-top:active {
-    transform: scale(0.9);
+.carta-fab:active {
+    transform: scale(0.88);
 }
 
-/* =================================
-   Safe Area / Notch support
-   ================================= */
+/* ─── Breadcrumb ─────────────────────────────────────────────────────────────── */
+.carta-breadcrumb {
+    padding: 0.35rem 1.25rem;
+    max-width: var(--carta-max-w);
+    margin: 0 auto;
+}
+
+.carta-breadcrumb__list {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.68rem;
+}
+
+.carta-breadcrumb__link {
+    color: var(--carta-text-muted);
+    text-decoration: none;
+    transition: color var(--carta-transition);
+}
+
+.carta-breadcrumb__link:hover {
+    color: var(--carta-accent-light);
+}
+
+.carta-breadcrumb__sep {
+    color: rgba(250, 250, 249, 0.2);
+}
+
+.carta-breadcrumb__item--current {
+    color: var(--carta-text-secondary);
+    font-weight: 500;
+}
+
+/* ─── Focus Visible ──────────────────────────────────────────────────────────── */
+.carta-cat-btn:focus-visible,
+.carta-search__input:focus-visible,
+.carta-cta-btn:focus-visible,
+.carta-fab:focus-visible,
+.carta-search__clear:focus-visible {
+    outline: 2px solid var(--carta-accent-light);
+    outline-offset: 2px;
+}
+
+/* ─── Safe Area Support ──────────────────────────────────────────────────────── */
 @supports (padding: max(0px)) {
-    .carta-header {
-        padding-top: max(3rem, env(safe-area-inset-top, 3rem));
+    .carta-hero {
+        padding-top: max(2.5rem, env(safe-area-inset-top, 2.5rem));
     }
 
     .carta-footer {
@@ -666,459 +979,244 @@
     }
 }
 
-/* =================================
-   Larger Mobile Devices (375px+)
-   ================================= */
+/* =============================================================================
+   RESPONSIVE BREAKPOINTS
+   ============================================================================= */
+
+/* ─── 375px+ ─────────────────────────────────────────────────────────────────── */
 @media (min-width: 375px) {
-    .carta-nav__item {
-        min-width: 65px;
-        padding: 0.6rem 0.85rem;
-        font-size: 0.7rem;
-    }
-
-    .carta-nav__icon {
-        font-size: 1.5rem;
-    }
-
-    .carta-item__name {
-        font-size: 1.05rem;
-    }
-
-    .carta-item__price {
-        font-size: 1.2rem;
-    }
-}
-
-/* =================================
-   Medium Mobile / Small Tablet (480px+)
-   ================================= */
-@media (min-width: 480px) {
-    .carta-header {
-        padding: 4rem 2rem 5rem;
-    }
-
-    .carta-header__title {
-        font-size: 2.75rem;
-    }
-
-    .carta-nav__container {
-        padding: 0 1.5rem;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .carta-nav__item {
-        min-width: 75px;
-    }
-
-    .carta-main {
-        padding: 0 1.5rem 2rem;
-    }
-
-    .carta-items {
-        gap: 1rem;
-    }
-
-    .carta-item {
-        padding: 1.25rem;
-    }
-
-    .carta-item__icon-wrapper {
-        width: 56px;
-        height: 56px;
-    }
-
-    .carta-item__icon {
-        font-size: 1.75rem;
-    }
-}
-
-/* =================================
-   Tablet (768px+)
-   ================================= */
-@media (min-width: 768px) {
-    .carta-header {
-        padding: 5rem 2rem 6rem;
-    }
-
-    .carta-header__logo {
-        width: 100px;
-        height: 100px;
-    }
-
-    .carta-header__icon {
-        font-size: 3rem;
-    }
-
-    .carta-header__title {
-        font-size: 3.5rem;
-    }
-
-    .carta-header__tagline {
-        font-size: 1.1rem;
-        letter-spacing: 0.15em;
-    }
-
-    .carta-header__wave svg {
-        height: 60px;
-    }
-
-    .carta-nav {
-        padding: 1rem 0;
-    }
-
-    .carta-nav__container {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.75rem;
-        padding: 0 2rem;
-    }
-
-    .carta-nav__item {
-        flex-direction: row;
-        gap: 0.5rem;
-        min-width: auto;
-        padding: 0.75rem 1.25rem;
-        font-size: 0.8rem;
-        border-radius: 14px;
-    }
-
-    .carta-category-title {
-        padding: 2rem;
-        gap: 1rem;
-    }
-
-    .carta-category-title__icon {
-        font-size: 2.25rem;
-    }
-
-    .carta-category-title__text {
-        font-size: 2rem;
-    }
-
-    .carta-category-title__count {
-        font-size: 0.8rem;
-        padding: 0.35rem 0.8rem;
-    }
-
-    .carta-main {
-        padding: 0 2rem 3rem;
-    }
-
-    /* Grid layout for tablets */
-    .carta-items {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.25rem;
-    }
-
-    .carta-item {
-        padding: 1.5rem;
-    }
-
-    .carta-item__main {
-        grid-template-columns: 60px 1fr;
-        gap: 1rem;
-    }
-
-    .carta-item__price {
-        grid-column: 1 / -1;
-        text-align: right;
-        margin-top: 0.75rem;
-        padding-top: 0.75rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-        font-size: 1.35rem;
-        padding-left: 0;
-    }
-
-    .carta-item__icon-wrapper {
-        width: 60px;
-        height: 60px;
-    }
-
-    .carta-item__icon {
-        font-size: 1.85rem;
-    }
-
-    .carta-item__name {
-        font-size: 1.15rem;
-    }
-
-    .carta-item__description {
-        font-size: 0.85rem;
-        -webkit-line-clamp: 3;
-        line-clamp: 3;
-    }
-
-    .carta-item__badge {
-        font-size: 0.7rem;
-        padding: 0.35rem 0.75rem;
-    }
-
-    .carta-footer {
-        padding: 2rem;
-    }
-
-    .carta-footer__contact {
-        max-width: 500px;
-        margin-left: auto;
-        margin-right: auto;
-        gap: 1rem;
-    }
-
-    .carta-footer__btn {
-        flex-direction: row;
-        gap: 0.5rem;
-        padding: 1rem 1.5rem;
-        font-size: 0.85rem;
-    }
-
-    .carta-footer__hours-info {
-        flex-direction: row;
-        gap: 1rem;
-        font-size: 0.9rem;
-    }
-}
-
-/* =================================
-   Desktop (1024px+)
-   ================================= */
-@media (min-width: 1024px) {
-    .carta-header {
-        padding: 6rem 2rem 7rem;
-    }
-
-    .carta-header__logo {
-        width: 120px;
-        height: 120px;
-    }
-
-    .carta-header__icon {
-        font-size: 3.5rem;
-    }
-
-    .carta-header__title {
-        font-size: 4rem;
-    }
-
-    .carta-header__tagline {
-        font-size: 1.2rem;
-    }
-
-    .carta-header__badge {
-        font-size: 0.9rem;
-        padding: 0.6rem 1.25rem;
-    }
-
-    .carta-header__wave svg {
+    .carta-item__visual {
+        width: 80px;
         height: 80px;
     }
 
-    .carta-nav__item {
-        padding: 0.85rem 1.5rem;
-        font-size: 0.85rem;
+    .carta-item__name {
+        font-size: 1.02rem;
     }
 
-    .carta-nav__icon {
-        font-size: 1.6rem;
+    .carta-item__price {
+        font-size: 1.12rem;
     }
 
-    .carta-category-title {
-        padding: 2.5rem 2rem;
+    .carta-cat-btn {
+        padding: 0.55rem 0.95rem;
+        font-size: 0.74rem;
     }
 
-    .carta-category-title__icon {
-        font-size: 2.5rem;
+    .carta-hero__title {
+        font-size: 1.9rem;
+    }
+}
+
+/* ─── 480px+ ─────────────────────────────────────────────────────────────────── */
+@media (min-width: 480px) {
+    .carta-controls {
+        padding: 0.75rem 1.25rem;
     }
 
-    .carta-category-title__text {
-        font-size: 2.25rem;
+    .carta-main {
+        padding: 0.5rem 1.25rem 2.5rem;
     }
 
-    /* 3 column grid for desktop */
-    .carta-items {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem;
+    .carta-item__content {
+        padding: 1rem;
+        gap: 0.85rem;
     }
 
-    .carta-item {
-        padding: 1.75rem;
+    .carta-item__visual {
+        width: 88px;
+        height: 88px;
+        border-radius: var(--carta-radius-lg);
     }
 
-    .carta-item__icon-wrapper {
+    .carta-item__desc {
+        font-size: 0.82rem;
+        -webkit-line-clamp: 3;
+    }
+
+    .carta-footer {
+        padding: 0 1.25rem 2.5rem;
+    }
+
+    .carta-hero {
+        padding: 3rem 1.5rem 2rem;
+    }
+
+    .carta-hero__logo {
         width: 64px;
         height: 64px;
     }
 
-    .carta-item__icon {
+    .carta-hero__title {
         font-size: 2rem;
-    }
-
-    .carta-item__name {
-        font-size: 1.2rem;
-    }
-
-    .carta-item__description {
-        font-size: 0.9rem;
-    }
-
-    .carta-item__price {
-        font-size: 1.45rem;
-    }
-
-    .carta-item__include-tag {
-        font-size: 0.75rem;
-        padding: 0.25rem 0.6rem;
-    }
-
-    .carta-footer {
-        padding: 3rem 2rem;
-    }
-
-    .carta-footer__note {
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 2rem;
-    }
-
-    .carta-footer__note p {
-        font-size: 0.9rem;
-    }
-
-    .carta-footer__contact {
-        max-width: 600px;
-        gap: 1.25rem;
-    }
-
-    .carta-footer__btn {
-        padding: 1.1rem 2rem;
-        font-size: 0.9rem;
-        border-radius: 14px;
-    }
-
-    .carta-footer__hours {
-        max-width: 500px;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 1.25rem 2rem;
-    }
-
-    .carta-footer__hours-icon {
-        font-size: 1.75rem;
-    }
-
-    .carta-footer__hours-info {
-        font-size: 1rem;
-    }
-
-    .carta-scroll-top {
-        width: 56px;
-        height: 56px;
-        bottom: 2rem;
-        right: 2rem;
     }
 }
 
-/* =================================
-   Large Desktop (1280px+)
-   ================================= */
-@media (min-width: 1280px) {
-    .carta-header {
-        padding: 7rem 2rem 8rem;
+/* ─── 640px+ (phablet / small tablet) ────────────────────────────────────────── */
+@media (min-width: 640px) {
+    .carta-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.65rem;
     }
 
-    .carta-header__logo {
-        width: 140px;
+    .carta-item__content {
+        flex-direction: column;
+        text-align: left;
+    }
+
+    .carta-item__visual {
+        width: 100%;
         height: 140px;
+        border-radius: var(--carta-radius-md);
     }
 
-    .carta-header__icon {
-        font-size: 4rem;
-    }
-
-    .carta-header__title {
-        font-size: 4.5rem;
-    }
-
-    .carta-header__wave svg {
-        height: 100px;
-    }
-
-    .carta-category-title__text {
-        font-size: 2.5rem;
-    }
-
-    /* 4 column grid for large screens */
-    .carta-items {
-        grid-template-columns: repeat(4, 1fr);
-    }
-
-    .carta-item {
-        padding: 1.5rem;
-    }
-
-    .carta-item__main {
-        grid-template-columns: 56px 1fr;
-    }
-
-    .carta-item__icon-wrapper {
-        width: 56px;
-        height: 56px;
-    }
-
-    .carta-item__name {
-        font-size: 1.1rem;
-    }
-
-    .carta-item__description {
-        font-size: 0.85rem;
-        -webkit-line-clamp: 2;
-        line-clamp: 2;
+    .carta-item__header {
+        flex-direction: column;
+        gap: 0.2rem;
     }
 
     .carta-item__price {
-        font-size: 1.35rem;
-    }
-}
-
-/* =================================
-   Ultra Wide (1536px+)
-   ================================= */
-@media (min-width: 1536px) {
-
-    .carta-main,
-    .carta-nav__container,
-    .carta-category-title,
-    .carta-header__content,
-    .carta-footer {
-        max-width: 1400px;
-    }
-
-    .carta-items {
-        gap: 1.75rem;
-    }
-
-    .carta-item {
-        padding: 1.75rem;
-        border-radius: 20px;
-    }
-
-    .carta-item__icon-wrapper {
-        width: 64px;
-        height: 64px;
-        border-radius: 14px;
-    }
-
-    .carta-item__icon {
-        font-size: 2rem;
-    }
-
-    .carta-item__name {
         font-size: 1.15rem;
     }
 
-    .carta-item__price {
+    .carta-item__desc {
+        -webkit-line-clamp: 2;
+    }
+
+    .carta-footer__cta {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .carta-hero {
+        padding: 3.5rem 2rem 2.5rem;
+    }
+
+    .carta-hero__logo {
+        width: 72px;
+        height: 72px;
+        border-radius: 20px;
+    }
+
+    .carta-hero__title {
+        font-size: 2.25rem;
+    }
+}
+
+/* ─── 768px+ (tablet) ────────────────────────────────────────────────────────── */
+@media (min-width: 768px) {
+    .carta-page {
+        --carta-max-w: 840px;
+    }
+
+    .carta-hero {
+        padding: 4rem 2rem 2.5rem;
+    }
+
+    .carta-hero__title {
+        font-size: 2.5rem;
+    }
+
+    .carta-hero__subtitle {
+        font-size: 0.85rem;
+        letter-spacing: 0.25em;
+    }
+
+    .carta-controls {
+        padding: 0.85rem 1.5rem;
+    }
+
+    .carta-categories__scroll {
+        justify-content: center;
+        flex-wrap: wrap;
+        overflow-x: visible;
+        gap: 0.4rem;
+    }
+
+    .carta-cat-btn {
+        min-height: 42px;
+        padding: 0.6rem 1.15rem;
+        font-size: 0.78rem;
+    }
+
+    .carta-item {
+        border-radius: var(--carta-radius-xl);
+    }
+
+    .carta-item__content {
+        padding: 1.15rem;
+    }
+
+    .carta-item__visual {
+        height: 160px;
+    }
+
+    .carta-section-header {
+        padding: 1.25rem 1.5rem 0.65rem;
+    }
+
+    .carta-section-header__title {
         font-size: 1.4rem;
+    }
+}
+
+/* ─── 1024px+ (desktop) ──────────────────────────────────────────────────────── */
+@media (min-width: 1024px) {
+    .carta-page {
+        --carta-max-w: 960px;
+    }
+
+    .carta-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.85rem;
+    }
+
+    .carta-item__visual {
+        height: 150px;
+    }
+
+    .carta-item__name {
+        font-size: 1rem;
+    }
+
+    .carta-footer__cta {
+        max-width: 480px;
+    }
+
+    .carta-fab {
+        width: 52px;
+        height: 52px;
+        bottom: 1.5rem;
+        right: 1.5rem;
+    }
+}
+
+/* ─── 1280px+ (large desktop) ────────────────────────────────────────────────── */
+@media (min-width: 1280px) {
+    .carta-page {
+        --carta-max-w: 1120px;
+    }
+
+    .carta-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+    }
+
+    .carta-item__visual {
+        height: 140px;
+    }
+
+    .carta-hero {
+        padding: 5rem 2rem 3rem;
+    }
+
+    .carta-hero__logo {
+        width: 80px;
+        height: 80px;
+    }
+
+    .carta-hero__title {
+        font-size: 2.75rem;
     }
 }
