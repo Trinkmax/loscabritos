@@ -39,16 +39,10 @@ const FacebookIcon = () => (
     </svg>
 );
 
-const HeartIcon = () => (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-    </svg>
-);
-
 const Footer = () => {
     const phone = getPhone();
     const email = getEmail();
-    const loc0 = businessProfile.locations[0];
+
     const social = businessProfile.socialMedia;
     const hasSocial = social.instagram || social.facebook;
 
@@ -96,7 +90,15 @@ const Footer = () => {
                         <ul>
                             <li>
                                 <MapPinIcon />
-                                <span>{loc0.locality}, {loc0.region}</span>
+                                <span>
+                                    A 35 km de la ciudad de San Luis por la Ruta Provincial 9. En el corazón de Villa de la Quebrada, la Tierra de la Fe.
+                                </span>
+                            </li>
+                            <li>
+                                <MapPinIcon />
+                                <span>
+                                    A 78 km de San Luis, nuestra segunda sede: en LA CAROLINA, en "el pueblo más lindo del mundo", declarado en el año 2023, por la Organización Mundial del Turismo.
+                                </span>
                             </li>
                             <li>
                                 <PhoneIcon />
@@ -148,7 +150,7 @@ const Footer = () => {
                 <div className="footer__bottom">
                     <p>&copy; {new Date().getFullYear()} {businessProfile.brandName}. Todos los derechos reservados.</p>
                     <p className="footer__credits">
-                        Hecho con <span className="footer__heart"><HeartIcon /></span> en San Luis, Argentina
+                        Hecho por Ignacio Baldovino - Prisma Studio.
                     </p>
                 </div>
             </div>
