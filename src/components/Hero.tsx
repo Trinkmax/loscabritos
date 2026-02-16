@@ -45,14 +45,17 @@ const Hero = () => {
                 ))}
             </div>
 
-            <div className={`hero__content ${isLoaded ? 'hero__content--loaded' : ''}`}>
+            {/* Badge positioned above the goats */}
+            <div className={`hero__badge-wrapper ${isLoaded ? 'hero__content--loaded' : ''}`}>
                 <div className="hero__badge">
                     <svg className="hero__badge-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                     </svg>
                     <span>Desde {businessProfile.foundedYear}</span>
                 </div>
+            </div>
 
+            <div className={`hero__content ${isLoaded ? 'hero__content--loaded' : ''}`}>
                 <h1 className="hero__title">
                     Los Cabritos <span className="hero__title-accent">De Oro</span>
                 </h1>

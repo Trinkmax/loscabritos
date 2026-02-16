@@ -165,7 +165,7 @@
     padding: var(--space-sm) 0;
 }
 
-.contact__schedule-item--special {
+.contact__schedule-item--today {
     background: rgba(184, 134, 11, 0.1);
     padding: var(--space-sm);
     margin: 0 calc(var(--space-sm) * -1);
@@ -176,6 +176,11 @@
     font-weight: 500;
     color: var(--color-charcoal);
     min-width: 100px;
+}
+
+.contact__schedule-item--today .contact__schedule-day {
+    font-weight: 700;
+    color: var(--color-primary-dark);
 }
 
 .contact__schedule-line {
@@ -193,7 +198,7 @@
     color: var(--color-primary);
 }
 
-.contact__schedule-item--special .contact__schedule-hours {
+.contact__schedule-item--today .contact__schedule-hours {
     color: var(--color-fire);
 }
 

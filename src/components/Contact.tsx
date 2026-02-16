@@ -1,4 +1,4 @@
-import { businessProfile, getPhone, getWhatsApp, getEmail, isCurrentlyOpen } from '../data/businessProfile';
+import { businessProfile, getPhone, getWhatsApp, getEmail, isCurrentlyOpen, getCurrentDayIndex } from '../data/businessProfile';
 import { trackReserveCallClick, trackReserveWhatsAppClick, trackDirectionsClick } from '../lib/analytics';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import './Contact.css';
@@ -57,6 +57,7 @@ const Contact = () => {
     const email = getEmail();
     const loc0 = businessProfile.locations[0];
     const loc1 = businessProfile.locations[1];
+    const todayIndex = getCurrentDayIndex();
 
     const headerReveal = useScrollReveal<HTMLDivElement>();
     const infoCardReveal = useScrollReveal<HTMLDivElement>({ rootMargin: '0px 0px -60px 0px' });
@@ -165,16 +166,19 @@ const Contact = () => {
                         <h3 className="contact__card-title">Horarios</h3>
 
                         <div className="contact__schedule-list">
-                            {businessProfile.openingHoursDisplay.map((item) => (
-                                <div
-                                    key={item.day}
-                                    className={`contact__schedule-item ${item.isSpecial ? 'contact__schedule-item--special' : ''}`}
-                                >
-                                    <span className="contact__schedule-day">{item.day}</span>
-                                    <span className="contact__schedule-line"></span>
-                                    <span className="contact__schedule-hours">{item.hours}</span>
-                                </div>
-                            ))}
+                            {businessProfile.openingHoursDisplay.map((item) => {
+                                const isToday = item.dayIndex === todayIndex;
+                                return (
+                                    <div
+                                        key={item.day}
+                                        className={`contact__schedule-item ${isToday ? 'contact__schedule-item--today' : ''}`}
+                                    >
+                                        <span className="contact__schedule-day">{item.day}</span>
+                                        <span className="contact__schedule-line"></span>
+                                        <span className="contact__schedule-hours">{item.hours}</span>
+                                    </div>
+                                );
+                            })}
                         </div>
 
                         <div className="contact__schedule-note">

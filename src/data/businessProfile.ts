@@ -41,7 +41,7 @@ export interface BusinessProfile {
     priceRange: string;
     contacts: ContactChannel[];
     openingHours: OpeningHoursSpec[];
-    openingHoursDisplay: { day: string; hours: string; isSpecial?: boolean }[];
+    openingHoursDisplay: { day: string; hours: string; dayIndex: number; isSpecial?: boolean }[];
     locations: BusinessLocation[];
     socialMedia: {
         instagram?: string;
@@ -86,18 +86,20 @@ export const businessProfile: BusinessProfile = {
     ],
 
     openingHours: [
-        { dayOfWeek: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '11:00', closes: '20:00' },
-        { dayOfWeek: ['Saturday'], opens: '10:00', closes: '22:00' },
+        { dayOfWeek: ['Monday', 'Sunday'], opens: '09:00', closes: '22:00' },
+        { dayOfWeek: ['Tuesday', 'Friday'], opens: '09:00', closes: '23:00' },
+        { dayOfWeek: ['Wednesday', 'Thursday'], opens: '09:00', closes: '22:30' },
+        { dayOfWeek: ['Saturday'], opens: '09:00', closes: '23:30' },
     ],
 
     openingHoursDisplay: [
-        { day: 'Domingo', hours: '11:00 - 20:00' },
-        { day: 'Lunes', hours: '11:00 - 20:00' },
-        { day: 'Martes', hours: '11:00 - 20:00' },
-        { day: 'Miércoles', hours: '11:00 - 20:00' },
-        { day: 'Jueves', hours: '11:00 - 20:00' },
-        { day: 'Viernes', hours: '11:00 - 20:00' },
-        { day: 'Sábado', hours: '10:00 - 22:00', isSpecial: true },
+        { day: 'Domingo', hours: '09:00 – 22:00', dayIndex: 0 },
+        { day: 'Lunes', hours: '09:00 – 22:00', dayIndex: 1 },
+        { day: 'Martes', hours: '09:00 – 23:00', dayIndex: 2 },
+        { day: 'Miércoles', hours: '09:00 – 22:30', dayIndex: 3 },
+        { day: 'Jueves', hours: '09:00 – 22:30', dayIndex: 4 },
+        { day: 'Viernes', hours: '09:00 – 23:00', dayIndex: 5 },
+        { day: 'Sábado', hours: '09:00 – 23:30', dayIndex: 6 },
     ],
 
     locations: [
@@ -156,18 +158,25 @@ export const getWhatsApp = () => businessProfile.contacts.find((c) => c.type ===
 /** Get the email contact */
 export const getEmail = () => businessProfile.contacts.find((c) => c.type === 'email')!;
 
+/** Per-day schedule: [opensMinutes, closesMinutes] indexed by JS getDay() (0=Sun..6=Sat) */
+const dailySchedule: Record<number, [number, number]> = {
+    0: [9 * 60, 22 * 60],       // Domingo  09:00–22:00
+    1: [9 * 60, 22 * 60],       // Lunes    09:00–22:00
+    2: [9 * 60, 23 * 60],       // Martes   09:00–23:00
+    3: [9 * 60, 22 * 60 + 30],  // Miércoles 09:00–22:30
+    4: [9 * 60, 22 * 60 + 30],  // Jueves   09:00–22:30
+    5: [9 * 60, 23 * 60],       // Viernes  09:00–23:00
+    6: [9 * 60, 23 * 60 + 30],  // Sábado   09:00–23:30
+};
+
 /** Check if the restaurant is currently open */
 export const isCurrentlyOpen = (): boolean => {
     const now = new Date();
     const day = now.getDay(); // 0=Sun … 6=Sat
-    const hour = now.getHours();
-    const minutes = now.getMinutes();
-    const currentTime = hour * 60 + minutes;
-
-    if (day === 6) {
-        // Sábado: 10:00–22:00
-        return currentTime >= 600 && currentTime < 1320;
-    }
-    // Domingo–Viernes: 11:00–20:00
-    return currentTime >= 660 && currentTime < 1200;
+    const currentTime = now.getHours() * 60 + now.getMinutes();
+    const [opens, closes] = dailySchedule[day];
+    return currentTime >= opens && currentTime < closes;
 };
+
+/** Get the current day index (0=Sunday … 6=Saturday) */
+export const getCurrentDayIndex = (): number => new Date().getDay();

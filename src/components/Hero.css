@@ -145,6 +145,21 @@
     opacity: 1;
 }
 
+/* ---- Badge Wrapper – Positioned above the goats ---- */
+.hero__badge-wrapper {
+    position: absolute;
+    top: 22%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    opacity: 0;
+    transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero__badge-wrapper.hero__content--loaded {
+    opacity: 1;
+}
+
 /* ---- Badge ---- */
 .hero__badge {
     display: inline-flex;
@@ -158,7 +173,6 @@
     font-weight: 600;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    margin-bottom: var(--space-lg);
     backdrop-filter: blur(12px);
     color: var(--color-gold-light);
     /* Animation: soft drop from above with elastic settle */
@@ -484,10 +498,13 @@
         padding: 0 var(--space-md) var(--space-2xl);
     }
 
+    .hero__badge-wrapper {
+        top: 18%;
+    }
+
     .hero__badge {
         font-size: 0.72rem;
         padding: var(--space-xs) var(--space-md);
-        margin-bottom: var(--space-md);
     }
 
     .hero__title {
@@ -535,6 +552,10 @@
 
     .hero__title {
         font-size: clamp(1.4rem, 9vw, 2.2rem);
+    }
+
+    .hero__badge-wrapper {
+        top: 15%;
     }
 
     .hero__badge {
