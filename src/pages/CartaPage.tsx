@@ -311,7 +311,7 @@ const CartaPage = () => {
     }, []);
 
     // Sync state → URL (debounced for search)
-    const searchDebounceRef = useRef<ReturnType<typeof setTimeout>>();
+    const searchDebounceRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
     useEffect(() => {
         clearTimeout(searchDebounceRef.current);
         searchDebounceRef.current = setTimeout(() => {
