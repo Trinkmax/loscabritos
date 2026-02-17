@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { SpeedInsights } from '@vercel/speed-insights/react'
+import { Analytics } from '@vercel/analytics/react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -42,6 +43,7 @@ function App() {
   return (
     <BrowserRouter>
       <SpeedInsights />
+      <Analytics />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/carta" element={<CartaPage />} />
