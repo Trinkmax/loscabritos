@@ -60,13 +60,11 @@ const Hero = () => {
                     Los Cabritos <span className="hero__title-accent">De Oro</span>
                 </h1>
 
-                <div className="hero__divider">
-                    <span className="hero__divider-line"></span>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="hero__divider-icon">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                    </svg>
-                    <span className="hero__divider-line"></span>
-                </div>
+                <h2 className="hero__restaurant-type">
+                    PARRILLA - RESTAURANTE
+                </h2>
+
+                <div className="hero__separator"></div>
 
                 <p className="hero__subtitle">
                     Tradición y sabor en cada bocado
