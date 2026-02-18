@@ -212,25 +212,32 @@ function CategoryNav({
     );
 }
 
-/** Single menu item card — redesigned */
+/** Single menu item card — mobile-first redesign */
 function MenuItemCard({ item }: { item: MenuItem }) {
     const category = getCategoryById(item.categoryId);
-    return (
-        <article
-            className={`carta-item ${item.isRecommended ? 'carta-item--recommended' : ''}`}
-        >
+    const hasImage = !!item.image;
+    const hasIncludes = item.includes && item.includes.length > 0;
 
+    // Build CSS classes
+    const classes = [
+        'carta-item',
+        item.isRecommended ? 'carta-item--recommended' : '',
+        !hasImage ? 'carta-item--no-image' : '',
+    ].filter(Boolean).join(' ');
+
+    return (
+        <article className={classes}>
             <div className="carta-item__content">
                 <div className="carta-item__visual">
-                    {item.image ? (
+                    {hasImage ? (
                         <img
                             src={item.image}
                             alt={item.name}
                             className="carta-item__img"
                             loading="lazy"
                             decoding="async"
-                            width="80"
-                            height="80"
+                            width="320"
+                            height="180"
                         />
                     ) : (
                         <span className="carta-item__icon-fallback" aria-hidden="true">
@@ -243,19 +250,19 @@ function MenuItemCard({ item }: { item: MenuItem }) {
                         <h3 className="carta-item__name">{item.name}</h3>
                         <span className="carta-item__price">{formatPriceARS(item.price)}</span>
                     </div>
-                    <div className="carta-item__meta">
-                        {item.serves && (
+                    {item.serves && (
+                        <div className="carta-item__meta">
                             <span className="carta-item__serves">{item.serves}</span>
-                        )}
-                    </div>
+                        </div>
+                    )}
                     <p className="carta-item__desc">{item.shortDescription}</p>
                 </div>
             </div>
-            {item.includes && item.includes.length > 0 && (
+            {hasIncludes && (
                 <div className="carta-item__includes">
                     <span className="carta-item__includes-label">Incluye</span>
                     <div className="carta-item__tags">
-                        {item.includes.map((inc, i) => (
+                        {item.includes!.map((inc, i) => (
                             <span key={i} className="carta-item__tag">
                                 {inc}
                             </span>
@@ -286,7 +293,7 @@ function MenuEmptyState({ query }: { query: string }) {
 
 const CartaPage = () => {
     const [searchParams, setSearchParams] = useSearchParams();
-    const initialCat = searchParams.get('cat') || 'combos';
+    const initialCat = searchParams.get('cat') || 'parrillas';
     const initialQuery = searchParams.get('q') || '';
 
     const [activeCategory, setActiveCategory] = useState(initialCat);
@@ -316,7 +323,7 @@ const CartaPage = () => {
         clearTimeout(searchDebounceRef.current);
         searchDebounceRef.current = setTimeout(() => {
             const params: Record<string, string> = {};
-            if (activeCategory && activeCategory !== 'combos') params.cat = activeCategory;
+            if (activeCategory && activeCategory !== 'parrillas') params.cat = activeCategory;
             if (searchQuery.trim()) params.q = searchQuery.trim();
             setSearchParams(params, { replace: true });
         }, 300);

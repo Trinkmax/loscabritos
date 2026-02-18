@@ -239,6 +239,7 @@
     font-family: inherit;
     outline: none;
     transition: border-color var(--carta-transition), box-shadow var(--carta-transition), background var(--carta-transition);
+    appearance: none;
     -webkit-appearance: none;
 }
 
@@ -451,7 +452,7 @@
 .carta-grid {
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: 0.75rem;
 }
 
 /* ─── Card Entry Animation ───────────────────────────────────────────────────── */
@@ -539,19 +540,20 @@
     box-shadow: 0 2px 8px rgba(226, 88, 34, 0.3);
 }
 
-/* Card content */
+/* Card content — mobile-first vertical layout */
 .carta-item__content {
     display: flex;
-    gap: 0.75rem;
-    padding: 0.9rem;
-    align-items: flex-start;
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+    align-items: stretch;
 }
 
-/* Image */
+/* Image — full-width banner on mobile */
 .carta-item__visual {
-    width: 72px;
-    height: 72px;
-    border-radius: var(--carta-radius-md);
+    width: 100%;
+    height: 160px;
+    border-radius: 0;
     overflow: hidden;
     flex-shrink: 0;
     position: relative;
@@ -566,7 +568,7 @@
 }
 
 .carta-item:hover .carta-item__img {
-    transform: scale(1.08);
+    transform: scale(1.05);
 }
 
 /* Fallback icon when no image */
@@ -576,28 +578,29 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.75rem;
+    font-size: 2.25rem;
 }
 
-/* Info section */
+/* Info section — text block below image */
 .carta-item__info {
     flex: 1;
     min-width: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.2rem;
+    gap: 0.35rem;
+    padding: 0.85rem 1rem;
 }
 
 .carta-item__header {
     display: flex;
-    align-items: flex-start;
+    align-items: baseline;
     justify-content: space-between;
     gap: 0.5rem;
 }
 
 .carta-item__name {
     font-family: var(--carta-font-display);
-    font-size: 0.98rem;
+    font-size: 1.05rem;
     font-weight: 600;
     color: var(--carta-text);
     margin: 0;
@@ -606,7 +609,7 @@
 
 .carta-item__price {
     font-family: var(--carta-font-display);
-    font-size: 1.08rem;
+    font-size: 1.15rem;
     font-weight: 700;
     color: var(--carta-accent-light);
     white-space: nowrap;
@@ -625,38 +628,36 @@
     display: inline-flex;
     align-items: center;
     gap: 0.2rem;
-    background: rgba(212, 165, 116, 0.08);
+    background: rgba(212, 165, 116, 0.1);
     color: var(--carta-gold);
-    padding: 0.12rem 0.45rem;
-    border-radius: 5px;
-    font-size: 0.62rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 6px;
+    font-size: 0.68rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.04em;
 }
 
+/* Description — FULLY VISIBLE, never truncated */
 .carta-item__desc {
-    font-size: 0.78rem;
+    font-size: 0.82rem;
     color: var(--carta-text-secondary);
-    line-height: 1.4;
-    margin: 0.1rem 0 0;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    line-height: 1.55;
+    margin: 0.15rem 0 0;
+    /* No line-clamp, no overflow hidden — text is always fully readable */
 }
 
 /* Includes section */
 .carta-item__includes {
     margin: 0;
-    padding: 0.65rem 0.9rem 0.75rem;
+    padding: 0.65rem 1rem 0.75rem;
     border-top: 1px solid rgba(255, 255, 255, 0.04);
     background: rgba(0, 0, 0, 0.15);
 }
 
 .carta-item__includes-label {
     display: block;
-    font-size: 0.58rem;
+    font-size: 0.62rem;
     color: var(--carta-text-muted);
     text-transform: uppercase;
     letter-spacing: 0.06em;
@@ -667,15 +668,15 @@
 .carta-item__tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.3rem;
+    gap: 0.35rem;
 }
 
 .carta-item__tag {
     background: rgba(212, 165, 116, 0.08);
     color: var(--carta-gold-light);
-    padding: 0.18rem 0.5rem;
-    border-radius: 5px;
-    font-size: 0.65rem;
+    padding: 0.22rem 0.55rem;
+    border-radius: 6px;
+    font-size: 0.7rem;
     font-weight: 500;
     border: 1px solid rgba(212, 165, 116, 0.08);
     transition: background var(--carta-transition), border-color var(--carta-transition);
@@ -684,6 +685,24 @@
 .carta-item:hover .carta-item__tag {
     background: rgba(212, 165, 116, 0.12);
     border-color: rgba(212, 165, 116, 0.15);
+}
+
+/* Items without image — compact horizontal layout */
+.carta-item--no-image .carta-item__content {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.carta-item--no-image .carta-item__visual {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--carta-radius-sm);
+    flex-shrink: 0;
+}
+
+.carta-item--no-image .carta-item__info {
+    padding: 0.75rem 0.85rem 0.75rem 0;
 }
 
 /* ─── Empty State ────────────────────────────────────────────────────────────── */
@@ -986,16 +1005,19 @@
 /* ─── 375px+ ─────────────────────────────────────────────────────────────────── */
 @media (min-width: 375px) {
     .carta-item__visual {
-        width: 80px;
-        height: 80px;
+        height: 180px;
     }
 
     .carta-item__name {
-        font-size: 1.02rem;
+        font-size: 1.08rem;
     }
 
     .carta-item__price {
-        font-size: 1.12rem;
+        font-size: 1.18rem;
+    }
+
+    .carta-item__desc {
+        font-size: 0.85rem;
     }
 
     .carta-cat-btn {
@@ -1018,20 +1040,12 @@
         padding: 0.5rem 1.25rem 2.5rem;
     }
 
-    .carta-item__content {
-        padding: 1rem;
-        gap: 0.85rem;
-    }
-
     .carta-item__visual {
-        width: 88px;
-        height: 88px;
-        border-radius: var(--carta-radius-lg);
+        height: 200px;
     }
 
     .carta-item__desc {
-        font-size: 0.82rem;
-        -webkit-line-clamp: 3;
+        font-size: 0.88rem;
     }
 
     .carta-footer {
@@ -1057,31 +1071,15 @@
     .carta-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 0.65rem;
-    }
-
-    .carta-item__content {
-        flex-direction: column;
-        text-align: left;
+        gap: 0.75rem;
     }
 
     .carta-item__visual {
-        width: 100%;
-        height: 140px;
-        border-radius: var(--carta-radius-md);
-    }
-
-    .carta-item__header {
-        flex-direction: column;
-        gap: 0.2rem;
+        height: 160px;
     }
 
     .carta-item__price {
         font-size: 1.15rem;
-    }
-
-    .carta-item__desc {
-        -webkit-line-clamp: 2;
     }
 
     .carta-footer__cta {
@@ -1144,12 +1142,8 @@
         border-radius: var(--carta-radius-xl);
     }
 
-    .carta-item__content {
-        padding: 1.15rem;
-    }
-
     .carta-item__visual {
-        height: 160px;
+        height: 180px;
     }
 
     .carta-section-header {

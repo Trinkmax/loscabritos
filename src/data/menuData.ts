@@ -23,248 +23,169 @@ export interface MenuItem {
 // ─── Categories ───────────────────────────────────────────────────────────────
 
 export const menuCategories: MenuCategory[] = [
-    { id: 'combos', label: 'Combos', icon: '🍖', order: 0, color: '#E25822' },
-    { id: 'especialidades', label: 'Chivito', icon: '🐐', order: 1, color: '#D4A574' },
-    { id: 'individuales', label: 'Individuales', icon: '🍽️', order: 2, color: '#8B4513' },
-    { id: 'entradas', label: 'Entradas', icon: '🥟', order: 3, color: '#A0522D' },
-    { id: 'parrilla', label: 'Parrilla', icon: '🔥', order: 4, color: '#FF6B35' },
-    { id: 'pastas', label: 'Pastas', icon: '🍝', order: 5, color: '#DEB887' },
-    { id: 'milanesas', label: 'Milanesas', icon: '🥩', order: 6, color: '#B8860B' },
-    { id: 'guarniciones', label: 'Extras', icon: '🥗', order: 7, color: '#4A7C59' },
-    { id: 'bebidas', label: 'Bebidas', icon: '🍷', order: 8, color: '#722F37' },
-    { id: 'postres', label: 'Postres', icon: '🍨', order: 9, color: '#E8A87C' },
+    { id: 'parrillas', label: 'Parrillas', icon: '🔥', order: 0, color: '#E25822' },
+    { id: 'chivito', label: 'Chivito', icon: '🐐', order: 1, color: '#D4A574' },
+    { id: 'platos', label: 'Platos Tradicionales', icon: '🍽️', order: 2, color: '#8B4513' },
+    { id: 'pizzas', label: 'Pizzas', icon: '🍕', order: 3, color: '#FF6B35' },
+    { id: 'empanadas', label: 'Empanadas', icon: '🥟', order: 4, color: '#A0522D' },
+    { id: 'bebidas', label: 'Bebidas', icon: '🍷', order: 5, color: '#722F37' },
 ];
 
 // ─── Menu Items ───────────────────────────────────────────────────────────────
 
 export const menuItems: MenuItem[] = [
-    // Combos Parrillada
+    // ── Parrillas ─────────────────────────────────────────────────────────────
     {
         id: 'parrilla-2',
-        categoryId: 'combos',
-        name: 'Parrilla Completa para 2',
-        shortDescription: 'La experiencia completa de nuestra parrilla para compartir en pareja.',
+        categoryId: 'parrillas',
+        name: 'Parrilla Completa',
+        shortDescription: 'Incluye: empanadas, vacío, chorizos, costillas, pollo y cerdo, ensaladas y postre (helado Grido).',
         price: 53000,
         serves: '2 personas',
-        includes: ['Empanadas', 'Vacío', 'Chorizos', 'Costillas', 'Ensaladas', 'Pollo/Cerdo'],
+        includes: ['Empanadas', 'Vacío', 'Chorizos', 'Costillas', 'Pollo', 'Cerdo', 'Ensaladas', 'Postre Helado Grido'],
         image: '/images/comida/parrillada-completa-mesa-los-cabritos.webp',
     },
     {
         id: 'parrilla-3',
-        categoryId: 'combos',
-        name: 'Parrilla Completa para 3',
-        shortDescription: 'Todo el sabor de la parrilla argentina con postre incluido. No cobramos cubiertos.',
+        categoryId: 'parrillas',
+        name: 'Parrilla Completa',
+        shortDescription: 'Incluye: empanadas, vacío, chorizos, costillas, pollo y cerdo, ensaladas y postre (helado Grido).',
         price: 69000,
         isRecommended: true,
         serves: '3 personas',
-        includes: ['Empanadas', 'Vacío', 'Chorizos', 'Costillas', 'Ensaladas', 'Pollo/Cerdo', 'Postre Helado Grido'],
+        includes: ['Empanadas', 'Vacío', 'Chorizos', 'Costillas', 'Pollo', 'Cerdo', 'Ensaladas', 'Postre Helado Grido'],
         image: '/images/comida/parrillada-completa-mesa-los-cabritos.webp',
     },
     {
         id: 'parrilla-4',
-        categoryId: 'combos',
-        name: 'Parrilla Completa para 4',
-        shortDescription: 'El combo ideal para familias y grupos. Abundante y completo con postre incluido.',
+        categoryId: 'parrillas',
+        name: 'Parrilla Completa',
+        shortDescription: 'Incluye: empanadas, vacío, chorizos, costillas, pollo y cerdo, ensaladas y postre (helado Grido).',
         price: 89000,
         isRecommended: true,
         serves: '4 personas',
-        includes: ['Empanadas', 'Vacío', 'Chorizos', 'Costillas', 'Ensaladas', 'Pollo/Cerdo', 'Postre Helado Grido'],
+        includes: ['Empanadas', 'Vacío', 'Chorizos', 'Costillas', 'Pollo', 'Cerdo', 'Ensaladas', 'Postre Helado Grido'],
         image: '/images/comida/parrillada-completa-mesa-los-cabritos.webp',
     },
-    // Especialidad: Chivito
-    {
-        id: 'chivito-1',
-        categoryId: 'especialidades',
-        name: 'Chivito a las Brasas',
-        shortDescription: 'Nuestro plato insignia. Chivito tierno cocinado lentamente sobre las brasas.',
-        price: 39000,
-        serves: '1 persona',
-        image: '/images/comida/cabrito-asado-brasas-san-luis.webp',
-    },
+
+    // ── Chivito a las Brasas ──────────────────────────────────────────────────
     {
         id: 'chivito-2',
-        categoryId: 'especialidades',
+        categoryId: 'chivito',
         name: 'Chivito a las Brasas',
-        shortDescription: 'Chivito para compartir con todo lo necesario para una experiencia completa.',
+        shortDescription: 'Incluye: empanadas, chivito, chanfaina, papas fritas, ensaladas y postre Grido.',
         price: 69000,
         isRecommended: true,
         serves: '2 personas',
         includes: ['Empanadas', 'Chivito', 'Chanfaina', 'Papas Fritas', 'Ensaladas', 'Postre Grido'],
         image: '/images/comida/cabrito-asado-brasas-san-luis.webp',
     },
-    // Platos Individuales
     {
-        id: 'combo-individual',
-        categoryId: 'individuales',
-        name: 'Combo Individual',
-        shortDescription: 'Empanada + Tallarines/Ravioles con salsa o Milanesa de Ternera con Fritas.',
-        price: 20000,
+        id: 'chivito-1',
+        categoryId: 'chivito',
+        name: 'Chivito a las Brasas',
+        shortDescription: 'Nuestro plato insignia. Chivito tierno cocinado lentamente sobre las brasas.',
+        price: 39000,
         serves: '1 persona',
+        image: '/images/comida/cabrito-asado-brasas-san-luis.webp',
     },
-    // Entradas
+
+    // ── Platos Tradicionales ──────────────────────────────────────────────────
+    // Todos los platos incluyen una empanada de carne o jamón y queso.
     {
-        id: 'empanadas-carne',
-        categoryId: 'entradas',
-        name: 'Empanadas de Carne',
-        shortDescription: 'Empanadas criollas hechas al horno con carne cortada a cuchillo.',
-        price: 6500,
-        serves: 'x3 unidades',
+        id: 'locro',
+        categoryId: 'platos',
+        name: 'Locro',
+        shortDescription: 'Incluye una empanada de carne o jamón y queso. Locro casero tradicional argentino.',
+        price: 19000,
+        includes: ['Empanada de carne o jamón y queso'],
+    },
+    {
+        id: 'carne-olla',
+        categoryId: 'platos',
+        name: 'Carne a la Olla',
+        shortDescription: 'Incluye una empanada de carne o jamón y queso. Carne tierna cocida lentamente a la olla.',
+        price: 19000,
+        includes: ['Empanada de carne o jamón y queso'],
+    },
+    {
+        id: 'canelones',
+        categoryId: 'platos',
+        name: 'Canelones Caseros',
+        shortDescription: 'Incluye una empanada de carne o jamón y queso. Canelones caseros con salsa y queso gratinado.',
+        price: 19000,
+        includes: ['Empanada de carne o jamón y queso'],
+    },
+    {
+        id: 'tallarines-peceto',
+        categoryId: 'platos',
+        name: 'Tallarines con Peceto',
+        shortDescription: 'Incluye una empanada de carne o jamón y queso. Tallarines caseros acompañados de peceto.',
+        price: 19000,
+        includes: ['Empanada de carne o jamón y queso'],
+    },
+    {
+        id: 'ravioles',
+        categoryId: 'platos',
+        name: 'Ravioles',
+        shortDescription: 'Incluye una empanada de carne o jamón y queso. Ravioles caseros con salsa blanca o bolognesa.',
+        price: 19000,
+        includes: ['Empanada de carne o jamón y queso'],
+    },
+    {
+        id: 'milanesas-napolitanas',
+        categoryId: 'platos',
+        name: 'Milanesas Napolitanas',
+        shortDescription: 'Incluye una empanada de carne o jamón y queso. Milanesas napolitanas con papas fritas.',
+        price: 24000,
+        includes: ['Empanada de carne o jamón y queso', 'Papas fritas'],
+    },
+
+    // ── Pizzas Grandes ────────────────────────────────────────────────────────
+    {
+        id: 'pizza-muzzarella',
+        categoryId: 'pizzas',
+        name: 'Pizza Especial de Muzzarella',
+        shortDescription: '8 porciones. Pizza grande especial de muzzarella.',
+        price: 16000,
+        serves: '8 porciones',
+    },
+    {
+        id: 'pizza-jamon-queso',
+        categoryId: 'pizzas',
+        name: 'Pizza Especial de Jamón y Queso',
+        shortDescription: '8 porciones. Pizza grande especial de jamón y queso.',
+        price: 18000,
+        serves: '8 porciones',
+    },
+
+    // ── Empanadas ─────────────────────────────────────────────────────────────
+    {
+        id: 'empanadas-docena',
+        categoryId: 'empanadas',
+        name: 'Empanadas (Docena para llevar)',
+        shortDescription: 'Docena de empanadas de carne o jamón y queso para llevar.',
+        price: 18000,
+        serves: '12 unidades',
         image: '/images/comida/empanadas-carne.jpeg',
     },
     {
-        id: 'empanadas-jq',
-        categoryId: 'entradas',
-        name: 'Empanadas Jamón y Queso',
-        shortDescription: 'Empanadas crujientes rellenas de jamón y queso derretido.',
-        price: 6500,
-        serves: 'x3 unidades',
+        id: 'empanada-unidad',
+        categoryId: 'empanadas',
+        name: 'Empanada (Unidad)',
+        shortDescription: 'Empanada de carne o jamón y queso para consumir en el restaurante.',
+        price: 2000,
+        serves: '1 unidad',
+        image: '/images/comida/empanadas-carne.jpeg',
     },
+
+    // ── Bebidas ───────────────────────────────────────────────────────────────
     {
-        id: 'provoleta',
-        categoryId: 'entradas',
-        name: 'Provoleta a la Parrilla',
-        shortDescription: 'Queso provolone fundido en la parrilla con orégano y tomate.',
-        price: 9500,
-    },
-    // Parrilla Individual
-    {
-        id: 'asado-costilla',
-        categoryId: 'parrilla',
-        name: 'Asado / Costilla',
-        shortDescription: 'Corte tradicional argentino cocido lentamente a las brasas.',
-        price: 18000,
-    },
-    {
-        id: 'vacio',
-        categoryId: 'parrilla',
-        name: 'Vacío',
-        shortDescription: 'Corte jugoso y tierno, preferido de los amantes de la parrilla.',
-        price: 19000,
-    },
-    {
-        id: 'matambre',
-        categoryId: 'parrilla',
-        name: 'Matambre a la Parrilla',
-        shortDescription: 'Matambre tierno y sabroso, cocinado al punto perfecto.',
-        price: 17000,
-    },
-    {
-        id: 'pollo-parrilla',
-        categoryId: 'parrilla',
-        name: 'Pollo a la Parrilla',
-        shortDescription: 'Medio pollo dorado y jugoso, cocido sobre las brasas.',
-        price: 13000,
-        image: '/images/comida/pollo-parrilla-vegetales.jpeg',
-    },
-    {
-        id: 'chorizo-morcilla',
-        categoryId: 'parrilla',
-        name: 'Chorizo y Morcilla',
-        shortDescription: 'Clásico de la parrilla argentina para acompañar o picar.',
-        price: 7000,
-    },
-    // Pastas
-    {
-        id: 'ravioles',
-        categoryId: 'pastas',
-        name: 'Ravioles Caseros',
-        shortDescription: 'Ravioles artesanales con salsa bolognesa o salsa blanca.',
-        price: 14000,
-    },
-    {
-        id: 'tallarines',
-        categoryId: 'pastas',
-        name: 'Tallarines Caseros',
-        shortDescription: 'Tallarines frescos con salsa bolognesa, fileto o crema.',
-        price: 13000,
-    },
-    {
-        id: 'noquis',
-        categoryId: 'pastas',
-        name: 'Ñoquis de Papa',
-        shortDescription: 'Ñoquis caseros de papa con la salsa de tu preferencia.',
-        price: 13000,
-    },
-    // Milanesas
-    {
-        id: 'milanesa-ternera',
-        categoryId: 'milanesas',
-        name: 'Milanesa de Ternera',
-        shortDescription: 'Milanesa crocante por fuera y jugosa por dentro.',
-        price: 15000,
-    },
-    {
-        id: 'milanesa-pollo',
-        categoryId: 'milanesas',
-        name: 'Milanesa de Pollo',
-        shortDescription: 'Suprema de pollo empanada y dorada a la perfección.',
-        price: 13000,
-    },
-    {
-        id: 'milanesa-napolitana',
-        categoryId: 'milanesas',
-        name: 'Milanesa Napolitana',
-        shortDescription: 'Milanesa con jamón, queso, tomate y orégano gratinada.',
-        price: 17000,
-    },
-    // Guarniciones
-    {
-        id: 'papas-fritas',
-        categoryId: 'guarniciones',
-        name: 'Papas Fritas',
-        shortDescription: 'Papas cortadas y fritas al momento.',
-        price: 5000,
-    },
-    {
-        id: 'ensalada-mixta',
-        categoryId: 'guarniciones',
-        name: 'Ensalada Mixta',
-        shortDescription: 'Lechuga, tomate, cebolla y zanahoria.',
-        price: 5000,
-    },
-    {
-        id: 'pure',
-        categoryId: 'guarniciones',
-        name: 'Puré de Papa',
-        shortDescription: 'Puré cremoso de papa casero.',
-        price: 5000,
-    },
-    // Bebidas
-    {
-        id: 'gaseosa',
+        id: 'bebida-linea-coca',
         categoryId: 'bebidas',
-        name: 'Gaseosa 1.5L',
-        shortDescription: 'Coca-Cola, Sprite, Fanta o Paso de los Toros.',
-        price: 4500,
-    },
-    {
-        id: 'agua',
-        categoryId: 'bebidas',
-        name: 'Agua Mineral',
-        shortDescription: 'Con o sin gas.',
-        price: 3000,
-    },
-    {
-        id: 'vino-tinto',
-        categoryId: 'bebidas',
-        name: 'Vino Tinto de la Casa',
-        shortDescription: 'Jarra de vino tinto de la región.',
-        price: 8000,
-    },
-    // Postres
-    {
-        id: 'helado',
-        categoryId: 'postres',
-        name: 'Helado Grido',
-        shortDescription: 'Pote individual de helado con sabores a elección.',
-        price: 5500,
-    },
-    {
-        id: 'flan',
-        categoryId: 'postres',
-        name: 'Flan Casero',
-        shortDescription: 'Flan con dulce de leche y crema.',
-        price: 5000,
+        name: 'Bebidas Línea Coca-Cola',
+        shortDescription: 'Todas las bebidas son de 1,25 litros, en envase de vidrio, línea Coca-Cola.',
+        price: 0,
     },
 ];
 
@@ -297,6 +218,7 @@ export function searchItems(items: MenuItem[], query: string): MenuItem[] {
 
 /** Format price in ARS */
 export function formatPriceARS(price: number): string {
+    if (price === 0) return 'Consultar';
     return new Intl.NumberFormat('es-AR', {
         style: 'currency',
         currency: 'ARS',

@@ -3,7 +3,7 @@ import { menuCategories, menuItems, filterByCategory, formatPriceARS, getCategor
 import './Menu.css';
 
 const Menu = () => {
-    const [activeCategory, setActiveCategory] = useState('combos');
+    const [activeCategory, setActiveCategory] = useState('parrillas');
 
     const filteredItems = filterByCategory(menuItems, activeCategory);
 
