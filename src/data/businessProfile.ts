@@ -60,7 +60,7 @@ export const businessProfile: BusinessProfile = {
     description:
         'Restaurante tradicional de parrilla argentina en San Luis. Especialistas en cabrito y chivito a las brasas, con dos sucursales: Villa de la Quebrada (casa matriz desde 1970) y La Carolina (Los Cabritos de Oro). Cocina con técnicas que pasaron de generación en generación.',
     foundedYear: 1970,
-    canonicalUrl: 'https://loscabritos.com',
+    canonicalUrl: 'https://loscabritosdeoro.com',
     servesCuisine: ['Parrilla argentina', 'Cabrito', 'Chivito', 'Asado', 'Cocina regional'],
     priceRange: '$$',
 
