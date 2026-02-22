@@ -23,6 +23,7 @@
             ]
         }
     ],
+    "cleanUrls": true,
     "rewrites": [
         {
             "source": "/((?!api|_next|images|assets|favicon|sitemap|robots|manifest|llms|apple-touch-icon).*)",
