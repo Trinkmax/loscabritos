@@ -181,9 +181,9 @@ export const menuItems: MenuItem[] = [
     },
     */
     {
-        id: 'vacio-costilla',
+        id: 'vacio',
         categoryId: 'platos',
-        name: 'Vacío o Costilla de Ternera',
+        name: 'Vacío de Ternera',
         shortDescription: 'Con empanada, ensalada o papas fritas; postre: copa de helado Grido.',
         price: 27000,
         includes: ['Empanada', 'Ensalada o Papas Fritas', 'Postre Copa Helado Grido'],
