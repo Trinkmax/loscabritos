@@ -91,7 +91,7 @@ const Footer = () => {
                             <li>
                                 <MapPinIcon />
                                 <span>
-                                    A 35 km de la ciudad de San Luis por la Ruta Provincial 9. En el corazón de Villa de la Quebrada, la Tierra de la Fe.
+                                    A 38 km de la ciudad de San Luis por la Ruta Provincial 9. En el corazón de Villa de la Quebrada, la Tierra de la Fe.
                                 </span>
                             </li>
                             <li>

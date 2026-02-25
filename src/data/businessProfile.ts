@@ -116,7 +116,7 @@ export const businessProfile: BusinessProfile = {
             googleMapsEmbed:
                 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4662.560073095738!2d-66.29088292329097!3d-33.01554177796149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95d45ce17b363973%3A0x52d2d40efa406ca4!2sParrilla%20Los%20Cabritos!5e1!3m2!1ses-419!2sar!4v1770142577891!5m2!1ses-419!2sar',
             googleMapsUrl: 'https://maps.google.com/?q=Parrilla+Los+Cabritos+Villa+de+la+Quebrada',
-            directionsNote: 'A 90 km de la ciudad de San Luis por la Ruta Provincial 9. En el corazón de Villa de la Quebrada, la Tierra de la Fe.',
+            directionsNote: 'Por ruta provincial n° 3 o ruta Nacional n° 146, a 35 km de San Luís capital, se encuentra Villa de la Quebrada; ahí podrá recorrer el imponente Vía Crucis esculpido en mármol de Carrara (Italia) por el artista  Nicolás Arrighini',
             since: '1970',
             subtitle: 'La casa matriz desde 1970',
         },
