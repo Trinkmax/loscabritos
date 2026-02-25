@@ -133,7 +133,7 @@ export const businessProfile: BusinessProfile = {
             googleMapsEmbed:
                 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3637.063752974187!2d-66.09676510480989!3d-32.811894972344845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95d489000c2468ef%3A0xac9f970e8d6239b5!2sLos%20cabritos%20de%20oro!5e1!3m2!1ses-419!2sar!4v1770142691204!5m2!1ses-419!2sar',
             googleMapsUrl: 'https://maps.google.com/?q=Los+Cabritos+de+Oro+La+Carolina',
-            directionsNote: 'En el pintoresco pueblo de La Carolina, conocido por su historia minera y sus paisajes serranos únicos.',
+            directionsNote: 'A 78 km de distancia de San Luis capital, por ruta provincial n° 9, encontrará la pequeña localidad de La Carolina, lugar declarado en el año 2023, por la UNESCO como "El pueblo más lindo del mundo',
             subtitle: 'Los Cabritos de Oro',
         },
     ],
