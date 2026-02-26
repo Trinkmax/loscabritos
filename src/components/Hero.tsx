@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { businessProfile } from '../data/businessProfile';
+import { businessProfile, getPhone } from '../data/businessProfile';
+import { trackReserveCallClick } from '../lib/analytics';
 import './Hero.css';
+
 
 // Pre-computed at module load — no impure calls during render
 const particleStyles = [...Array(20)].map(() => ({
@@ -79,8 +81,18 @@ const Hero = () => {
                     <Link to="/carta" className="btn btn--primary">
                         Ver Carta
                     </Link>
-                    <a href="#contacto" className="btn btn--secondary">
-                        Cómo Llegar
+                    <a
+                        href={getPhone().href}
+                        className="btn btn--secondary"
+                        onClick={() => trackReserveCallClick('hero')}
+                    >
+                        Reservar
+                    </a>
+                </div>
+
+                <div className="hero__directions">
+                    <a href="#contacto" className="hero__directions-link">
+                        Ver cómo llegar
                     </a>
                 </div>
             </div>
