@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import { menuCategories, menuItems, filterByCategory, formatPriceARS, getCategoryById } from '../data/menuData';
+import { menuCategories, filterByCategory, formatPriceARS, getCategoryById } from '../data/menuData';
+import { useMenuData } from '../hooks/useMenuData';
 import './Menu.css';
 
 const Menu = () => {
     const [activeCategory, setActiveCategory] = useState('parrillas');
+    const { menuItems } = useMenuData();
 
     const filteredItems = filterByCategory(menuItems, activeCategory);
 

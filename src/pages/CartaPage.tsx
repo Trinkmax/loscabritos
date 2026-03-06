@@ -3,13 +3,13 @@ import { useSearchParams } from 'react-router-dom';
 import { businessProfile, getPhone, getWhatsApp, isCurrentlyOpen } from '../data/businessProfile';
 import {
     menuCategories,
-    menuItems,
     filterByCategory,
     searchItems,
     formatPriceARS,
     getCategoryById,
 } from '../data/menuData';
 import type { MenuItem } from '../data/menuData';
+import { useMenuData } from '../hooks/useMenuData';
 import {
     trackReserveCallClick,
     trackReserveWhatsAppClick,
@@ -164,9 +164,11 @@ function MenuSearchBar({
 function CategoryNav({
     activeId,
     onSelect,
+    items,
 }: {
     activeId: string;
     onSelect: (id: string) => void;
+    items: MenuItem[];
 }) {
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -183,10 +185,10 @@ function CategoryNav({
     const counts = useMemo(() => {
         const map: Record<string, number> = {};
         menuCategories.forEach((cat) => {
-            map[cat.id] = menuItems.filter((item) => item.categoryId === cat.id).length;
+            map[cat.id] = items.filter((item) => item.categoryId === cat.id).length;
         });
         return map;
-    }, []);
+    }, [items]);
 
     return (
         <nav className="carta-categories" aria-label="Categorías del menú">
@@ -300,6 +302,8 @@ const CartaPage = () => {
     const [searchQuery, setSearchQuery] = useState(initialQuery);
     const [showScrollTop, setShowScrollTop] = useState(false);
 
+    const { menuItems } = useMenuData();
+
     const phone = getPhone();
     const wa = getWhatsApp();
     const cartaSchema = generateCartaSchema();
@@ -339,7 +343,7 @@ const CartaPage = () => {
             items = filterByCategory(items, activeCategory);
         }
         return items;
-    }, [activeCategory, searchQuery]);
+    }, [activeCategory, searchQuery, menuItems]);
 
     // Track search analytics
     const prevQueryRef = useRef('');
@@ -402,7 +406,7 @@ const CartaPage = () => {
             <div className="carta-controls">
                 <MenuSearchBar value={searchQuery} onChange={handleSearchChange} />
                 {!isSearching && (
-                    <CategoryNav activeId={activeCategory} onSelect={handleCategorySelect} />
+                    <CategoryNav activeId={activeCategory} onSelect={handleCategorySelect} items={menuItems} />
                 )}
             </div>
 
