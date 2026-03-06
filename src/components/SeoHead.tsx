@@ -14,6 +14,7 @@ const SeoHead = ({ routeKey }: SeoHeadProps) => {
             {/* Basic */}
             <title>{meta.title}</title>
             <meta name="description" content={meta.description} />
+            <meta name="keywords" content="chivito, cabrito, chivito a las brasas, cabrito a las brasas, parrilla San Luis, restaurante San Luis, chivito San Luis, cabrito San Luis, Villa de la Quebrada, La Carolina, asado, Los Cabritos De Oro, mejor chivito, mejor cabrito" />
             <link rel="canonical" href={meta.canonical} />
 
             {/* Robots */}

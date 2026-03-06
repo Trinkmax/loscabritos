@@ -47,7 +47,7 @@ const FAQ = () => {
                         <span className="divider__line"></span>
                     </div>
                     <p className="section__subtitle">
-                        Todo lo que necesitás saber sobre nuestro restaurante de cabrito y parrilla en San Luis
+                        Todo lo que necesitás saber sobre nuestro restaurante de chivito, cabrito y parrilla en San Luis
                     </p>
                 </div>
 

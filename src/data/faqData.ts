@@ -22,6 +22,10 @@ export const faqData = [
         answer: 'Nuestra especialidad es el cabrito y chivito a las brasas, cocinado lentamente con técnicas que pasaron de generación en generación desde 1970. También ofrecemos parrilla completa, empanadas criollas y pastas caseras.',
     },
     {
+        question: '¿Qué es el chivito a las brasas y cómo lo preparan?',
+        answer: 'El chivito a las brasas es nuestra especialidad más reconocida. Se trata de carne de cabrito joven, cocinada lentamente sobre brasas de leña, logrando una cocción pareja y un sabor ahumado inigualable. En Los Cabritos De Oro preparamos el chivito con la misma técnica artesanal que se usa desde 1970, respetando los tiempos de cocción para que quede tierno y jugoso.',
+    },
+    {
         question: '¿Tienen opciones para grupos grandes?',
         answer: 'Sí. Ofrecemos combos de parrilla completa para 2, 3 y 4 personas con postre incluido. Para grupos más grandes, contactanos para armar un menú especial.',
     },

@@ -18,11 +18,11 @@ const BASE = businessProfile.canonicalUrl;
 
 export const pageMeta: Record<string, PageMeta> = {
     home: {
-        title: 'Los Cabritos De Oro | Restaurante de Cabrito y Parrilla en San Luis',
+        title: 'Los Cabritos De Oro | Restaurante de Cabrito y Chivito a las Brasas en San Luis',
         description:
             'Restaurante de cabrito y chivito a la parrilla en Villa de la Quebrada y La Carolina, San Luis. Más de 50 años de tradición. Reservá por teléfono o WhatsApp.',
         canonical: `${BASE}/`,
-        ogTitle: 'Los Cabritos De Oro — Cabrito y Parrilla en San Luis',
+        ogTitle: 'Los Cabritos De Oro — Cabrito y Chivito a las Brasas en San Luis',
         ogDescription:
             'Más de 50 años sirviendo cabrito y chivito a las brasas. Villa de la Quebrada y La Carolina, San Luis.',
         ogType: 'website',
@@ -36,11 +36,11 @@ export const pageMeta: Record<string, PageMeta> = {
         ],
     },
     carta: {
-        title: 'Carta y Menú | Los Cabritos De Oro — Parrilla en San Luis',
+        title: 'Carta y Menú | Los Cabritos De Oro — Chivito, Cabrito y Parrilla en San Luis',
         description:
             'Carta completa: combos de parrilla, chivito a las brasas, empanadas criollas, pastas caseras y más. Precios actualizados. No cobramos cubiertos.',
         canonical: `${BASE}/carta`,
-        ogTitle: 'Carta y Menú — Los Cabritos De Oro',
+        ogTitle: 'Carta y Menú — Los Cabritos De Oro | Chivito, Cabrito y Parrilla',
         ogDescription:
             'Parrilla completa, chivito a las brasas, empanadas, pastas caseras y más. Precios actualizados.',
         ogType: 'website',

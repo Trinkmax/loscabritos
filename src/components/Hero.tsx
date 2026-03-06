@@ -28,7 +28,7 @@ const Hero = () => {
             <div className="hero__bg-image-wrapper">
                 <img
                     src="/images/branding/logo-los-cabritos-de-oro.png"
-                    alt="Los Cabritos De Oro — Logo del restaurante de cabrito y parrilla en San Luis"
+                    alt="Los Cabritos De Oro — Logo del restaurante de chivito, cabrito y parrilla en San Luis"
                     className="hero__bg-image"
                     fetchPriority="high"
                 />
@@ -73,7 +73,7 @@ const Hero = () => {
                 </p>
 
                 <p className="hero__description">
-                    Restaurante de cabrito y parrilla en Villa de la Quebrada y La Carolina, San Luis. <br />
+                    Restaurante de chivito y cabrito a las brasas en Villa de la Quebrada y La Carolina, San Luis. <br />
                     Especialistas en chivito a las brasas desde 1970.
                 </p>
 
