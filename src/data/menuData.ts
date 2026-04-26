@@ -52,7 +52,7 @@ export const menuItems: MenuItem[] = [
         categoryId: 'parrillas',
         name: 'Parrilla para 2 Personas',
         shortDescription: 'Empanada, ensalada mixta, excelente parrilla, pan casero; postre: copa Grido.',
-        price: 55000,
+        price: 57000,
         serves: '2 personas',
         includes: ['Empanada', 'Ensalada Mixta', 'Parrilla', 'Pan Casero', 'Postre Copa Grido'],
         image: '/images/comida/parrillada-completa-mesa-los-cabritos.webp',
