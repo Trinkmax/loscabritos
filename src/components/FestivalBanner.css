@@ -1,0 +1,1004 @@
+/* ===========================
+   Festival Banner — Cristo de la Quebrada 2026
+   =========================== */
+.festival {
+    position: relative;
+    padding: var(--space-3xl) var(--space-lg) var(--space-3xl);
+    background:
+        radial-gradient(ellipse at top, rgba(184, 134, 11, 0.18) 0%, transparent 55%),
+        linear-gradient(180deg, #0a0a0a 0%, #141008 50%, #0a0a0a 100%);
+    color: var(--color-cream);
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.festival__glow {
+    position: absolute;
+    top: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(900px, 95vw);
+    height: 60%;
+    background: radial-gradient(ellipse,
+            rgba(218, 165, 32, 0.18) 0%,
+            rgba(184, 134, 11, 0.08) 35%,
+            transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    animation: festivalGlow 7s ease-in-out infinite;
+}
+
+@keyframes festivalGlow {
+
+    0%,
+    100% {
+        opacity: 0.7;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.festival__pattern {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+    background-image:
+        radial-gradient(circle at 15% 25%, rgba(218, 165, 32, 0.08) 0%, transparent 18%),
+        radial-gradient(circle at 85% 75%, rgba(218, 165, 32, 0.06) 0%, transparent 18%);
+}
+
+/* --- Floating sparkles --- */
+.festival__sparkles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.festival__sparkle {
+    position: absolute;
+    bottom: -10px;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--color-gold-light);
+    box-shadow:
+        0 0 6px rgba(218, 165, 32, 0.9),
+        0 0 14px rgba(218, 165, 32, 0.5);
+    opacity: 0;
+    animation: sparkleFloat linear infinite;
+}
+
+@keyframes sparkleFloat {
+    0% {
+        transform: translateY(0) scale(0.6);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.9;
+    }
+
+    50% {
+        transform: translateY(-50vh) scale(1.1);
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 0.4;
+    }
+
+    100% {
+        transform: translateY(-110vh) scale(0.4);
+        opacity: 0;
+    }
+}
+
+.festival__container {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xl);
+}
+
+/* --- Header --- */
+.festival__header {
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.festival--visible .festival__header {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.festival__eyebrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+}
+
+.festival__eyebrow-line {
+    height: 1px;
+    width: clamp(20px, 6vw, 60px);
+    background: linear-gradient(90deg, transparent, var(--color-gold));
+}
+
+.festival__eyebrow-line:last-child {
+    background: linear-gradient(90deg, var(--color-gold), transparent);
+}
+
+.festival__eyebrow-text {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    color: var(--color-gold-light);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+}
+
+.festival__eyebrow-text svg {
+    color: var(--color-gold);
+    filter: drop-shadow(0 0 6px rgba(218, 165, 32, 0.5));
+}
+
+.festival__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 4.5vw, 2.75rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+    margin: 0 auto var(--space-md);
+    max-width: 22ch;
+    color: var(--color-cream);
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
+}
+
+.festival__title-accent {
+    background: linear-gradient(100deg,
+            var(--color-gold) 0%,
+            var(--color-gold-light) 25%,
+            #fff4c2 45%,
+            #ffeaa0 50%,
+            #fff4c2 55%,
+            var(--color-gold-light) 75%,
+            var(--color-gold) 100%);
+    background-size: 250% 100%;
+    background-position: 100% 50%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: titleShine 5s ease-in-out infinite;
+}
+
+@keyframes titleShine {
+    0% {
+        background-position: 200% 50%;
+    }
+
+    50% {
+        background-position: -100% 50%;
+    }
+
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+.festival__subtitle {
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+    color: var(--color-gray-300);
+    max-width: 56ch;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* --- Featured "Pilgrim" offer --- */
+.festival__feature {
+    position: relative;
+    background:
+        linear-gradient(135deg, rgba(184, 134, 11, 0.18) 0%, rgba(184, 134, 11, 0.06) 100%),
+        rgba(20, 16, 8, 0.85);
+    border: 1px solid rgba(218, 165, 32, 0.4);
+    border-radius: var(--radius-lg);
+    padding: var(--space-2xl) var(--space-xl) var(--space-xl);
+    backdrop-filter: blur(8px);
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgba(218, 165, 32, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s,
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+}
+
+.festival--visible .festival__feature {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.festival__feature::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-lg);
+    padding: 1px;
+    background: conic-gradient(from var(--angle, 0deg),
+            transparent 0deg,
+            rgba(218, 165, 32, 0.7) 60deg,
+            #fff4c2 90deg,
+            rgba(218, 165, 32, 0.7) 120deg,
+            transparent 180deg,
+            transparent 240deg,
+            rgba(218, 165, 32, 0.55) 300deg,
+            transparent 360deg);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    animation: borderRotate 8s linear infinite;
+}
+
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.festival__feature::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(115deg,
+            transparent 0%,
+            transparent 40%,
+            rgba(255, 244, 194, 0.06) 48%,
+            rgba(255, 244, 194, 0.12) 50%,
+            rgba(255, 244, 194, 0.06) 52%,
+            transparent 60%,
+            transparent 100%);
+    background-size: 250% 100%;
+    pointer-events: none;
+    animation: featureSweep 6s ease-in-out infinite;
+}
+
+@keyframes borderRotate {
+    to {
+        --angle: 360deg;
+    }
+}
+
+@keyframes featureSweep {
+    0%, 100% {
+        background-position: 200% 0;
+    }
+
+    50% {
+        background-position: -100% 0;
+    }
+}
+
+.festival__feature-ribbon {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-xs) var(--space-lg);
+    background: linear-gradient(110deg,
+            var(--color-gold) 0%,
+            var(--color-gold-light) 30%,
+            #fff4c2 50%,
+            var(--color-gold-light) 70%,
+            var(--color-gold) 100%);
+    background-size: 250% 100%;
+    color: #0a0a0a;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    border-radius: var(--radius-full);
+    box-shadow:
+        0 4px 18px rgba(218, 165, 32, 0.5),
+        0 0 30px rgba(218, 165, 32, 0.25);
+    white-space: nowrap;
+    overflow: hidden;
+    animation: ribbonShimmer 3.5s ease-in-out infinite,
+        ribbonPulse 2.8s ease-in-out infinite;
+}
+
+.festival__feature-ribbon svg {
+    color: #0a0a0a;
+    animation: starSpin 4s ease-in-out infinite;
+}
+
+.festival__feature-ribbon svg:last-child {
+    animation-delay: 0.5s;
+}
+
+@keyframes ribbonShimmer {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes ribbonPulse {
+    0%, 100% {
+        box-shadow:
+            0 4px 18px rgba(218, 165, 32, 0.5),
+            0 0 30px rgba(218, 165, 32, 0.25);
+    }
+
+    50% {
+        box-shadow:
+            0 4px 22px rgba(218, 165, 32, 0.7),
+            0 0 50px rgba(218, 165, 32, 0.45);
+    }
+}
+
+@keyframes starSpin {
+    0%, 100% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(180deg) scale(1.25);
+    }
+}
+
+.festival__feature-body {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: var(--space-xl);
+}
+
+.festival__feature-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 90px;
+    padding: var(--space-md) var(--space-sm);
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(218, 165, 32, 0.35);
+    border-radius: var(--radius-md);
+}
+
+.festival__feature-day {
+    font-family: var(--font-display);
+    font-size: 2.6rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--color-gold-light);
+}
+
+.festival__feature-month {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-gray-300);
+    margin-top: var(--space-xs);
+}
+
+.festival__feature-content {
+    min-width: 0;
+}
+
+.festival__feature-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-gold-light);
+    margin: 0 0 var(--space-xs);
+}
+
+.festival__feature-dish {
+    font-family: var(--font-display);
+    font-size: clamp(1.05rem, 2.4vw, 1.5rem);
+    font-weight: 700;
+    color: var(--color-cream);
+    margin: 0 0 var(--space-xs);
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+}
+
+.festival__feature-extras {
+    font-size: 0.95rem;
+    color: var(--color-gray-300);
+    margin: 0;
+    line-height: 1.5;
+}
+
+.festival__feature-price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    padding-left: var(--space-lg);
+    border-left: 1px solid rgba(218, 165, 32, 0.25);
+}
+
+.festival__feature-price-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-gray-400);
+}
+
+.festival__feature-price-value {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3.6vw, 2.4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    background: linear-gradient(120deg,
+            var(--color-gold) 0%,
+            var(--color-gold-light) 30%,
+            #fff4c2 50%,
+            var(--color-gold-light) 70%,
+            var(--color-gold) 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    margin-top: var(--space-xs);
+    filter: drop-shadow(0 0 18px rgba(218, 165, 32, 0.45));
+    animation: priceShine 4s ease-in-out infinite,
+        pricePulse 2.4s ease-in-out infinite;
+}
+
+@keyframes priceShine {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes pricePulse {
+    0%, 100% {
+        filter: drop-shadow(0 0 18px rgba(218, 165, 32, 0.45));
+        transform: scale(1);
+    }
+
+    50% {
+        filter: drop-shadow(0 0 28px rgba(255, 244, 194, 0.65));
+        transform: scale(1.025);
+    }
+}
+
+.festival__feature-price-meta {
+    font-size: 0.72rem;
+    color: var(--color-gray-400);
+    margin-top: var(--space-xs);
+    letter-spacing: 0.05em;
+}
+
+/* --- Daily specials grid --- */
+.festival__grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-lg);
+}
+
+.festival__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: var(--space-xl) var(--space-lg);
+    background: rgba(20, 16, 8, 0.6);
+    border: 1px solid rgba(218, 165, 32, 0.2);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(6px);
+    overflow: hidden;
+    transition: transform var(--transition-elegant),
+        border-color var(--transition-elegant),
+        box-shadow var(--transition-elegant);
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.festival__card::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(115deg,
+            transparent 0%,
+            transparent 35%,
+            rgba(255, 244, 194, 0.18) 50%,
+            transparent 65%,
+            transparent 100%);
+    background-size: 250% 100%;
+    background-position: 200% 0;
+    transition: background-position 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.festival__card:hover::before {
+    background-position: -100% 0;
+}
+
+.festival__card>* {
+    position: relative;
+    z-index: 1;
+}
+
+.festival--visible .festival__card {
+    animation: festivalCardReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: calc(0.35s + var(--card-delay, 0ms));
+}
+
+@keyframes festivalCardReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.festival__card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(218, 165, 32, 0.5);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(218, 165, 32, 0.1);
+}
+
+.festival__card-date {
+    display: inline-block;
+    padding: var(--space-xs) var(--space-md);
+    background: linear-gradient(135deg, rgba(184, 134, 11, 0.25), rgba(184, 134, 11, 0.1));
+    border: 1px solid rgba(218, 165, 32, 0.4);
+    border-radius: var(--radius-full);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--color-gold-light);
+    margin-bottom: var(--space-md);
+    transition: border-color var(--transition-elegant),
+        box-shadow var(--transition-elegant);
+}
+
+.festival__card-dish {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-cream);
+    margin: 0 0 var(--space-md);
+    line-height: 1.3;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+.festival__card-divider {
+    width: 32px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+    margin-bottom: var(--space-md);
+}
+
+.festival__card-price {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1;
+    background: linear-gradient(120deg,
+            var(--color-gold) 0%,
+            var(--color-gold-light) 40%,
+            #fff4c2 50%,
+            var(--color-gold-light) 60%,
+            var(--color-gold) 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    filter: drop-shadow(0 0 14px rgba(218, 165, 32, 0.3));
+    animation: priceShine 5s ease-in-out infinite;
+}
+
+.festival__card:hover .festival__card-price {
+    animation: priceShine 1.6s ease-in-out infinite;
+    filter: drop-shadow(0 0 22px rgba(255, 244, 194, 0.55));
+}
+
+.festival__card:hover .festival__card-date {
+    border-color: rgba(255, 244, 194, 0.7);
+    box-shadow: 0 0 18px rgba(218, 165, 32, 0.35);
+}
+
+/* --- Location callout --- */
+.festival__location {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    align-self: center;
+    padding: var(--space-sm) var(--space-lg);
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(218, 165, 32, 0.25);
+    border-radius: var(--radius-full);
+    font-size: 0.9rem;
+    color: var(--color-gray-300);
+    text-align: center;
+    line-height: 1.4;
+    opacity: 0;
+    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.6s;
+}
+
+.festival--visible .festival__location {
+    opacity: 1;
+}
+
+.festival__location svg {
+    color: var(--color-gold-light);
+    flex-shrink: 0;
+}
+
+.festival__location strong {
+    color: var(--color-cream);
+    font-weight: 600;
+}
+
+/* ===========================
+   Tablet
+   =========================== */
+@media (max-width: 900px) {
+    .festival__grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .festival__feature-body {
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto;
+        gap: var(--space-md) var(--space-lg);
+    }
+
+    .festival__feature-price {
+        grid-column: 1 / -1;
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: space-between;
+        text-align: left;
+        padding-left: 0;
+        padding-top: var(--space-md);
+        border-left: none;
+        border-top: 1px solid rgba(218, 165, 32, 0.2);
+        gap: var(--space-md);
+        flex-wrap: wrap;
+    }
+
+    .festival__feature-price-meta {
+        margin-top: 0;
+    }
+}
+
+/* ===========================
+   Mobile (≤ 600px)
+   =========================== */
+@media (max-width: 600px) {
+    .festival {
+        padding: var(--space-2xl) var(--space-md) var(--space-2xl);
+    }
+
+    .festival__container {
+        gap: var(--space-2xl);
+    }
+
+    /* Glow más contenido para no quemar el fondo */
+    .festival__glow {
+        height: 45%;
+        top: -5%;
+    }
+
+    /* Header */
+    .festival__eyebrow {
+        gap: var(--space-sm);
+        margin-bottom: var(--space-md);
+    }
+
+    .festival__eyebrow-line {
+        width: clamp(16px, 8vw, 36px);
+    }
+
+    .festival__eyebrow-text {
+        font-size: 0.62rem;
+        letter-spacing: 0.22em;
+        gap: 6px;
+    }
+
+    .festival__eyebrow-text svg {
+        width: 11px;
+        height: 11px;
+    }
+
+    .festival__title {
+        font-size: clamp(1.45rem, 7vw, 2rem);
+        line-height: 1.18;
+        max-width: 16ch;
+        margin-bottom: var(--space-sm);
+    }
+
+    .festival__subtitle {
+        font-size: 0.92rem;
+        line-height: 1.55;
+        padding: 0 var(--space-xs);
+    }
+
+    /* Feature card — rediseñado para mobile */
+    .festival__feature {
+        padding: var(--space-2xl) var(--space-lg) var(--space-lg);
+        border-radius: var(--radius-md);
+    }
+
+    .festival__feature-ribbon {
+        font-size: 0.6rem;
+        padding: 6px var(--space-md);
+        letter-spacing: 0.14em;
+        gap: 6px;
+        max-width: calc(100% - var(--space-lg));
+    }
+
+    .festival__feature-ribbon svg {
+        width: 11px;
+        height: 11px;
+    }
+
+    .festival__feature-body {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: var(--space-md);
+    }
+
+    /* Fecha como badge horizontal compacto */
+    .festival__feature-date {
+        margin: 0 auto;
+        flex-direction: row;
+        gap: 10px;
+        align-items: baseline;
+        justify-content: center;
+        min-width: unset;
+        width: auto;
+        padding: 10px var(--space-md);
+        border-radius: var(--radius-full);
+        background: linear-gradient(135deg, rgba(184, 134, 11, 0.25), rgba(184, 134, 11, 0.08));
+    }
+
+    .festival__feature-day {
+        font-size: 1.7rem;
+        line-height: 1;
+    }
+
+    .festival__feature-month {
+        margin-top: 0;
+        font-size: 0.68rem;
+        letter-spacing: 0.18em;
+    }
+
+    .festival__feature-eyebrow {
+        font-size: 0.62rem;
+        letter-spacing: 0.18em;
+    }
+
+    .festival__feature-dish {
+        font-size: 1.05rem;
+        line-height: 1.25;
+        letter-spacing: 0.01em;
+        padding: 0 var(--space-xs);
+    }
+
+    .festival__feature-extras {
+        font-size: 0.85rem;
+        line-height: 1.45;
+    }
+
+    /* Precio: anchor visual gigante en mobile */
+    .festival__feature-price {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 4px;
+        padding-top: var(--space-md);
+        margin-top: var(--space-xs);
+    }
+
+    .festival__feature-price-label {
+        font-size: 0.62rem;
+        letter-spacing: 0.22em;
+    }
+
+    .festival__feature-price-value {
+        font-size: 2.6rem;
+        line-height: 1;
+        margin-top: 2px;
+    }
+
+    .festival__feature-price-meta {
+        font-size: 0.7rem;
+        margin-top: 4px;
+    }
+
+    /* Daily cards */
+    .festival__grid {
+        gap: var(--space-md);
+    }
+
+    .festival__card {
+        padding: var(--space-lg) var(--space-md);
+        border-radius: var(--radius-md);
+    }
+
+    .festival__card-date {
+        font-size: 0.66rem;
+        padding: 5px var(--space-md);
+        margin-bottom: var(--space-sm);
+        letter-spacing: 0.16em;
+    }
+
+    .festival__card-dish {
+        font-size: 1.05rem;
+        margin-bottom: var(--space-sm);
+        min-height: 0;
+    }
+
+    .festival__card-divider {
+        width: 28px;
+        margin-bottom: var(--space-sm);
+    }
+
+    .festival__card-price {
+        font-size: 1.6rem;
+    }
+
+    /* Location callout */
+    .festival__location {
+        font-size: 0.78rem;
+        padding: 10px var(--space-md);
+        line-height: 1.45;
+        gap: 8px;
+        max-width: 95%;
+    }
+
+    .festival__location svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    /* Reducir sparkles para no saturar */
+    .festival__sparkle:nth-child(odd) {
+        display: none;
+    }
+}
+
+/* ===========================
+   Mobile XS (≤ 380px)
+   =========================== */
+@media (max-width: 380px) {
+    .festival {
+        padding: var(--space-xl) var(--space-sm) var(--space-xl);
+    }
+
+    .festival__container {
+        gap: var(--space-xl);
+    }
+
+    .festival__eyebrow-text {
+        font-size: 0.58rem;
+        letter-spacing: 0.18em;
+    }
+
+    .festival__title {
+        font-size: clamp(1.3rem, 8vw, 1.7rem);
+    }
+
+    .festival__subtitle {
+        font-size: 0.86rem;
+    }
+
+    .festival__feature {
+        padding: var(--space-xl) var(--space-md) var(--space-md);
+    }
+
+    .festival__feature-ribbon {
+        font-size: 0.55rem;
+        padding: 5px 12px;
+        letter-spacing: 0.12em;
+    }
+
+    .festival__feature-day {
+        font-size: 1.5rem;
+    }
+
+    .festival__feature-dish {
+        font-size: 0.98rem;
+    }
+
+    .festival__feature-price-value {
+        font-size: 2.2rem;
+    }
+
+    .festival__card-dish {
+        font-size: 0.98rem;
+    }
+
+    .festival__card-price {
+        font-size: 1.45rem;
+    }
+
+    .festival__location {
+        font-size: 0.74rem;
+        padding: 8px 12px;
+    }
+}
+
+
+/* ===========================
+   Reduced motion
+   =========================== */
+@media (prefers-reduced-motion: reduce) {
+
+    .festival__glow,
+    .festival__sparkles,
+    .festival__title-accent,
+    .festival__feature-ribbon,
+    .festival__feature-ribbon svg,
+    .festival__feature::before,
+    .festival__feature::after,
+    .festival__feature-price-value,
+    .festival__card::before,
+    .festival__card-price {
+        animation: none !important;
+    }
+
+    .festival__sparkles {
+        display: none;
+    }
+
+    .festival__header,
+    .festival__feature,
+    .festival__card,
+    .festival__location {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+        transition: none !important;
+    }
+}
