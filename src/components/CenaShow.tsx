@@ -73,10 +73,19 @@ const CenaShow = () => {
                 ref={ref}
                 className={`cenashow__card reveal reveal--up ${isVisible ? 'reveal--visible' : ''}`}
             >
-                <div className="cenashow__date" aria-hidden="true">
-                    <span className="cenashow__date-day">{cenaShow.dayNumber}</span>
-                    <span className="cenashow__date-month">{cenaShow.monthLabel}</span>
-                    <span className="cenashow__date-dow">Sábado</span>
+                <div className="cenashow__media">
+                    <img
+                        src="/alcides-webp..webp"
+                        alt={`El artista ${cenaShow.artist}`}
+                        className="cenashow__photo"
+                        loading="lazy"
+                        decoding="async"
+                    />
+                    <div className="cenashow__media-scrim" aria-hidden="true" />
+                    <div className="cenashow__date" aria-hidden="true">
+                        <span className="cenashow__date-day">{cenaShow.dayNumber}</span>
+                        <span className="cenashow__date-month">{cenaShow.monthLabel}</span>
+                    </div>
                 </div>
 
                 <div className="cenashow__content">
