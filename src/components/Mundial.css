@@ -141,21 +141,14 @@
 
 .mundial__tv-screen {
     position: relative;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 16 / 9;
     border-radius: var(--radius-lg);
-    background:
-        radial-gradient(ellipse at 50% 38%, rgba(117, 170, 219, 0.30), transparent 70%),
-        linear-gradient(160deg, #1a2433, #0a0d12);
+    background: #0a0d12;
     border: 3px solid rgba(0, 0, 0, 0.6);
     box-shadow:
         inset 0 0 60px rgba(117, 170, 219, 0.12),
         0 0 0 1px rgba(184, 134, 11, 0.35),
         0 24px 50px rgba(0, 0, 0, 0.55);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-xs);
     overflow: hidden;
 }
 
@@ -170,14 +163,35 @@
     transform: translateX(-50%);
     background: linear-gradient(90deg, transparent, rgba(184, 134, 11, 0.5), transparent);
     border-radius: var(--radius-full);
+    z-index: 3;
 }
 
-.mundial__tv-icon {
-    color: var(--celeste-light);
-    opacity: 0.9;
+/* Live broadcast photo filling the screen */
+.mundial__tv-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 26%;
 }
 
-.mundial__tv-size {
+.mundial__tv-scrim {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+        linear-gradient(to top, rgba(5, 7, 10, 0.78) 0%, rgba(5, 7, 10, 0.15) 36%, transparent 58%),
+        radial-gradient(ellipse at 50% 42%, transparent 52%, rgba(0, 0, 0, 0.4) 100%);
+}
+
+/* "85\" Smart TV" channel bug */
+.mundial__tv-bug {
+    position: absolute;
+    left: var(--space-md);
+    bottom: var(--space-md);
+    z-index: 2;
     display: flex;
     align-items: baseline;
     gap: var(--space-sm);
@@ -185,45 +199,45 @@
 
 .mundial__tv-number {
     font-family: var(--font-display);
-    font-size: clamp(3rem, 9vw, 5rem);
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
     font-weight: 700;
     line-height: 1;
-    background: linear-gradient(135deg, #fff, var(--celeste-light));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 40px rgba(117, 170, 219, 0.4);
+    color: #fff;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.75);
 }
 
 .mundial__tv-label {
-    font-size: 1rem;
-    letter-spacing: 0.25em;
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--color-gray-300);
+    color: var(--color-cream);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
 }
 
 .mundial__tv-live {
     position: absolute;
     top: var(--space-md);
     right: var(--space-md);
+    z-index: 2;
     display: inline-flex;
     align-items: center;
     gap: 6px;
     font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: 0.15em;
-    color: #ff5252;
-    background: rgba(0, 0, 0, 0.35);
+    color: #fff;
+    background: rgba(196, 28, 28, 0.9);
     padding: 4px 10px;
     border-radius: var(--radius-full);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
 }
 
 .mundial__tv-live-dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #ff5252;
-    box-shadow: 0 0 8px #ff5252;
+    background: #fff;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
     animation: liveBlink 1.4s ease-in-out infinite;
 }
 

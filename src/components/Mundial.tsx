@@ -6,13 +6,6 @@ import './Mundial.css';
 
 // ─── Icons ────────────────────────────────────────────────────────────────────
 
-const TvIcon = () => (
-    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <rect x="2" y="4" width="20" height="14" rx="2" />
-        <path d="M8 21h8M12 18v3" />
-    </svg>
-);
-
 const BallIcon = () => (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10" />
@@ -95,13 +88,20 @@ const Mundial = () => {
                     className={`mundial__tv reveal reveal--up ${tvReveal.isVisible ? 'reveal--visible' : ''}`}
                 >
                     <div className="mundial__tv-screen" aria-hidden="true">
-                        <div className="mundial__tv-icon"><TvIcon /></div>
-                        <div className="mundial__tv-size">
-                            <span className="mundial__tv-number">85"</span>
-                            <span className="mundial__tv-label">Smart TV</span>
-                        </div>
+                        <img
+                            src="/images/argentina-campeon.jpg.webp"
+                            alt=""
+                            className="mundial__tv-photo"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                        <div className="mundial__tv-scrim" />
                         <div className="mundial__tv-live">
                             <span className="mundial__tv-live-dot" /> EN VIVO
+                        </div>
+                        <div className="mundial__tv-bug">
+                            <span className="mundial__tv-number">85"</span>
+                            <span className="mundial__tv-label">Smart TV</span>
                         </div>
                     </div>
 
