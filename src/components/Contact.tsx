@@ -1,6 +1,6 @@
 import { businessProfile, getPhone, getWhatsApp, getEmail, isCurrentlyOpen, getCurrentDayIndex } from '../data/businessProfile';
 import { trackReserveCallClick, trackReserveWhatsAppClick, trackDirectionsClick } from '../lib/analytics';
-import { useScrollReveal } from '../hooks/useScrollReveal';
+import { useScrollReveal, useStaggerReveal } from '../hooks/useScrollReveal';
 import './Contact.css';
 
 // SVG Icons
@@ -21,6 +21,13 @@ const MapPinIcon = () => (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
         <circle cx="12" cy="10" r="3" />
+    </svg>
+);
+
+const TvIcon = () => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="2" y="4" width="20" height="14" rx="2" />
+        <path d="M8 21h8M12 18v3" />
     </svg>
 );
 
@@ -51,20 +58,21 @@ const WhatsAppIcon = () => (
     </svg>
 );
 
+const NUMBER_WORDS: Record<number, string> = { 1: 'una', 2: 'dos', 3: 'tres', 4: 'cuatro' };
+
 const Contact = () => {
     const phone = getPhone();
     const wa = getWhatsApp();
     const email = getEmail();
-    const loc0 = businessProfile.locations[0];
-    const loc1 = businessProfile.locations[1];
+    const locations = businessProfile.locations;
+    const branchWord = NUMBER_WORDS[locations.length] ?? String(locations.length);
     const todayIndex = getCurrentDayIndex();
 
     const headerReveal = useScrollReveal<HTMLDivElement>();
     const infoCardReveal = useScrollReveal<HTMLDivElement>({ rootMargin: '0px 0px -60px 0px' });
     const scheduleCardReveal = useScrollReveal<HTMLDivElement>({ rootMargin: '0px 0px -60px 0px' });
     const mapsHeaderReveal = useScrollReveal<HTMLHeadingElement>();
-    const mapCard0Reveal = useScrollReveal<HTMLDivElement>({ rootMargin: '0px 0px -40px 0px' });
-    const mapCard1Reveal = useScrollReveal<HTMLDivElement>({ rootMargin: '0px 0px -40px 0px' });
+    const mapsStagger = useStaggerReveal<HTMLDivElement>({ threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
 
     return (
         <section id="contacto" className="contact section">
@@ -80,7 +88,7 @@ const Contact = () => {
                         <span className="divider__line"></span>
                     </div>
                     <p className="section__subtitle">
-                        Te esperamos en nuestras dos sucursales para vivir una experiencia gastronómica única
+                        Te esperamos en nuestras {branchWord} sucursales de San Luis para vivir una experiencia gastronómica única
                     </p>
                 </div>
 
@@ -98,21 +106,25 @@ const Contact = () => {
                         <h3 className="contact__card-title">Información</h3>
 
                         <div className="contact__info-list">
-                            <div className="contact__info-item">
-                                <span className="contact__info-icon"><MapPinIcon /></span>
-                                <div>
-                                    <strong>Sucursal {loc0.shortName}</strong>
-                                    <p>{loc0.locality}, {loc0.region}</p>
-                                    <p className="contact__info-sub">{loc0.subtitle}</p>
+                            {locations.map((loc) => (
+                                <div className="contact__info-item" key={loc.shortName}>
+                                    <span className="contact__info-icon"><MapPinIcon /></span>
+                                    <div>
+                                        <strong>
+                                            Sucursal {loc.shortName}
+                                            {loc.isNew && <span className="contact__new-badge">Nuevo</span>}
+                                        </strong>
+                                        <p>{loc.locality}, {loc.region}</p>
+                                        <p className="contact__info-sub">{loc.subtitle}</p>
+                                    </div>
                                 </div>
-                            </div>
+                            ))}
 
-                            <div className="contact__info-item">
-                                <span className="contact__info-icon"><MapPinIcon /></span>
+                            <div className="contact__info-item contact__info-item--highlight">
+                                <span className="contact__info-icon"><TvIcon /></span>
                                 <div>
-                                    <strong>Sucursal {loc1.shortName}</strong>
-                                    <p>{loc1.locality}, {loc1.region}</p>
-                                    <p className="contact__info-sub">{loc1.subtitle}</p>
+                                    <strong>Pantalla gigante</strong>
+                                    <p>Smart TV de 85" en las {branchWord} sucursales para ver todos los partidos del Mundial.</p>
                                 </div>
                             </div>
 
@@ -197,86 +209,52 @@ const Contact = () => {
                         Nuestras Ubicaciones
                     </h3>
 
-                    <div className="contact__maps-grid">
-                        {/* Villa de la Quebrada */}
-                        <div
-                            ref={mapCard0Reveal.ref}
-                            className={`contact__map-card reveal reveal--left ${mapCard0Reveal.isVisible ? 'reveal--visible' : ''}`}
-                        >
-                            <div className="contact__map-header">
-                                <span className="contact__map-icon"><GoatIcon /></span>
-                                <div>
-                                    <h4>{loc0.name}</h4>
-                                    <p>{loc0.shortName}</p>
+                    <div ref={mapsStagger.containerRef} className="contact__maps-grid">
+                        {locations.map((loc, index) => (
+                            <div
+                                key={loc.shortName}
+                                data-reveal-item={index}
+                                className={`contact__map-card reveal reveal--up ${mapsStagger.visibleItems.has(index) ? 'reveal--visible' : ''}`}
+                                style={{ transitionDelay: `${index * 0.1}s` }}
+                            >
+                                <div className="contact__map-header">
+                                    <span className="contact__map-icon">{index === 0 ? <GoatIcon /> : <StarIcon />}</span>
+                                    <div>
+                                        <h4>
+                                            {loc.name}
+                                            {loc.isNew && <span className="contact__new-badge">Nuevo</span>}
+                                        </h4>
+                                        <p>{loc.shortName}</p>
+                                    </div>
+                                </div>
+                                <div className="contact__map-iframe">
+                                    <iframe
+                                        src={loc.googleMapsEmbed}
+                                        width="100%"
+                                        height="300"
+                                        style={{ border: 0 }}
+                                        allowFullScreen
+                                        loading="lazy"
+                                        referrerPolicy="no-referrer-when-downgrade"
+                                        title={`Mapa ${loc.name} - ${loc.shortName}`}
+                                    />
+                                </div>
+                                <div className="contact__map-directions">
+                                    <p>
+                                        <strong>Cómo llegar:</strong> {loc.directionsNote}
+                                    </p>
+                                    <a
+                                        href={loc.googleMapsUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="contact__directions-link"
+                                        onClick={() => trackDirectionsClick(loc.shortName)}
+                                    >
+                                        Ver en Google Maps →
+                                    </a>
                                 </div>
                             </div>
-                            <div className="contact__map-iframe">
-                                <iframe
-                                    src={loc0.googleMapsEmbed}
-                                    width="100%"
-                                    height="300"
-                                    style={{ border: 0 }}
-                                    allowFullScreen
-                                    loading="lazy"
-                                    referrerPolicy="no-referrer-when-downgrade"
-                                    title={`Mapa ${loc0.name} - ${loc0.shortName}`}
-                                />
-                            </div>
-                            <div className="contact__map-directions">
-                                <p>
-                                    <strong>Cómo llegar:</strong> {loc0.directionsNote}
-                                </p>
-                                <a
-                                    href={loc0.googleMapsUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="contact__directions-link"
-                                    onClick={() => trackDirectionsClick(loc0.shortName)}
-                                >
-                                    Ver en Google Maps →
-                                </a>
-                            </div>
-                        </div>
-
-                        {/* La Carolina */}
-                        <div
-                            ref={mapCard1Reveal.ref}
-                            className={`contact__map-card reveal reveal--right ${mapCard1Reveal.isVisible ? 'reveal--visible' : ''}`}
-                        >
-                            <div className="contact__map-header">
-                                <span className="contact__map-icon"><StarIcon /></span>
-                                <div>
-                                    <h4>{loc1.name}</h4>
-                                    <p>{loc1.shortName}</p>
-                                </div>
-                            </div>
-                            <div className="contact__map-iframe">
-                                <iframe
-                                    src={loc1.googleMapsEmbed}
-                                    width="100%"
-                                    height="300"
-                                    style={{ border: 0 }}
-                                    allowFullScreen
-                                    loading="lazy"
-                                    referrerPolicy="no-referrer-when-downgrade"
-                                    title={`Mapa ${loc1.name} - ${loc1.shortName}`}
-                                />
-                            </div>
-                            <div className="contact__map-directions">
-                                <p>
-                                    <strong>Cómo llegar:</strong> {loc1.directionsNote}
-                                </p>
-                                <a
-                                    href={loc1.googleMapsUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="contact__directions-link"
-                                    onClick={() => trackDirectionsClick(loc1.shortName)}
-                                >
-                                    Ver en Google Maps →
-                                </a>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </div>

@@ -1,0 +1,129 @@
+/* ===========================
+   Entretenimiento Section
+   Playful but on-brand
+   =========================== */
+.entre {
+    background:
+        radial-gradient(ellipse at 10% 0%, rgba(74, 144, 194, 0.06), transparent 45%),
+        var(--color-cream);
+}
+
+.entre__header {
+    margin-bottom: var(--space-3xl);
+}
+
+.entre__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+}
+
+.entre-card {
+    text-align: center;
+    padding: var(--space-2xl) var(--space-lg);
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    transition: transform var(--transition-elegant), box-shadow var(--transition-elegant);
+    position: relative;
+    overflow: hidden;
+}
+
+.entre-card::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 4px;
+    background: var(--act-color, var(--color-gold));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.entre-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+}
+
+.entre-card:hover::before {
+    transform: scaleX(1);
+}
+
+.entre-card__icon {
+    width: 76px;
+    height: 76px;
+    margin: 0 auto var(--space-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    color: var(--act-color, var(--color-gold));
+    background: color-mix(in srgb, var(--act-color, var(--color-gold)) 12%, transparent);
+    border: 1.5px solid color-mix(in srgb, var(--act-color, var(--color-gold)) 30%, transparent);
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.entre-card:hover .entre-card__icon {
+    transform: scale(1.1) rotate(-4deg);
+}
+
+.entre-card__title {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--color-primary-dark);
+    margin-bottom: var(--space-sm);
+}
+
+.entre-card__desc {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--color-gray-500);
+    margin: 0;
+}
+
+/* ---- Note ---- */
+.entre__note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md);
+    max-width: 720px;
+    margin: 0 auto;
+    padding: var(--space-lg) var(--space-xl);
+    background: linear-gradient(135deg, var(--color-gold-muted), rgba(74, 144, 194, 0.08));
+    border: 1px solid rgba(184, 134, 11, 0.2);
+    border-radius: var(--radius-lg);
+    text-align: center;
+}
+
+.entre__note svg {
+    color: var(--color-accent-dark);
+    flex-shrink: 0;
+}
+
+.entre__note p {
+    margin: 0;
+    font-size: 0.98rem;
+    color: var(--color-gray-600);
+}
+
+/* ===========================
+   Responsive
+   =========================== */
+@media (max-width: 860px) {
+    .entre__grid {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .entre__note {
+        flex-direction: column;
+        gap: var(--space-sm);
+    }
+}

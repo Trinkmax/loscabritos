@@ -187,6 +187,18 @@
     color: var(--color-gold);
 }
 
+/* Mundial variant: celeste-tinted nod to Argentina */
+.hero__badge--mundial {
+    background: rgba(117, 170, 219, 0.14);
+    border-color: rgba(117, 170, 219, 0.45);
+    color: var(--color-cream);
+}
+
+.hero__badge-flag {
+    font-size: 1.05rem;
+    line-height: 1;
+}
+
 @keyframes badgeReveal {
     0% {
         opacity: 0;

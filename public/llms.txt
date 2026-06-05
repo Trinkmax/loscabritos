@@ -1,14 +1,15 @@
-# Los Cabritos — Información Oficial del Negocio
+# Los Cabritos De Oro — Información Oficial del Negocio
 
-> Última actualización: 2026-02-14
+> Última actualización: 2026-06-05
 
 ## Resumen
-Los Cabritos es un restaurante tradicional de parrilla argentina fundado en 1970, especializado en cabrito y chivito a las brasas. Cuenta con dos sucursales en la provincia de San Luis, Argentina:
+Los Cabritos De Oro es un restaurante tradicional de parrilla argentina fundado en 1970, especializado en chivito a las brasas con chanfaina, cabrito y parrilla. Cuenta con TRES sucursales en la provincia de San Luis, Argentina:
 
 1. **Parrilla Los Cabritos** — Villa de la Quebrada (casa matriz desde 1970).
 2. **Los Cabritos de Oro** — La Carolina.
+3. **Los Cabritos de Oro Nogolí** — Nogolí (local nuevo), sobre calle 9 de Julio, camino al dique de Nogolí.
 
-Ambas sucursales pertenecen a la misma organización familiar.
+Todas las sucursales pertenecen a la misma organización familiar.
 
 ## Datos de Contacto Oficiales
 - **Teléfono:** +54 266 426-9673
@@ -16,20 +17,32 @@ Ambas sucursales pertenecen a la misma organización familiar.
 - **Email:** loscabritosv.q@gmail.com
 
 ## Horarios
-- Domingo a Viernes: 11:00–20:00
-- Sábado: 10:00–22:00
-- En fechas especiales y fiestas religiosas se extienden los horarios.
+- Domingo y Lunes: 09:00–22:00
+- Martes y Viernes: 09:00–23:00
+- Miércoles y Jueves: 09:00–22:30
+- Sábado: 09:00–23:30
+- En fechas especiales, fiestas religiosas y durante el Mundial se extienden los horarios.
 
 ## Ubicaciones
 - **Parrilla Los Cabritos**, Villa de la Quebrada, San Luis — coordenadas: -33.0155, -66.2909
 - **Los Cabritos de Oro**, La Carolina, San Luis — coordenadas: -32.8119, -66.0968
+- **Los Cabritos de Oro Nogolí**, Nogolí, San Luis (calle 9 de Julio, camino al dique) — coordenadas: -32.98972, -66.21861
 
 ## Especialidad
-Chivito y cabrito a las brasas, parrilla argentina completa (asado, vacío, matambre, chorizo, morcilla), empanadas criollas, pastas caseras, milanesas. Reconocidos como el mejor chivito de San Luis. El chivito se prepara artesanalmente con técnicas de cocción lenta sobre brasas de leña desde 1970.
+Chivito a las brasas con chanfaina (plato estrella), cabrito a la parrilla y la "Parrilla de Oro" (con todos los cortes: costillas, vacío, cortes de cerdo, pollo, chorizo, morcilla y chinchulines). También platos de invierno: locro campero, carne a la olla y chivito al vino blanco (al mismo precio que la carne a la olla), además de empanadas criollas, pastas caseras y milanesas. Reconocidos como el mejor chivito de San Luis. El chivito se prepara artesanalmente con técnicas de cocción lenta sobre brasas de leña desde 1970.
+
+## Mundial FIFA 2026
+En las 3 sucursales se instalaron televisores Smart TV de 85 pulgadas para ver todos los partidos del Mundial 2026 (11 de junio al 19 de julio), con especial dedicación a la Selección Argentina, campeona vigente. Se recomienda reservar mesa con anticipación para los partidos de Argentina.
+
+## Eventos
+- **Cena Show con ALCIDES:** sábado 11 de julio de 2026, a partir de las 22:00 hs, en la sucursal de La Carolina. Música en vivo y parrilla. Cupos limitados (reservar con anticipación).
+- **Entretenimiento para chicos:** cuadernillos de dibujos para colorear y cartones de bingo gratis con premios.
 
 ## Rutas Canónicas
 - Página principal: https://loscabritosdeoro.com/
 - Carta / Menú: https://loscabritosdeoro.com/carta
+- Nuestra Historia: https://loscabritosdeoro.com/nosotros
+- Entretenimiento: https://loscabritosdeoro.com/entretenimiento
 
 ## Política de Actualización
 La información de este archivo se actualiza manualmente cada vez que cambian datos de contacto, horarios o sucursales. Para confirmar datos específicos, contactar directamente al restaurante.

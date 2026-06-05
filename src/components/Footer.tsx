@@ -1,5 +1,6 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { businessProfile, getPhone, getEmail } from '../data/businessProfile';
+import { isMundialActive } from '../data/mundialData';
 import { trackReserveCallClick } from '../lib/analytics';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import './Footer.css';
@@ -42,6 +43,9 @@ const FacebookIcon = () => (
 const Footer = () => {
     const phone = getPhone();
     const email = getEmail();
+    const { pathname } = useLocation();
+    const isHome = pathname === '/';
+    const anchorHref = (id: string) => (isHome ? `#${id}` : `/#${id}`);
 
     const social = businessProfile.socialMedia;
     const hasSocial = social.instagram || social.facebook;
@@ -62,7 +66,7 @@ const Footer = () => {
             <div className="container">
                 <div
                     ref={contentReveal.ref}
-                    className={`footer__content reveal reveal--up ${contentReveal.isVisible ? 'reveal--visible' : ''}`}
+                    className={`footer__content ${hasSocial ? 'footer__content--with-social' : ''} reveal reveal--up ${contentReveal.isVisible ? 'reveal--visible' : ''}`}
                 >
                     <div className="footer__brand">
                         <div className="footer__logo">
@@ -78,10 +82,12 @@ const Footer = () => {
                     <div className="footer__links">
                         <h4>Navegación</h4>
                         <ul>
-                            <li><a href="#inicio">Inicio</a></li>
-                            <li><a href="#nosotros">Nuestra Historia</a></li>
+                            <li><a href={anchorHref('inicio')}>Inicio</a></li>
+                            {isMundialActive() && <li><a href={anchorHref('mundial')}>Mundial 2026</a></li>}
+                            <li><Link to="/nosotros">Nuestra Historia</Link></li>
+                            <li><Link to="/entretenimiento">Entretenimiento</Link></li>
                             <li><Link to="/carta">Carta</Link></li>
-                            <li><a href="#contacto">Contacto</a></li>
+                            <li><a href={anchorHref('contacto')}>Contacto</a></li>
                         </ul>
                     </div>
 
@@ -91,13 +97,19 @@ const Footer = () => {
                             <li>
                                 <MapPinIcon />
                                 <span>
-                                    A 38 km de la ciudad de San Luis por la Ruta Provincial 9. En el corazón de Villa de la Quebrada, la Tierra de la Fe.
+                                    A 35 km de la ciudad de San Luis por la ruta provincial n° 3 o la ruta Nacional n° 146. En el corazón de Villa de la Quebrada, la Tierra de la Fe.
                                 </span>
                             </li>
                             <li>
                                 <MapPinIcon />
                                 <span>
-                                    A 78 km de San Luis, nuestra segunda sede: en LA CAROLINA, en "el pueblo más lindo del mundo", declarado en el año 2023, por la Organización Mundial del Turismo.
+                                    A 78 km de San Luis, nuestra segunda sede: en LA CAROLINA, "el pueblo más lindo del mundo", declarado por la UNESCO en el año 2023.
+                                </span>
+                            </li>
+                            <li>
+                                <MapPinIcon />
+                                <span>
+                                    ¡Nuevo! Nuestro tercer local en NOGOLÍ, sobre calle 9 de Julio, camino al dique.
                                 </span>
                             </li>
                             <li>

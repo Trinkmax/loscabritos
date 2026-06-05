@@ -28,6 +28,8 @@ export interface BusinessLocation {
     directionsNote: string;
     since?: string;
     subtitle?: string;
+    /** Marks a recently opened branch so the UI can show a "Nuevo" badge */
+    isNew?: boolean;
 }
 
 export interface BusinessProfile {
@@ -58,7 +60,7 @@ export const businessProfile: BusinessProfile = {
     legalName: 'Los Cabritos De Oro',
     slogan: 'Tradición y sabor desde 1970',
     description:
-        'Restaurante tradicional de parrilla argentina en San Luis. Especialistas en cabrito y chivito a las brasas, con dos sucursales: Villa de la Quebrada (casa matriz desde 1970) y La Carolina (Los Cabritos de Oro). Cocina con técnicas que pasaron de generación en generación.',
+        'Restaurante tradicional de parrilla argentina en San Luis. Especialistas en chivito a las brasas con chanfaina, cabrito y nuestra Parrilla de Oro, con tres sucursales: Villa de la Quebrada (casa matriz desde 1970), La Carolina y Nogolí. Cocina con técnicas que pasaron de generación en generación.',
     foundedYear: 1970,
     canonicalUrl: 'https://loscabritosdeoro.com',
     servesCuisine: ['Parrilla argentina', 'Cabrito', 'Chivito', 'Asado', 'Cocina regional'],
@@ -135,6 +137,23 @@ export const businessProfile: BusinessProfile = {
             googleMapsUrl: 'https://maps.google.com/?q=Los+Cabritos+de+Oro+La+Carolina',
             directionsNote: 'A 78 km de distancia de San Luis capital, por ruta provincial n° 9, encontrará la pequeña localidad de La Carolina, lugar declarado en el año 2023, por la UNESCO como "El pueblo más lindo del mundo',
             subtitle: 'Los Cabritos de Oro',
+        },
+        {
+            name: 'Los Cabritos de Oro Nogolí',
+            shortName: 'Nogolí',
+            address: 'Calle 9 de Julio, camino al dique',
+            locality: 'Nogolí',
+            region: 'San Luis',
+            country: 'AR',
+            postalCode: '5705',
+            latitude: -32.98972,
+            longitude: -66.21861,
+            googleMapsEmbed:
+                'https://maps.google.com/maps?q=Nogol%C3%AD%2C%20San%20Luis%2C%20Argentina&t=&z=13&ie=UTF8&iwloc=&output=embed',
+            googleMapsUrl: 'https://maps.google.com/?q=Nogolí+San+Luis+Argentina',
+            directionsNote: 'Nuestro local más nuevo: en la localidad de Nogolí, sobre calle 9 de Julio, camino al dique de Nogolí. Llegás por la Ruta Provincial n° 9 desde San Luis capital.',
+            subtitle: 'Nuestro nuevo local',
+            isNew: true,
         },
     ],
 

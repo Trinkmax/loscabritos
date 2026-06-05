@@ -155,8 +155,8 @@
     transform: rotate(-45deg) translate(7px, -6px);
 }
 
-/* Mobile */
-@media (max-width: 768px) {
+/* Mobile / Tablet */
+@media (max-width: 992px) {
     .navbar {
         padding: var(--space-sm) 0;
     }
@@ -221,6 +221,10 @@
 
     .navbar__menu--open .navbar__item:nth-child(5) {
         animation-delay: 0.25s;
+    }
+
+    .navbar__menu--open .navbar__item:nth-child(6) {
+        animation-delay: 0.3s;
     }
 
     @keyframes navMenuItemIn {

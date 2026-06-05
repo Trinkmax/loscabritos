@@ -1,9 +1,15 @@
-import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { businessProfile, getPhone } from '../data/businessProfile';
+import { isMundialActive } from '../data/mundialData';
 import { trackReserveCallClick } from '../lib/analytics';
 import './Hero.css';
 
+const StarIcon = () => (
+    <svg className="hero__badge-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+    </svg>
+);
 
 // Pre-computed at module load — no impure calls during render
 const particleStyles = [...Array(20)].map(() => ({
@@ -16,6 +22,8 @@ const particleStyles = [...Array(20)].map(() => ({
 
 const Hero = () => {
     const [isLoaded, setIsLoaded] = useState(false);
+    const branchCount = businessProfile.locations.length;
+    const mundialActive = isMundialActive();
 
     useEffect(() => {
         const timer = setTimeout(() => setIsLoaded(true), 300);
@@ -49,12 +57,17 @@ const Hero = () => {
 
             {/* Badge positioned above the goats */}
             <div className={`hero__badge-wrapper ${isLoaded ? 'hero__content--loaded' : ''}`}>
-                <div className="hero__badge">
-                    <svg className="hero__badge-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                    </svg>
-                    <span>Desde {businessProfile.foundedYear}</span>
-                </div>
+                {mundialActive ? (
+                    <div className="hero__badge hero__badge--mundial">
+                        <span className="hero__badge-flag" aria-hidden="true">🇦🇷</span>
+                        <span>Mundial 2026 · Viví cada partido</span>
+                    </div>
+                ) : (
+                    <div className="hero__badge">
+                        <StarIcon />
+                        <span>Desde {businessProfile.foundedYear}</span>
+                    </div>
+                )}
             </div>
 
             <div className={`hero__content ${isLoaded ? 'hero__content--loaded' : ''}`}>
@@ -63,36 +76,61 @@ const Hero = () => {
                 </h1>
 
                 <h2 className="hero__restaurant-type">
-                    PARRILLA - RESTAURANTE
+                    PARRILLA · RESTAURANTE
                 </h2>
 
                 <div className="hero__separator"></div>
 
-                <p className="hero__subtitle">
-                    Tradición y sabor en cada bocado
-                </p>
-
-                <p className="hero__description">
-                    Restaurante de chivito y cabrito a las brasas en Villa de la Quebrada y La Carolina, San Luis. <br />
-                    Especialistas en chivito a las brasas desde 1970.
-                </p>
-
-                <div className="hero__cta">
-                    <Link to="/carta" className="btn btn--primary">
-                        Ver Carta
-                    </Link>
-                    <a
-                        href={getPhone().href}
-                        className="btn btn--secondary"
-                        onClick={() => trackReserveCallClick('hero')}
-                    >
-                        Reservar
-                    </a>
-                </div>
+                {mundialActive ? (
+                    <>
+                        <p className="hero__subtitle">
+                            Viví el Mundial en pantalla gigante
+                        </p>
+                        <p className="hero__description">
+                            Mirá todos los partidos en Smart TV de 85" en nuestras {branchCount} sucursales de San Luis,
+                            con el mejor chivito a las brasas. <br />
+                            Tradición y sabor desde {businessProfile.foundedYear}. ¡Vamos Argentina! <span aria-hidden="true">🇦🇷</span>
+                        </p>
+                        <div className="hero__cta">
+                            <a href="#mundial" className="btn btn--primary">
+                                Ver el Mundial
+                            </a>
+                            <a
+                                href={getPhone().href}
+                                className="btn btn--secondary"
+                                onClick={() => trackReserveCallClick('hero')}
+                            >
+                                Reservar
+                            </a>
+                        </div>
+                    </>
+                ) : (
+                    <>
+                        <p className="hero__subtitle">
+                            Tradición y sabor en cada bocado
+                        </p>
+                        <p className="hero__description">
+                            Restaurante de chivito a las brasas con chanfaina en San Luis. <br />
+                            Especialistas desde {businessProfile.foundedYear}, con {branchCount} sucursales.
+                        </p>
+                        <div className="hero__cta">
+                            <Link to="/carta" className="btn btn--primary">
+                                Ver Carta
+                            </Link>
+                            <a
+                                href={getPhone().href}
+                                className="btn btn--secondary"
+                                onClick={() => trackReserveCallClick('hero')}
+                            >
+                                Reservar
+                            </a>
+                        </div>
+                    </>
+                )}
 
                 <div className="hero__directions">
                     <a href="#contacto" className="hero__directions-link">
-                        Ver cómo llegar
+                        Ver nuestras {branchCount} sucursales
                     </a>
                 </div>
             </div>

@@ -1,0 +1,383 @@
+/* ===========================
+   Especialidades Section
+   Light · gold accents
+   =========================== */
+.especialidades {
+    background:
+        radial-gradient(ellipse at 90% 0%, rgba(184, 134, 11, 0.06), transparent 45%),
+        var(--color-cream);
+}
+
+.especialidades__header {
+    margin-bottom: var(--space-3xl);
+}
+
+/* ---- Plato estrella ---- */
+.esp-star {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    align-items: stretch;
+    gap: 0;
+    background: var(--color-white);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(184, 134, 11, 0.18);
+    margin-bottom: var(--space-3xl);
+}
+
+.esp-star__media {
+    position: relative;
+    min-height: 320px;
+    overflow: hidden;
+}
+
+.esp-star__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.esp-star:hover .esp-star__img {
+    transform: scale(1.04);
+}
+
+.esp-star__ribbon {
+    position: absolute;
+    top: var(--space-lg);
+    left: var(--space-lg);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #0a0a0a;
+    background: linear-gradient(135deg, var(--color-gold), var(--color-gold-light));
+    padding: 7px 14px;
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-gold);
+}
+
+.esp-star__body {
+    padding: var(--space-2xl);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.esp-star__eyebrow {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: var(--space-sm);
+}
+
+.esp-star__title {
+    font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+    color: var(--color-primary-dark);
+    line-height: 1.15;
+    margin-bottom: var(--space-md);
+}
+
+.esp-star__title span {
+    color: var(--color-gold);
+    font-style: italic;
+}
+
+.esp-star__desc {
+    font-size: 1.02rem;
+    line-height: 1.75;
+    color: var(--color-gray-600);
+    margin-bottom: var(--space-xl);
+}
+
+.esp-star__desc strong {
+    color: var(--color-primary);
+}
+
+.esp-star__actions {
+    display: flex;
+}
+
+.esp-star__cta {
+    width: auto;
+}
+
+/* ---- Parrilla de Oro ---- */
+.esp-parrilla {
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    align-items: stretch;
+    background: linear-gradient(135deg, var(--color-primary-dark), var(--color-charcoal));
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    margin-bottom: var(--space-4xl);
+}
+
+.esp-parrilla__body {
+    padding: var(--space-2xl);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--color-cream);
+}
+
+.esp-parrilla__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    align-self: flex-start;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-gold-light);
+    border: 1px solid rgba(184, 134, 11, 0.4);
+    padding: 5px 12px;
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-md);
+}
+
+.esp-parrilla__title {
+    font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+    color: var(--color-cream);
+    margin-bottom: var(--space-md);
+}
+
+.esp-parrilla__desc {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-gray-300);
+    margin-bottom: var(--space-lg);
+}
+
+.esp-parrilla__desc strong {
+    color: var(--color-gold-light);
+}
+
+.esp-parrilla__cuts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xl);
+}
+
+.esp-parrilla__cut {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-cream);
+    background: rgba(184, 134, 11, 0.14);
+    border: 1px solid rgba(184, 134, 11, 0.3);
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+}
+
+.esp-parrilla__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    align-self: flex-start;
+    color: var(--color-gold-light);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    transition: gap var(--transition-base), color var(--transition-base);
+}
+
+.esp-parrilla__link:hover {
+    color: var(--color-gold);
+    gap: var(--space-md);
+}
+
+.esp-parrilla__media {
+    position: relative;
+    min-height: 300px;
+    overflow: hidden;
+}
+
+.esp-parrilla__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.esp-parrilla:hover .esp-parrilla__img {
+    transform: scale(1.04);
+}
+
+/* ---- Especialidades de invierno ---- */
+.esp-winter__header {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+}
+
+.esp-winter__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    color: var(--color-gold);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-sm);
+}
+
+.esp-winter__eyebrow svg {
+    color: var(--color-accent-dark);
+}
+
+.esp-winter__title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--color-primary-dark);
+}
+
+.esp-winter__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+    margin-bottom: var(--space-3xl);
+}
+
+.esp-card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    transition: transform var(--transition-elegant), box-shadow var(--transition-elegant);
+    display: flex;
+    flex-direction: column;
+}
+
+.esp-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-xl), 0 8px 30px rgba(184, 134, 11, 0.1);
+}
+
+.esp-card__media {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+}
+
+.esp-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.esp-card:hover .esp-card__img {
+    transform: scale(1.06);
+}
+
+.esp-card__body {
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.esp-card__name {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--color-primary-dark);
+    margin-bottom: var(--space-sm);
+}
+
+.esp-card__desc {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--color-gray-500);
+    margin-bottom: var(--space-md);
+    flex: 1;
+}
+
+.esp-card__price-note {
+    align-self: flex-start;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--color-primary-dark);
+    background: rgba(184, 134, 11, 0.18);
+    border: 1px solid rgba(184, 134, 11, 0.35);
+    padding: 5px 12px;
+    border-radius: var(--radius-full);
+}
+
+/* ---- Footer CTA ---- */
+.esp-footer {
+    text-align: center;
+}
+
+.esp-footer__cta {
+    width: auto;
+}
+
+.esp-star__cta,
+.esp-footer__cta {
+    display: inline-flex;
+}
+
+/* ===========================
+   Responsive
+   =========================== */
+@media (max-width: 860px) {
+    .esp-star,
+    .esp-parrilla {
+        grid-template-columns: 1fr;
+    }
+
+    .esp-star__media,
+    .esp-parrilla__media {
+        min-height: 240px;
+        aspect-ratio: 16 / 9;
+    }
+
+    /* Image on top for both features on mobile */
+    .esp-parrilla__media {
+        order: -1;
+    }
+
+    .esp-winter__grid {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+        margin-left: auto;
+        margin-right: auto;
+        gap: var(--space-lg);
+    }
+}
+
+@media (max-width: 768px) {
+    .esp-star__body,
+    .esp-parrilla__body {
+        padding: var(--space-xl);
+    }
+
+    .esp-star__cta,
+    .esp-footer__cta {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .esp-parrilla__cut {
+        font-size: 0.8rem;
+        padding: 5px 11px;
+    }
+}
+
+@media (max-width: 520px) {
+    .esp-winter__grid {
+        grid-template-columns: 1fr;
+        max-width: 360px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

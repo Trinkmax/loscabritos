@@ -33,7 +33,12 @@ const LocationIcon = () => (
 
 
 
-const About = () => {
+interface AboutProps {
+    /** Oculta el encabezado interno (cuando la página ya tiene su propio PageHero) */
+    showHeader?: boolean;
+}
+
+const About = ({ showHeader = true }: AboutProps) => {
     const headerReveal = useScrollReveal<HTMLDivElement>();
     const storyImageReveal = useScrollReveal<HTMLDivElement>({ rootMargin: '0px 0px -80px 0px' });
     const storyTextReveal = useScrollReveal<HTMLDivElement>({ rootMargin: '0px 0px -80px 0px' });
@@ -67,19 +72,23 @@ const About = () => {
     return (
         <section id="nosotros" className="about section">
             <div className="container">
-                <div
-                    ref={headerReveal.ref}
-                    className={`about__header reveal reveal--up ${headerReveal.isVisible ? 'reveal--visible' : ''}`}
-                >
-                    <h2 className="section__title">Nuestra Historia</h2>
-                    <div className="divider">
-                        <span className="divider__line"></span>
-                        <span className="divider__line"></span>
+                {showHeader ? (
+                    <div
+                        ref={headerReveal.ref}
+                        className={`about__header reveal reveal--up ${headerReveal.isVisible ? 'reveal--visible' : ''}`}
+                    >
+                        <h2 className="section__title">Nuestra Historia</h2>
+                        <div className="divider">
+                            <span className="divider__line"></span>
+                            <span className="divider__line"></span>
+                        </div>
+                        <p className="section__subtitle">
+                            Una tradición que comenzó en 1970 y sigue conquistando paladares
+                        </p>
                     </div>
-                    <p className="section__subtitle">
-                        Una tradición que comenzó en 1970 y sigue conquistando paladares
-                    </p>
-                </div>
+                ) : (
+                    <h2 className="sr-only">Nuestra Historia</h2>
+                )}
 
                 <div className="about__content">
                     <div
