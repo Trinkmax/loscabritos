@@ -86,6 +86,27 @@ const InfoIcon = () => (
     </svg>
 );
 
+const IceCreamIcon = () => (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M7 11a5 5 0 0 1 10 0" />
+        <path d="M6.5 11h11L12 21.5 6.5 11z" />
+        <path d="M9 6.5a3 3 0 0 1 6 0" />
+    </svg>
+);
+
+const HeatIcon = () => (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M14 14.76V4a2 2 0 0 0-4 0v10.76a4 4 0 1 0 4 0z" />
+    </svg>
+);
+
+const CutleryIcon = () => (
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M4 3v6a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V3M6 11v10" />
+        <path d="M17 3c-1.7 0-3 1.8-3 4.5S15.3 12 17 12v9" />
+    </svg>
+);
+
 
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
@@ -117,6 +138,28 @@ function CartaHero({ isOpen }: { isOpen: boolean }) {
                 {isOpen ? 'Abierto ahora' : 'Cerrado ahora'}
             </span>
         </header>
+    );
+}
+
+/** Beneficios incluidos con el menú — se leen antes de mirar precios */
+function CartaPerks() {
+    return (
+        <ul className="carta-perks" aria-label="Beneficios incluidos">
+            <li className="carta-perks__item">
+                <IceCreamIcon />
+                <span>
+                    Postres artesanales y helados <strong>Grido</strong> gratis con el menú
+                </span>
+            </li>
+            <li className="carta-perks__item">
+                <HeatIcon />
+                <span>Ambientes climatizados en los 3 locales</span>
+            </li>
+            <li className="carta-perks__item">
+                <CutleryIcon />
+                <span>No cobramos cubiertos</span>
+            </li>
+        </ul>
     );
 }
 
@@ -229,6 +272,7 @@ function MenuItemCard({ item }: { item: MenuItem }) {
 
     return (
         <article className={classes}>
+            {item.isNew && <span className="carta-item__badge">Nuevo</span>}
             <div className="carta-item__content">
                 <div className="carta-item__visual">
                     {hasImage ? (
@@ -401,6 +445,9 @@ const CartaPage = () => {
 
             {/* ─── Hero ─── */}
             <CartaHero isOpen={isOpen} />
+
+            {/* ─── Beneficios ─── */}
+            <CartaPerks />
 
             {/* ─── Sticky Controls ─── */}
             <div className="carta-controls">

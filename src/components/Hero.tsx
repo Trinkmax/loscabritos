@@ -87,9 +87,9 @@ const Hero = () => {
                             Viví el Mundial en pantalla gigante
                         </p>
                         <p className="hero__description">
-                            Mirá todos los partidos en Smart TV de 85" en nuestras {branchCount} sucursales de San Luis,
-                            con el mejor chivito a las brasas. <br />
-                            Tradición y sabor desde {businessProfile.foundedYear}. ¡Vamos Argentina! <span aria-hidden="true">🇦🇷</span>
+                            Todos los partidos en Smart TV de 85" con Disney+ y DGO, en nuestras {branchCount} sucursales
+                            climatizadas de San Luis, con el mejor chivito a las brasas. <br />
+                            Vení con la familia: el postre va de regalo. ¡Vamos Argentina! <span aria-hidden="true">🇦🇷</span>
                         </p>
                         <div className="hero__cta">
                             <a href="#mundial" className="btn btn--primary">

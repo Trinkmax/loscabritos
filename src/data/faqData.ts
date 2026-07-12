@@ -12,15 +12,23 @@ export const faqData = [
     },
     {
         question: '¿Puedo ver los partidos del Mundial 2026 en el restaurante?',
-        answer: 'Sí. Instalamos televisores Smart TV de 85 pulgadas en nuestras 3 sucursales para que veas todos los partidos del Mundial 2026, con especial dedicación a la Selección Argentina. Te recomendamos reservar tu mesa con anticipación para los partidos de Argentina.',
+        answer: 'Sí. Tenemos Disney+ y DGO en televisores Smart TV de 85 pulgadas en nuestras 3 sucursales, así que pasamos todos los partidos del Mundial 2026, con especial dedicación a la Selección Argentina. Te recomendamos reservar tu mesa con anticipación para los partidos de Argentina.',
     },
     {
-        question: '¿Cuándo es la Cena Show con ALCIDES?',
-        answer: 'La Cena Show con el artista ALCIDES es el sábado 11 de julio, a partir de las 22:00 hs, en nuestra sucursal de La Carolina. Los cupos son limitados: reservá tu lugar con anticipación por teléfono o WhatsApp.',
+        question: '¿Los locales están climatizados?',
+        answer: 'Sí. Nuestras tres sucursales (Villa de la Quebrada, La Carolina y Nogolí) tienen ambientes climatizados, así que podés venir con la familia y disfrutar cómodo aunque afuera haga frío.',
+    },
+    {
+        question: '¿El postre está incluido en el menú?',
+        answer: 'Sí. Los postres artesanales y los helados GRIDO van de regalo con el menú, sin cargo adicional.',
+    },
+    {
+        question: '¿Tienen comida para llevar?',
+        answer: 'Sí. Podés llevarte docena de empanadas de carne o de jamón y queso, sándwich de milanesa en pan casero con lechuga y tomate, y choripán. Consultá por teléfono o WhatsApp para encargar tu pedido.',
     },
     {
         question: '¿Tienen actividades para los chicos?',
-        answer: 'Sí. Para que los más chicos se diviertan mientras disfrutan su estadía, entregamos cuadernillos de dibujos para colorear y cartones de bingo gratis para chicos y grandes, con diversos premios para los ganadores.',
+        answer: 'Sí. Para que los más chicos se diviertan mientras disfrutan su estadía, entregamos cuadernillos de dibujos para colorear y cartones de bingo gratis para chicos y grandes, con diversos premios para los ganadores. Ideal para las vacaciones de invierno.',
     },
     {
         question: '¿Cuál es el horario de atención?',

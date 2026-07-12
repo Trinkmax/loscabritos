@@ -20,7 +20,9 @@ const imageMap: Record<string, string> = {
     'parrilla-4': '/images/comida/parrillada-completa-mesa-los-cabritos.webp',
     'chivito-2': '/images/comida/chivito-para-dos.webp',
     'chivito-1': '/images/comida/chivito-individual.webp',
-    'tallarines-peceto': '/images/comida/tallarines-con-peceto.webp',
+    'guiso-arroz-pollo': '/images/comida/guiso-arroz-con-pollo.webp',
+    'polenta-bolognesa': '/images/comida/polenta-salsa-bolognesa.webp',
+    'tallarines-estofado': '/images/comida/tallarines-estofado-carne.webp',
     'tallarines-salsa-blanca': '/images/comida/tallarines-salsa-blanca.webp',
     'ravioles': '/images/comida/ravioles-verdura.webp',
     'milanesa-napolitana': '/images/comida/milanesa-napolitana.webp',
@@ -33,8 +35,11 @@ const imageMap: Record<string, string> = {
     'merluza': '/images/comida/merluza.webp',
     'pizza-jamon-queso': '/images/comida/pizzaespecial.png',
     'pizza-muzzarella': '/images/comida/pizza.webp',
-    'empanadas-docena': '/images/comida/empanadas.png',
     'empanada-unidad': '/images/comida/empanadas.png',
+    'papas-grande': '/images/comida/papas-fritas-porcion-grande.webp',
+    'empanadas-docena': '/images/comida/empanadas.png',
+    'sandwich-milanesa': '/images/comida/sandwich-milanesa-pan-casero.webp',
+    'choripan': '/images/comida/choripan.webp',
     'bebida-linea-coca': '/images/comida/bebida-linea-coca.png',
 };
 

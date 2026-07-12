@@ -20,11 +20,11 @@ export const pageMeta: Record<string, PageMeta> = {
     home: {
         title: 'Los Cabritos De Oro | Chivito a las Brasas y Mundial 2026 en San Luis',
         description:
-            'Chivito a las brasas con chanfaina en San Luis, con 3 sucursales: Villa de la Quebrada, La Carolina y Nogolí. Viví el Mundial 2026 en Smart TV de 85". Más de 50 años de tradición. Reservá por teléfono o WhatsApp.',
+            'Chivito a las brasas con chanfaina en San Luis, con 3 sucursales. Vacaciones de invierno en familia: ambientes climatizados, todos los partidos del Mundial en Smart TV con Disney+ y DGO, y postres artesanales y helados GRIDO gratis con el menú.',
         canonical: `${BASE}/`,
         ogTitle: 'Los Cabritos De Oro — Chivito a las Brasas y el Mundial 2026 en San Luis',
         ogDescription:
-            'Viví el Mundial 2026 en pantalla gigante con el mejor chivito a las brasas. 3 sucursales en San Luis: Villa de la Quebrada, La Carolina y Nogolí.',
+            'Vacaciones de invierno en familia: ambientes climatizados, el Mundial en Smart TV con Disney+ y DGO, y el postre de regalo. 3 sucursales en San Luis.',
         ogType: 'website',
         ogImage: `${BASE}/images/branding/logo-los-cabritos-de-oro.png`,
         ogUrl: `${BASE}/`,
@@ -54,13 +54,13 @@ export const pageMeta: Record<string, PageMeta> = {
         ],
     },
     entretenimiento: {
-        title: 'Entretenimiento | Los Cabritos De Oro — Juegos, Bingo y Cena Show en San Luis',
+        title: 'Entretenimiento | Los Cabritos De Oro — Juegos, Bingo y el Mundial en San Luis',
         description:
-            'Diversión para toda la familia: cuadernillos para colorear y bingo gratis para los chicos, y nuestra Cena Show con ALCIDES el sábado 11 de julio en La Carolina.',
+            'Diversión para toda la familia: cuadernillos para colorear y bingo gratis con premios, el Mundial en Smart TV con Disney+ y DGO, y ambientes climatizados en nuestros 3 locales.',
         canonical: `${BASE}/entretenimiento`,
-        ogTitle: 'Entretenimiento — Los Cabritos De Oro | Juegos, Bingo y Cena Show',
+        ogTitle: 'Entretenimiento — Los Cabritos De Oro | Juegos, Bingo y el Mundial en pantalla gigante',
         ogDescription:
-            'Cuadernillos para colorear, bingo gratis con premios y la Cena Show con ALCIDES el 11 de julio en La Carolina, San Luis.',
+            'Cuadernillos para colorear, bingo gratis con premios y todos los partidos del Mundial en Smart TV. Ambientes climatizados en San Luis.',
         ogType: 'website',
         ogImage: `${BASE}/images/branding/logo-los-cabritos-de-oro.png`,
         ogUrl: `${BASE}/entretenimiento`,

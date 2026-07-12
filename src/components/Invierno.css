@@ -1,0 +1,370 @@
+/* ===========================
+   Vacaciones de Invierno
+   Sección clara entre el Hero y el Mundial (ambos oscuros).
+   Composición editorial: una pieza principal oscura + columna de apoyo clara.
+   =========================== */
+.invierno {
+    position: relative;
+    overflow: hidden;
+    padding: var(--space-4xl) 0;
+    background:
+        radial-gradient(ellipse at 12% 0%, rgba(226, 88, 34, 0.1), transparent 50%),
+        radial-gradient(ellipse at 88% 100%, rgba(184, 134, 11, 0.12), transparent 50%),
+        linear-gradient(170deg, #FFFCF7 0%, var(--color-cream) 55%, var(--color-cream-dark) 100%);
+    isolation: isolate;
+}
+
+.invierno__glow {
+    position: absolute;
+    top: -25%;
+    left: 50%;
+    width: 75vw;
+    max-width: 950px;
+    height: 65%;
+    transform: translateX(-50%);
+    background: radial-gradient(ellipse, rgba(218, 165, 32, 0.18) 0%, transparent 70%);
+    filter: blur(30px);
+    z-index: -1;
+    pointer-events: none;
+    animation: inviernoGlow 10s ease-in-out infinite;
+}
+
+@keyframes inviernoGlow {
+
+    0%,
+    100% {
+        opacity: 0.55;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.invierno__container {
+    position: relative;
+}
+
+/* ---- Header ---- */
+.invierno__header {
+    text-align: center;
+    margin-bottom: var(--space-3xl);
+}
+
+.invierno__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: var(--space-md);
+}
+
+.invierno__eyebrow svg {
+    color: #6FA8DC;
+}
+
+.invierno__title {
+    font-size: clamp(1.9rem, 4.4vw, 3rem);
+    color: var(--color-primary-dark);
+    line-height: 1.15;
+    margin-bottom: var(--space-md);
+}
+
+.invierno__title-accent {
+    color: var(--color-gold);
+    font-style: italic;
+}
+
+.invierno__subtitle {
+    font-size: 1.08rem;
+    color: var(--color-gray-500);
+    max-width: 620px;
+    margin: 0 auto;
+}
+
+/* ---- Composición ---- */
+.invierno__grid {
+    display: grid;
+    grid-template-columns: 1.08fr 1fr;
+    gap: var(--space-lg);
+    align-items: stretch;
+    margin-bottom: var(--space-3xl);
+}
+
+/* =========================================================
+   Pieza principal: Disney+ / DGO · el gancho fuerte
+   Oscura e inmersiva: hace de puente hacia la sección Mundial.
+   ========================================================= */
+.inv-feature {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    min-height: 440px;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    isolation: isolate;
+    transition: transform var(--transition-elegant), box-shadow var(--transition-elegant);
+}
+
+.inv-feature__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.inv-feature__scrim {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(to top,
+            rgba(8, 8, 8, 0.94) 0%,
+            rgba(10, 9, 8, 0.82) 32%,
+            rgba(12, 10, 8, 0.42) 58%,
+            rgba(12, 10, 8, 0.08) 100%);
+}
+
+.inv-feature__body {
+    padding: var(--space-xl);
+    color: var(--color-cream);
+}
+
+.inv-feature__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-gold-light);
+    padding: 6px 12px;
+    border-radius: var(--radius-full);
+    background: rgba(184, 134, 11, 0.16);
+    border: 1px solid rgba(218, 165, 32, 0.35);
+    margin-bottom: var(--space-md);
+}
+
+.inv-feature__title {
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    color: var(--color-cream);
+    line-height: 1.1;
+    margin-bottom: var(--space-sm);
+}
+
+.inv-feature__desc {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(250, 246, 240, 0.78);
+    max-width: 42ch;
+    margin: 0;
+}
+
+.inv-feature__desc strong {
+    color: var(--color-cream);
+    font-weight: 600;
+}
+
+.inv-feature__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: var(--space-md);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--color-gold-light);
+    transition: gap var(--transition-base);
+}
+
+/* =========================================================
+   Columna de apoyo: beneficios compactos
+   Tira de foto a altura completa → nunca queda hueco muerto,
+   con 3 tarjetas (portada) o con 2 (/entretenimiento).
+   ========================================================= */
+.invierno__side {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.inv-card {
+    display: grid;
+    grid-template-columns: 118px 1fr;
+    flex: 1;
+    min-height: 128px;
+    background: var(--color-white);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-elegant), box-shadow var(--transition-elegant), border-color var(--transition-elegant);
+}
+
+.inv-card__thumb {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-cream-dark);
+}
+
+.inv-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.inv-card__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    padding: var(--space-md) var(--space-lg);
+}
+
+.inv-card__title {
+    font-size: 1.1rem;
+    color: var(--color-primary-dark);
+    line-height: 1.25;
+    text-wrap: balance;
+}
+
+.inv-card__desc {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--color-gray-500);
+    margin: 0;
+}
+
+.inv-card__desc strong {
+    color: var(--color-primary-dark);
+    font-weight: 600;
+}
+
+.inv-card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 4px;
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--color-gold);
+    transition: gap var(--transition-base);
+}
+
+/* ---- Hover (sólo si el usuario no pidió menos movimiento) ---- */
+@media (prefers-reduced-motion: no-preference) {
+    .inv-feature:hover {
+        box-shadow: var(--shadow-xl), 0 0 40px rgba(184, 134, 11, 0.18);
+    }
+
+    .inv-feature:hover .inv-feature__img {
+        transform: scale(1.05);
+    }
+
+    .inv-feature:hover .inv-feature__link {
+        gap: 12px;
+    }
+
+    .inv-card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(184, 134, 11, 0.35);
+        box-shadow: var(--shadow-lg), 0 6px 24px rgba(184, 134, 11, 0.1);
+    }
+
+    .inv-card:hover .inv-card__img {
+        transform: scale(1.07);
+    }
+
+    .inv-card__link:hover {
+        gap: 11px;
+    }
+}
+
+/* ---- CTA ---- */
+.invierno__cta {
+    text-align: center;
+}
+
+.invierno__cta-text {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 2.6vw, 1.6rem);
+    color: var(--color-primary-dark);
+    margin-bottom: var(--space-lg);
+}
+
+.invierno__cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+}
+
+.invierno__btn {
+    min-width: 200px;
+}
+
+.invierno__btn--whatsapp {
+    background: #25D366;
+    color: #0a0a0a;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.28);
+}
+
+.invierno__btn--whatsapp:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.06);
+    box-shadow: var(--shadow-lg), 0 0 30px rgba(37, 211, 102, 0.35);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+    .invierno__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .inv-feature {
+        min-height: 340px;
+    }
+}
+
+@media (max-width: 560px) {
+    .inv-feature {
+        min-height: 300px;
+    }
+
+    .inv-feature__body {
+        padding: var(--space-lg);
+    }
+
+    .inv-card {
+        grid-template-columns: 96px 1fr;
+        min-height: 112px;
+    }
+
+    .inv-card__body {
+        padding: var(--space-md);
+    }
+
+    .invierno__eyebrow {
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
+    }
+
+    .invierno__cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .invierno__btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}

@@ -108,10 +108,15 @@ const Mundial = () => {
                     <div className="mundial__tv-info">
                         <h3 className="mundial__tv-title">Todos los partidos en pantalla gigante</h3>
                         <p className="mundial__tv-text">
-                            Instalamos televisores <strong>Smart TV de 85 pulgadas</strong> en nuestros{' '}
-                            <strong>3 locales</strong> para que no te pierdas ni un gol del Mundial. Vení con tu familia
-                            y tus amigos a disfrutar el fútbol como se debe: con buena comida y mejor compañía.
+                            Tenemos <strong>Disney+ y DGO</strong> en <strong>Smart TV de 85 pulgadas</strong>{' '}
+                            en nuestros <strong>{branches.length} locales</strong>: no te perdés ni un partido del
+                            Mundial. Vení con tu familia y tus amigos a disfrutar el fútbol como se debe, en{' '}
+                            <strong>ambientes climatizados</strong> y con buena comida.
                         </p>
+                        <ul className="mundial__apps" aria-label="Servicios con los que transmitimos los partidos">
+                            <li className="mundial__app">Disney+</li>
+                            <li className="mundial__app">DGO</li>
+                        </ul>
                         <ul className="mundial__branches" aria-label="Locales con pantalla gigante">
                             {branches.map((b) => (
                                 <li key={b} className="mundial__branch">

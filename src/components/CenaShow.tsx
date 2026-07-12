@@ -1,7 +1,7 @@
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { getPhone, getWhatsApp } from '../data/businessProfile';
 import { trackReserveCallClick, trackReserveWhatsAppClick } from '../lib/analytics';
-import { cenaShow, isEventUpcoming } from '../data/eventsData';
+import { getUpcomingEvent } from '../data/eventsData';
 import './CenaShow.css';
 
 // ─── Icons ────────────────────────────────────────────────────────────────────
@@ -55,8 +55,10 @@ const CenaShow = () => {
     const { ref, isVisible } = useScrollReveal<HTMLDivElement>({ threshold: 0.15 });
     const phone = getPhone();
     const wa = getWhatsApp();
+    const cenaShow = getUpcomingEvent();
 
-    if (!isEventUpcoming(cenaShow)) return null;
+    // Sin eventos cargados en eventsData, la sección no se renderiza.
+    if (!cenaShow) return null;
 
     return (
         <section
@@ -75,8 +77,8 @@ const CenaShow = () => {
             >
                 <div className="cenashow__media">
                     <img
-                        src="/alcides-webp..webp"
-                        alt={`El artista ${cenaShow.artist}`}
+                        src={cenaShow.image}
+                        alt={cenaShow.artist ? `El artista ${cenaShow.artist}` : cenaShow.title}
                         className="cenashow__photo"
                         loading="lazy"
                         decoding="async"
@@ -94,7 +96,7 @@ const CenaShow = () => {
                     </span>
                     <h2 id="cenashow-title" className="cenashow__title">
                         <span className="cenashow__title-pre">Una noche con</span>
-                        <span className="cenashow__artist">{cenaShow.artist}</span>
+                        <span className="cenashow__artist">{cenaShow.artist ?? cenaShow.title}</span>
                     </h2>
                     <p className="cenashow__desc">{cenaShow.description}</p>
 

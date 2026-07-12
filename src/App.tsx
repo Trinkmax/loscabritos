@@ -4,6 +4,7 @@ import { SpeedInsights } from '@vercel/speed-insights/react'
 import { Analytics } from '@vercel/analytics/react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
+import Invierno from './components/Invierno'
 import Mundial from './components/Mundial'
 import Especialidades from './components/Especialidades'
 import CenaShow from './components/CenaShow'
@@ -20,7 +21,7 @@ import NotFoundPage from './pages/NotFoundPage'
 import { generateHomeSchema, generateFAQSchema, generateEventSchema } from './seo/schema'
 import { faqData } from './data/faqData'
 import { isMundialActive } from './data/mundialData'
-import { cenaShow, isEventUpcoming } from './data/eventsData'
+import { getUpcomingEvent } from './data/eventsData'
 import './App.css'
 
 // Resetea el scroll al cambiar de ruta; si hay un ancla (#seccion), posiciona
@@ -54,17 +55,18 @@ function ScrollToTop() {
 function HomePage() {
   const homeSchema = generateHomeSchema()
   const faqSchema = generateFAQSchema(faqData)
-  const showCenaShow = isEventUpcoming(cenaShow)
+  const upcomingEvent = getUpcomingEvent()
 
   return (
     <div className="app">
       <SeoHead routeKey="home" />
       <StructuredData schema={homeSchema} />
       <StructuredData schema={faqSchema} />
-      {showCenaShow && <StructuredData schema={generateEventSchema(cenaShow)} />}
+      {upcomingEvent && <StructuredData schema={generateEventSchema(upcomingEvent)} />}
       <Navbar />
       <main>
         <Hero />
+        <Invierno />
         {isMundialActive() && <Mundial />}
         <Especialidades />
         <CenaShow />

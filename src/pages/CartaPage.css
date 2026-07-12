@@ -190,6 +190,41 @@
     }
 }
 
+/* ─── Beneficios incluidos ───────────────────────────────────────────────────── */
+.carta-perks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    max-width: var(--carta-max-w);
+    margin: 0 auto;
+    padding: 0.9rem 1.25rem 0.25rem;
+}
+
+.carta-perks__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 0.8rem;
+    border-radius: var(--carta-radius-sm);
+    border: 1px solid rgba(212, 165, 116, 0.22);
+    background: linear-gradient(135deg, rgba(212, 165, 116, 0.1), rgba(226, 88, 34, 0.05));
+    color: var(--carta-text-secondary);
+    font-size: 0.78rem;
+    line-height: 1.3;
+    text-align: left;
+}
+
+.carta-perks__item svg {
+    flex-shrink: 0;
+    color: var(--carta-gold);
+}
+
+.carta-perks__item strong {
+    color: var(--carta-gold-light);
+    font-weight: 600;
+}
+
 /* ─── Sticky Controls ────────────────────────────────────────────────────────── */
 .carta-controls {
     position: sticky;
