@@ -327,15 +327,20 @@
     color: var(--color-cream);
 }
 
+/* Flex y no grid fija: la cantidad de partidos cambia según la etapa
+   (3 en fase de grupos, 2 en semis, 1 en la final) y siempre queda centrada. */
 .mundial__fixture-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: var(--space-lg);
     margin-bottom: var(--space-3xl);
 }
 
 .mundial-match {
     position: relative;
+    flex: 1 1 300px;
+    max-width: 380px;
     padding: var(--space-xl);
     border-radius: var(--radius-lg);
     background: rgba(255, 255, 255, 0.04);
@@ -355,6 +360,15 @@
         radial-gradient(ellipse at 50% 0%, rgba(117, 170, 219, 0.16), transparent 70%),
         rgba(255, 255, 255, 0.04);
     box-shadow: 0 0 0 1px var(--celeste-glow), 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* El partido de la Selección manda: se lleva el dorado, gane o no el badge "Próximo" */
+.mundial-match--featured {
+    border-color: var(--color-gold-light);
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(218, 165, 32, 0.18), transparent 70%),
+        rgba(255, 255, 255, 0.04);
+    box-shadow: 0 0 0 1px rgba(184, 134, 11, 0.5), 0 18px 40px rgba(0, 0, 0, 0.35);
 }
 
 .mundial-match__top {
@@ -541,10 +555,15 @@
     }
 
     .mundial__fixture-grid {
-        grid-template-columns: 1fr;
         max-width: 460px;
         margin-left: auto;
         margin-right: auto;
+    }
+
+    /* Una tarjeta por fila: a este ancho, dos quedarían demasiado angostas */
+    .mundial-match {
+        flex-basis: 100%;
+        max-width: none;
     }
 
     .mundial__timeline {

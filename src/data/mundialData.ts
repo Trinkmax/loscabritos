@@ -1,21 +1,33 @@
 // ─── Mundial FIFA 2026 ──────────────────────────────────────────────────────
 //
-// Datos del Mundial para la portada. El fixture de la Selección Argentina sólo
-// se muestra como "fixture" si `fixtureVerified` es true; de lo contrario se
-// muestra la línea de tiempo del torneo. Esto evita publicar fechas erróneas.
+// Partidos que se pasan en los locales. Se muestran como grilla sólo si
+// `fixtureVerified` es true; si no, se muestra la línea de tiempo del torneo.
+// Esto evita publicar fechas erróneas.
 //
-// Para cargar el fixture: completar `group` + `matches` y poner
-// `fixtureVerified: true`.
+// El modelo es genérico (equipo vs equipo), no sólo partidos de Argentina:
+// marcá con `featured: true` el de la Selección para que se destaque.
+
+export interface MundialTeam {
+    name: string;
+    flag: string;   // emoji de la bandera
+}
 
 export interface MundialMatch {
-    matchday: number;       // 1 | 2 | 3 (fase de grupos)
-    dateISO: string;        // '2026-06-16'
-    dateLabel: string;      // 'Martes 16 de junio'
-    opponent: string;       // rival
-    opponentFlag: string;   // emoji bandera del rival
-    city: string;           // sede
-    venue: string;          // estadio
-    kickoffArg: string;     // hora de Argentina, ej. '22:00' ('' si se desconoce)
+    id: string;
+    /** Etapa del partido, ej. 'Semifinal' */
+    stage: string;
+    /** Fecha en formato YYYY-MM-DD. Vacío si todavía no está confirmada. */
+    dateISO: string;
+    /** Etiqueta legible, ej. 'Martes 14 de julio'. Vacío si no está confirmada. */
+    dateLabel: string;
+    home: MundialTeam;
+    away: MundialTeam;
+    city: string;
+    venue: string;
+    /** Hora de Argentina (UTC-3), ej. '16:00'. Vacío si se desconoce. */
+    kickoffArg: string;
+    /** true para el partido de la Selección: se destaca en la grilla */
+    featured?: boolean;
 }
 
 export interface MundialMilestone {
@@ -34,40 +46,37 @@ export const mundial = {
     teamName: 'Selección Argentina',
     teamNickname: 'La Scaloneta',
 
-    /** true SOLO si el fixture de Argentina está verificado.
-     *  Fixture confirmado por AFA / FIFA (sorteo del 5/12/2025). Horarios en hora Argentina (UTC-3). */
+    /** Etapa que se está jugando ahora (encabeza la grilla de partidos). */
+    stageLabel: 'Semifinales',
+
+    /** true SOLO si las fechas y horarios de `matches` están verificados.
+     *  Semifinales confirmadas el 12/07/2026 con La Nación e Infobae (coinciden
+     *  entre sí y con la hora local de cada sede). Horarios en hora Argentina. */
     fixtureVerified: true,
-    group: 'J' as string | null,
+    /** Orden cronológico: el primero se lleva el badge "Próximo". */
     matches: [
         {
-            matchday: 1,
-            dateISO: '2026-06-16',
-            dateLabel: 'Martes 16 de junio',
-            opponent: 'Argelia',
-            opponentFlag: '🇩🇿',
-            city: 'Kansas City',
-            venue: 'Kansas City Stadium',
-            kickoffArg: '22:00',
-        },
-        {
-            matchday: 2,
-            dateISO: '2026-06-22',
-            dateLabel: 'Lunes 22 de junio',
-            opponent: 'Austria',
-            opponentFlag: '🇦🇹',
+            id: 'sf-francia-espana',
+            stage: 'Semifinal',
+            dateISO: '2026-07-14',
+            dateLabel: 'Martes 14 de julio',
+            home: { name: 'Francia', flag: '🇫🇷' },
+            away: { name: 'España', flag: '🇪🇸' },
             city: 'Dallas',
             venue: 'Dallas Stadium',
-            kickoffArg: '14:00',
+            kickoffArg: '16:00',
         },
         {
-            matchday: 3,
-            dateISO: '2026-06-27',
-            dateLabel: 'Sábado 27 de junio',
-            opponent: 'Jordania',
-            opponentFlag: '🇯🇴',
-            city: 'Dallas',
-            venue: 'Dallas Stadium',
-            kickoffArg: '23:00',
+            id: 'sf-argentina-inglaterra',
+            stage: 'Semifinal',
+            dateISO: '2026-07-15',
+            dateLabel: 'Miércoles 15 de julio',
+            home: { name: 'Argentina', flag: '🇦🇷' },
+            away: { name: 'Inglaterra', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿' },
+            city: 'Atlanta',
+            venue: 'Mercedes-Benz Stadium',
+            kickoffArg: '16:00',
+            featured: true,
         },
     ] as MundialMatch[],
 
@@ -86,9 +95,11 @@ export function isMundialActive(now: Date = new Date()): boolean {
     return now.getTime() <= end.getTime();
 }
 
-/** Índice del próximo partido de Argentina aún no jugado (-1 si ya pasaron todos). */
+/** Índice del próximo partido aún no jugado (-1 si ya pasaron todos).
+ *  Un partido sin fecha confirmada se considera pendiente. */
 export function getNextMatchIndex(now: Date = new Date()): number {
     return mundial.matches.findIndex((m) => {
+        if (!m.dateISO) return true;
         const kickoff = new Date(`${m.dateISO}T${m.kickoffArg || '00:00'}:00-03:00`);
         // se considera "próximo" hasta 3 horas después del inicio (mientras se juega)
         return now.getTime() <= kickoff.getTime() + 3 * 60 * 60 * 1000;

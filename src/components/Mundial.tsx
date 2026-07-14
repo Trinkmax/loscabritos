@@ -134,46 +134,50 @@ const Mundial = () => {
                 >
                     <span className="mundial__fixture-eyebrow">
                         <TrophyIcon />
-                        {mundial.group ? `Fase de grupos · Grupo ${mundial.group}` : 'Fase de grupos'}
+                        {mundial.stageLabel}
                     </span>
-                    <h3 className="mundial__fixture-title">El fixture de {mundial.teamNickname}</h3>
+                    <h3 className="mundial__fixture-title">Los partidos que se vienen</h3>
                 </div>
 
                 {mundial.fixtureVerified && mundial.matches.length > 0 ? (
                     <div ref={fixtureStagger.containerRef} className="mundial__fixture-grid">
                         {mundial.matches.map((m, index) => (
                             <article
-                                key={m.matchday}
+                                key={m.id}
                                 data-reveal-item={index}
-                                className={`mundial-match reveal reveal--up ${index === nextMatch ? 'mundial-match--next' : ''} ${fixtureStagger.visibleItems.has(index) ? 'reveal--visible' : ''}`}
+                                className={`mundial-match reveal reveal--up ${index === nextMatch ? 'mundial-match--next' : ''} ${m.featured ? 'mundial-match--featured' : ''} ${fixtureStagger.visibleItems.has(index) ? 'reveal--visible' : ''}`}
                                 style={{ transitionDelay: `${index * 0.1}s` }}
                             >
                                 <div className="mundial-match__top">
-                                    <span className="mundial-match__matchday">Fecha {m.matchday}</span>
+                                    <span className="mundial-match__matchday">{m.stage}</span>
                                     {index === nextMatch && <span className="mundial-match__badge">Próximo</span>}
                                 </div>
 
                                 <div className="mundial-match__teams">
                                     <span className="mundial-match__team">
-                                        <span className="mundial-match__flag" aria-hidden="true">🇦🇷</span>
-                                        Argentina
+                                        <span className="mundial-match__flag" aria-hidden="true">{m.home.flag}</span>
+                                        {m.home.name}
                                     </span>
                                     <span className="mundial-match__vs">vs</span>
                                     <span className="mundial-match__team">
-                                        <span className="mundial-match__flag" aria-hidden="true">{m.opponentFlag}</span>
-                                        {m.opponent}
+                                        <span className="mundial-match__flag" aria-hidden="true">{m.away.flag}</span>
+                                        {m.away.name}
                                     </span>
                                 </div>
 
-                                <div className="mundial-match__meta">
-                                    <span className="mundial-match__date">{m.dateLabel}</span>
-                                    {m.kickoffArg && (
-                                        <span className="mundial-match__time">{m.kickoffArg} hs <small>(ARG)</small></span>
-                                    )}
-                                </div>
-                                <div className="mundial-match__venue">
-                                    <PinIcon /> {m.venue} · {m.city}
-                                </div>
+                                {(m.dateLabel || m.kickoffArg) && (
+                                    <div className="mundial-match__meta">
+                                        {m.dateLabel && <span className="mundial-match__date">{m.dateLabel}</span>}
+                                        {m.kickoffArg && (
+                                            <span className="mundial-match__time">{m.kickoffArg} hs <small>(ARG)</small></span>
+                                        )}
+                                    </div>
+                                )}
+                                {m.venue && (
+                                    <div className="mundial-match__venue">
+                                        <PinIcon /> {m.venue}{m.city && ` · ${m.city}`}
+                                    </div>
+                                )}
                             </article>
                         ))}
                     </div>
