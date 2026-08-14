@@ -119,7 +119,7 @@
 /* ---- Fotos ---- */
 .alibikers__media {
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
+    grid-template-columns: 2fr 1fr;
     align-items: start;
     gap: var(--space-lg);
     margin-bottom: var(--space-3xl);
@@ -138,7 +138,7 @@
 
 .alibikers__media-main {
     /* Foto de acción horizontal (dos motos en ruta) */
-    aspect-ratio: 3 / 2;
+    aspect-ratio: 2 / 1;
 }
 
 .alibikers__media-side {
@@ -353,10 +353,6 @@
    Responsive
    =========================== */
 @media (max-width: 900px) {
-    .alibikers__media {
-        grid-template-columns: 1fr 1fr;
-    }
-
     .alibikers__benefits {
         grid-template-columns: 1fr;
         max-width: 480px;

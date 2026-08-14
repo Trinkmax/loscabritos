@@ -181,6 +181,7 @@ export const menuItems: MenuItem[] = [
         price: 24000,
         isNew: true,
         includes: ['Empanada', 'Papas Fritas o Ensaladas', 'Postre artesanal o helado Grido'],
+        image: '/images/comida/milanesa-ternera.webp',
     },
     {
         id: 'milanesa-napolitana',

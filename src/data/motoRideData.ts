@@ -21,8 +21,8 @@ export const motoRide = {
     endISO: '2026-09-27',
 
     /** Foto principal: moto/motociclista, protagonista de la sección */
-    heroImage: '/images/moto/moto-ruta-companeros-bosque.webp',
-    heroImageAlt: 'Dos motociclistas con camperas de cuero y casco integral tomando una curva en una ruta de bosque',
+    heroImage: '/images/moto/motos-duo-ruta-montana.webp',
+    heroImageAlt: 'Dos motos de gran cilindrada con baúles, con sus conductores en equipo de touring completo, recorriendo una ruta de montaña',
 
     /** Foto secundaria: detalle de abrigo y paisaje frío */
     detailImage: '/images/moto/moto-turismo-montana-invierno.webp',
