@@ -1,0 +1,417 @@
+/* ===========================
+   Alibikers Moto Ride 2026
+   Dark theme · asphalt + cold-steel blue + brand gold
+   =========================== */
+.alibikers {
+    --ice: #7FA6C9;
+    --ice-light: #B7D2E8;
+    --ice-glow: rgba(127, 166, 201, 0.22);
+
+    position: relative;
+    overflow: hidden;
+    padding: var(--space-4xl) 0;
+    background:
+        radial-gradient(ellipse at 12% -10%, rgba(127, 166, 201, 0.14), transparent 55%),
+        radial-gradient(ellipse at 88% 110%, rgba(184, 134, 11, 0.14), transparent 55%),
+        linear-gradient(165deg, #0b0e12 0%, #121212 55%, #0a0a0a 100%);
+    color: var(--color-cream);
+    isolation: isolate;
+}
+
+.alibikers__glow {
+    position: absolute;
+    top: -18%;
+    left: 50%;
+    width: 70vw;
+    max-width: 900px;
+    height: 60%;
+    transform: translateX(-50%);
+    background: radial-gradient(ellipse, var(--ice-glow) 0%, transparent 70%);
+    filter: blur(20px);
+    z-index: -1;
+    pointer-events: none;
+    animation: alibikersGlow 10s ease-in-out infinite;
+}
+
+@keyframes alibikersGlow {
+    0%, 100% { opacity: 0.55; }
+    50% { opacity: 1; }
+}
+
+/* Dashed diagonal "route" motif — a nod to the 300 km ride */
+.alibikers__road {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.05;
+    background: repeating-linear-gradient(
+        104deg,
+        var(--color-gold-light) 0,
+        var(--color-gold-light) 34px,
+        transparent 34px,
+        transparent 76px
+    );
+}
+
+.alibikers__container {
+    position: relative;
+}
+
+/* ---- Header ---- */
+.alibikers__header {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto var(--space-3xl);
+}
+
+.alibikers__eyebrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+}
+
+.alibikers__eyebrow-line {
+    height: 1px;
+    width: clamp(20px, 8vw, 70px);
+    background: linear-gradient(90deg, transparent, var(--ice), transparent);
+}
+
+.alibikers__eyebrow-text {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    color: var(--ice-light);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.alibikers__title {
+    font-size: clamp(1.8rem, 4.6vw, 3rem);
+    color: var(--color-cream);
+    line-height: 1.15;
+    margin-bottom: var(--space-lg);
+}
+
+.alibikers__title-accent {
+    background: linear-gradient(135deg, var(--color-gold-light), var(--ice-light));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.alibikers__subtitle {
+    font-size: 1.08rem;
+    color: var(--color-gray-300);
+    line-height: 1.7;
+    margin: 0;
+}
+
+.alibikers__subtitle strong {
+    color: var(--ice-light);
+}
+
+/* ---- Fotos ---- */
+.alibikers__media {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    align-items: start;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-3xl);
+}
+
+.alibikers__media-main,
+.alibikers__media-side {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: #0a0d12;
+    box-shadow:
+        0 0 0 1px rgba(184, 134, 11, 0.25),
+        0 24px 50px rgba(0, 0, 0, 0.5);
+}
+
+.alibikers__media-main {
+    /* Foto de acción horizontal (dos motos en ruta) */
+    aspect-ratio: 3 / 2;
+}
+
+.alibikers__media-side {
+    /* Foto de retrato (motociclista + cordillera) */
+    aspect-ratio: 4 / 5;
+    align-self: start;
+}
+
+.alibikers__media-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.alibikers__media-scrim {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(to top, rgba(5, 7, 10, 0.8) 0%, rgba(5, 7, 10, 0.1) 40%, transparent 62%);
+}
+
+.alibikers__media-scrim--side {
+    background: linear-gradient(to bottom, rgba(5, 7, 10, 0.55) 0%, transparent 40%);
+}
+
+.alibikers__km-badge {
+    position: absolute;
+    left: var(--space-md);
+    bottom: var(--space-md);
+    z-index: 1;
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-sm);
+}
+
+.alibikers__km-number {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.75);
+}
+
+.alibikers__km-label {
+    font-size: 0.76rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-cream);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+}
+
+.alibikers__flag-badge {
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-md);
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    font-size: 1.3rem;
+    border-radius: var(--radius-full);
+    background: rgba(10, 13, 18, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* ---- Beneficios ---- */
+.alibikers__benefits {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-lg);
+    margin-bottom: var(--space-2xl);
+}
+
+.alibikers-benefit {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-lg);
+    padding: var(--space-xl);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    transition: transform var(--transition-elegant), box-shadow var(--transition-elegant), border-color var(--transition-elegant);
+}
+
+.alibikers-benefit:hover {
+    transform: translateY(-4px);
+    border-color: rgba(184, 134, 11, 0.4);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+}
+
+.alibikers-benefit__token {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 68px;
+    height: 68px;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, rgba(184, 134, 11, 0.22), rgba(184, 134, 11, 0.06));
+    border: 1px solid rgba(218, 165, 32, 0.4);
+}
+
+.alibikers-benefit__token--value {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--color-gold), var(--color-gold-light));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.alibikers-benefit__token--icon {
+    color: var(--color-gold-light);
+}
+
+.alibikers-benefit__body {
+    min-width: 0;
+}
+
+.alibikers-benefit__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-gold-light);
+    margin-bottom: var(--space-xs);
+}
+
+.alibikers-benefit__desc {
+    font-size: 0.95rem;
+    color: var(--color-gray-300);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.alibikers-benefit__desc strong {
+    color: var(--color-cream);
+}
+
+/* ---- Locales ---- */
+.alibikers__branches {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-3xl);
+}
+
+.alibikers__branch {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-cream);
+    padding: 6px 14px;
+    border-radius: var(--radius-full);
+    background: rgba(184, 134, 11, 0.1);
+    border: 1px solid rgba(218, 165, 32, 0.35);
+}
+
+.alibikers__branch svg {
+    color: var(--color-gold-light);
+}
+
+/* ---- CTA ---- */
+.alibikers__cta {
+    text-align: center;
+}
+
+.alibikers__cta-text {
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 2.6vw, 1.4rem);
+    color: var(--color-cream);
+    margin-bottom: var(--space-lg);
+}
+
+.alibikers__cta-buttons {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.alibikers__btn {
+    min-width: 180px;
+}
+
+.alibikers__btn--whatsapp {
+    background: #25D366;
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.25);
+}
+
+.alibikers__btn--whatsapp:hover {
+    filter: brightness(1.07);
+    transform: translateY(-2px);
+}
+
+/* ===========================
+   Responsive
+   =========================== */
+@media (max-width: 900px) {
+    .alibikers__media {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .alibikers__benefits {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .alibikers {
+        padding: var(--space-3xl) 0;
+    }
+
+    .alibikers__media {
+        grid-template-columns: 1fr;
+    }
+
+    .alibikers__media-main {
+        aspect-ratio: 16 / 10;
+    }
+
+    .alibikers__media-side {
+        aspect-ratio: 16 / 10;
+    }
+
+    .alibikers__cta-buttons .btn {
+        width: 100%;
+        max-width: 320px;
+    }
+}
+
+@media (max-width: 480px) {
+    .alibikers-benefit {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-md);
+    }
+
+    .alibikers__eyebrow {
+        flex-wrap: wrap;
+    }
+
+    .alibikers__eyebrow-text {
+        white-space: normal;
+        text-align: center;
+        font-size: 0.7rem;
+        letter-spacing: 0.1em;
+    }
+}
+
+/* ===========================
+   Reduced motion
+   =========================== */
+@media (prefers-reduced-motion: reduce) {
+    .alibikers__glow {
+        animation: none !important;
+    }
+}

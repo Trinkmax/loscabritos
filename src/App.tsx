@@ -4,6 +4,7 @@ import { SpeedInsights } from '@vercel/speed-insights/react'
 import { Analytics } from '@vercel/analytics/react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
+import AlibikersBanner from './components/AlibikersBanner'
 import Invierno from './components/Invierno'
 import Mundial from './components/Mundial'
 import Especialidades from './components/Especialidades'
@@ -21,6 +22,7 @@ import NotFoundPage from './pages/NotFoundPage'
 import { generateHomeSchema, generateFAQSchema, generateEventSchema } from './seo/schema'
 import { faqData } from './data/faqData'
 import { isMundialActive } from './data/mundialData'
+import { isMotoRideActive } from './data/motoRideData'
 import { getUpcomingEvent } from './data/eventsData'
 import './App.css'
 
@@ -66,6 +68,7 @@ function HomePage() {
       <Navbar />
       <main>
         <Hero />
+        {isMotoRideActive() && <AlibikersBanner />}
         <Invierno />
         {isMundialActive() && <Mundial />}
         <Especialidades />
