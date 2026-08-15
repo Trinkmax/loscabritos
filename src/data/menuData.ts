@@ -89,7 +89,7 @@ export const menuItems: MenuItem[] = [
         categoryId: 'chivito',
         name: 'Chivito para 2 Personas',
         shortDescription: 'Con empanadas, chanfaina, papas fritas, ensaladas varias, pan casero; de postre: helado Grido o postre artesanal.',
-        price: 89000,
+        price: 93000,
         isRecommended: true,
         serves: '2 personas',
         includes: ['Empanadas', 'Chanfaina', 'Papas Fritas', 'Ensaladas Varias', 'Pan Casero', 'Postre artesanal o helado Grido'],
