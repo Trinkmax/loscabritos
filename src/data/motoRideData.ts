@@ -20,13 +20,9 @@ export const motoRide = {
     startISO: '2026-08-01',
     endISO: '2026-09-27',
 
-    /** Foto principal: moto/motociclista, protagonista de la sección */
+    /** Foto de la sección: moto/motociclistas, protagonistas de la promo */
     heroImage: '/images/moto/motos-duo-ruta-montana.webp',
     heroImageAlt: 'Dos motos de gran cilindrada con baúles, con sus conductores en equipo de touring completo, recorriendo una ruta de montaña',
-
-    /** Foto secundaria: detalle de abrigo y paisaje frío */
-    detailImage: '/images/moto/moto-turismo-montana-invierno.webp',
-    detailImageAlt: 'Motociclista con casco integral parado sobre los estribos de su moto, con una cordillera nevada de fondo',
 } as const;
 
 /** True mientras la campaña de Alibikers Moto Ride esté vigente. */

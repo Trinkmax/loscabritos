@@ -179,7 +179,7 @@ export const menuItems: MenuItem[] = [
         categoryId: 'platos',
         name: 'Milanesa de Ternera',
         shortDescription: 'Con papas fritas o ensaladas; entrada: empanada; de postre: helado Grido o postre artesanal.',
-        price: 24000,
+        price: 25000,
         isNew: true,
         includes: ['Empanada', 'Papas Fritas o Ensaladas', 'Postre artesanal o helado Grido'],
         image: '/images/comida/milanesa-ternera.webp',

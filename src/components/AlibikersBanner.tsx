@@ -117,16 +117,6 @@ const AlibikersBanner = () => {
                             <span className="alibikers__km-number">{motoRide.routeKm}</span>
                             <span className="alibikers__km-label">KM de recorrido</span>
                         </div>
-                    </div>
-                    <div className="alibikers__media-side">
-                        <img
-                            src={motoRide.detailImage}
-                            alt={motoRide.detailImageAlt}
-                            className="alibikers__media-img"
-                            loading="lazy"
-                            decoding="async"
-                        />
-                        <div className="alibikers__media-scrim alibikers__media-scrim--side" aria-hidden="true" />
                         <span className="alibikers__flag-badge" aria-hidden="true">🇦🇷</span>
                     </div>
                 </div>
@@ -142,7 +132,7 @@ const AlibikersBanner = () => {
                         </span>
                         <div className="alibikers-benefit__body">
                             <span className="alibikers-benefit__eyebrow">
-                                <PercentIcon /> Descuento para motoqueros
+                                <PercentIcon /> Descuento para motociclistas
                             </span>
                             <p className="alibikers-benefit__desc">
                                 Para los motociclistas que arriben a <strong>La Carolina</strong>,{' '}
@@ -185,7 +175,7 @@ const AlibikersBanner = () => {
                     ref={ctaReveal.ref}
                     className={`alibikers__cta reveal reveal--blur ${ctaReveal.isVisible ? 'reveal--visible' : ''}`}
                 >
-                    <p className="alibikers__cta-text">¿Sos motoquero y tenés dudas de la promo? Escribinos</p>
+                    <p className="alibikers__cta-text">¿Sos motero y tenés dudas de la promo? Escribinos</p>
                     <div className="alibikers__cta-buttons">
                         <a
                             href={phone.href}
