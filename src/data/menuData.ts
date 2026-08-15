@@ -172,6 +172,7 @@ export const menuItems: MenuItem[] = [
         shortDescription: 'Rellenos con estofado de carne; entrada: empanada.',
         price: 28000,
         includes: ['Empanada'],
+        image: '/images/comida/ravioles-carne.webp',
     },
     {
         id: 'milanesa-ternera',
