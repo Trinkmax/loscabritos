@@ -1,24 +1,27 @@
 // ─── Campaña: Alibikers Moto Ride 2026 ──────────────────────────────────────
 //
-// Promoción de adhesión al Encuentro Nacional de Moto Turismo "Alibikers Moto
-// Ride 2026" (26 y 27 de septiembre, San Luis). La sección se apaga sola
-// después del evento, así no queda una promo vieja en la portada.
+// Promoción para motociclistas en adhesión al Encuentro Nacional de Moto
+// Turismo "Alibikers Moto Ride 2026" (San Luis): descuento en todos los menús
+// del 25 de septiembre al 25 de octubre. La sección se apaga sola cuando
+// termina la promo, así no queda una promo vieja en la portada.
 //
-// Para extender o adelantar la campaña: ajustá `startISO` / `endISO`.
-// Para el próximo Alibikers: actualizá fecha, ciudad de salida y kilometraje.
+// Para extender o adelantar la campaña: ajustá `startISO` / `endISO` (y los
+// textos `dateLabel` / `dateShort`).
+// Para el próximo Alibikers: actualizá fechas, ciudad de salida y kilometraje.
 
 export const motoRide = {
     eventName: 'Alibikers Moto Ride 2026',
     eventLabel: 'Encuentro Nacional de Moto Turismo',
-    dateLabel: '26 y 27 de Septiembre',
-    dateShort: '26–27 SEP',
+    /** Vigencia de la promo */
+    dateLabel: 'Del 25 de septiembre al 25 de octubre',
+    dateShort: '25 SEP – 25 OCT',
     startCity: 'Juana Koslay',
     routeKm: 300,
-    discountPercent: 10,
+    discountPercent: 15,
 
     /** Ventana en la que se muestra la sección (horario de Argentina) */
     startISO: '2026-08-01',
-    endISO: '2026-09-27',
+    endISO: '2026-10-25',
 
     /** Foto de la sección: moto/motociclistas, protagonistas de la promo */
     heroImage: '/images/moto/motos-duo-ruta-montana.webp',

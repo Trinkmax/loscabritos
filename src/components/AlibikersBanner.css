@@ -196,9 +196,10 @@
 /* ---- Beneficios ---- */
 .alibikers__benefits {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
     gap: var(--space-lg);
-    margin-bottom: var(--space-2xl);
+    max-width: 640px;
+    margin: 0 auto var(--space-2xl);
 }
 
 .alibikers-benefit {
@@ -238,10 +239,6 @@
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-}
-
-.alibikers-benefit__token--icon {
-    color: var(--color-gold-light);
 }
 
 .alibikers-benefit__body {
@@ -334,15 +331,6 @@
 /* ===========================
    Responsive
    =========================== */
-@media (max-width: 900px) {
-    .alibikers__benefits {
-        grid-template-columns: 1fr;
-        max-width: 480px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
-
 @media (max-width: 768px) {
     .alibikers {
         padding: var(--space-3xl) 0;

@@ -1,6 +1,6 @@
 import { useScrollReveal, useStaggerReveal } from '../hooks/useScrollReveal';
-import { businessProfile, getPhone, getWhatsApp } from '../data/businessProfile';
-import { trackReserveCallClick, trackReserveWhatsAppClick } from '../lib/analytics';
+import { businessProfile, getWhatsApp } from '../data/businessProfile';
+import { trackReserveWhatsAppClick } from '../lib/analytics';
 import { motoRide, isMotoRideActive } from '../data/motoRideData';
 import './AlibikersBanner.css';
 
@@ -24,26 +24,10 @@ const PercentIcon = () => (
     </svg>
 );
 
-const GiftIcon = () => (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <rect x="3" y="8" width="18" height="4" rx="1" />
-        <path d="M12 8v13" />
-        <path d="M19 12v7a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-7" />
-        <path d="M7.5 8a2.5 2.5 0 0 1 0-5C10 3 12 8 12 8" />
-        <path d="M16.5 8a2.5 2.5 0 0 0 0-5C14 3 12 8 12 8" />
-    </svg>
-);
-
 const PinIcon = () => (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
         <circle cx="12" cy="10" r="3" />
-    </svg>
-);
-
-const PhoneIcon = () => (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
     </svg>
 );
 
@@ -61,7 +45,6 @@ const AlibikersBanner = () => {
     const benefitsStagger = useStaggerReveal<HTMLDivElement>({ threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
     const ctaReveal = useScrollReveal<HTMLDivElement>();
 
-    const phone = getPhone();
     const wa = getWhatsApp();
     const branches = businessProfile.locations.map((l) => l.shortName);
 
@@ -81,18 +64,19 @@ const AlibikersBanner = () => {
                     <div className="alibikers__eyebrow">
                         <span className="alibikers__eyebrow-line" aria-hidden="true" />
                         <span className="alibikers__eyebrow-text">
-                            <MotoIcon /> {motoRide.eventLabel} · {motoRide.dateLabel}
+                            <MotoIcon /> Promo Moto Ride · {motoRide.dateShort}
                         </span>
                         <span className="alibikers__eyebrow-line" aria-hidden="true" />
                     </div>
 
                     <h2 id="alibikers-title" className="alibikers__title">
-                        <span className="alibikers__title-accent">{motoRide.eventName}</span> llega a San Luis
+                        <span className="alibikers__title-accent">{motoRide.eventName}</span> en San Luis
                     </h2>
 
                     <p className="alibikers__subtitle">
-                        La {motoRide.eventName} promete reunir a <strong>cientos de motociclistas</strong> de
-                        todo el país, con salida en {motoRide.startCity}, en una travesía de cerca de{' '}
+                        La {motoRide.eventName}, {motoRide.eventLabel}, reúne a{' '}
+                        <strong>cientos de motociclistas</strong> de todo el país, con salida en{' '}
+                        {motoRide.startCity}, en una travesía de cerca de{' '}
                         <strong>{motoRide.routeKm} km</strong> por algunos de los escenarios naturales más
                         impactantes de San Luis. Los Cabritos De Oro se suma a esta iniciativa{' '}
                         <span aria-hidden="true">🇦🇷</span>
@@ -132,29 +116,12 @@ const AlibikersBanner = () => {
                         </span>
                         <div className="alibikers-benefit__body">
                             <span className="alibikers-benefit__eyebrow">
-                                <PercentIcon /> Descuento para motociclistas
+                                <PercentIcon /> Descuento en todos los menús
                             </span>
                             <p className="alibikers-benefit__desc">
-                                Para los motociclistas que arriben a <strong>La Carolina</strong>,{' '}
-                                <strong>Nogolí</strong> o <strong>Villa de la Quebrada</strong>: te esperamos
-                                en cualquiera de nuestros 3 locales.
-                            </p>
-                        </div>
-                    </article>
-
-                    <article
-                        data-reveal-item={1}
-                        className={`alibikers-benefit alibikers-benefit--gift reveal reveal--up ${benefitsStagger.visibleItems.has(1) ? 'reveal--visible' : ''}`}
-                        style={{ transitionDelay: '0.08s' }}
-                    >
-                        <span className="alibikers-benefit__token alibikers-benefit__token--icon">
-                            <GiftIcon />
-                        </span>
-                        <div className="alibikers-benefit__body">
-                            <span className="alibikers-benefit__eyebrow">Un presente de bienvenida</span>
-                            <p className="alibikers-benefit__desc">
-                                Cada participante del encuentro recibe un obsequio de{' '}
-                                <strong>Los Cabritos De Oro</strong> al pasar por cualquiera de nuestros tres
+                                <strong>{motoRide.dateLabel}</strong>, para los motociclistas que arriben a{' '}
+                                <strong>La Carolina</strong>, <strong>Nogolí</strong> o{' '}
+                                <strong>Villa de la Quebrada</strong>: te esperamos en cualquiera de nuestros 3
                                 locales.
                             </p>
                         </div>
@@ -177,13 +144,6 @@ const AlibikersBanner = () => {
                 >
                     <p className="alibikers__cta-text">¿Sos motero y tenés dudas de la promo? Escribinos</p>
                     <div className="alibikers__cta-buttons">
-                        <a
-                            href={phone.href}
-                            className="btn btn--primary alibikers__btn"
-                            onClick={() => trackReserveCallClick('alibikers')}
-                        >
-                            <PhoneIcon /> Llamar
-                        </a>
                         <a
                             href={wa.href}
                             target="_blank"

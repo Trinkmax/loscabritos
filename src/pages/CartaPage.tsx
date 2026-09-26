@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { businessProfile, getPhone, getWhatsApp, isCurrentlyOpen } from '../data/businessProfile';
+import { businessProfile, getWhatsApp, isCurrentlyOpen } from '../data/businessProfile';
 import {
     menuCategories,
     filterByCategory,
@@ -11,9 +11,9 @@ import {
 import type { MenuItem } from '../data/menuData';
 import { useMenuData } from '../hooks/useMenuData';
 import {
-    trackReserveCallClick,
     trackReserveWhatsAppClick,
     trackQrMenuOpen,
+    trackQrShareOpen,
     trackMenuCategorySelect,
     trackMenuSearch,
     trackMenuNoResults,
@@ -36,12 +36,6 @@ const CloseIcon = () => (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M18 6 6 18" />
         <path d="m6 6 12 12" />
-    </svg>
-);
-
-const PhoneIcon = () => (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z" />
     </svg>
 );
 
@@ -111,10 +105,73 @@ const CutleryIcon = () => (
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
+/**
+ * QR estático que abre https://loscabritosdeoro.com/carta (generado una sola
+ * vez con la librería `qrcode`, corrección M). Si cambia la URL de la carta,
+ * hay que regenerar el SVG.
+ */
+const CARTA_QR_SRC = '/images/branding/qr-carta.svg';
+const CARTA_QR_LABEL = 'loscabritosdeoro.com/carta';
+
+/** QR de la carta: el resto de la mesa lo escanea del celular de quien ya la abrió */
+function CartaShareQr() {
+    const dialogRef = useRef<HTMLDialogElement>(null);
+
+    const open = () => {
+        dialogRef.current?.showModal();
+        trackQrShareOpen();
+    };
+    const close = () => dialogRef.current?.close();
+
+    return (
+        <>
+            <button
+                type="button"
+                className="carta-share"
+                onClick={open}
+                aria-haspopup="dialog"
+                aria-label="Compartir la carta: ver el código QR en grande"
+            >
+                <img src={CARTA_QR_SRC} alt="" className="carta-share__qr" width="64" height="64" />
+                <span className="carta-share__label">Compartir</span>
+            </button>
+
+            <dialog
+                ref={dialogRef}
+                className="carta-share-dialog"
+                aria-labelledby="carta-share-title"
+                onClick={(e) => {
+                    // Tocar el fondo oscuro (fuera del recuadro) también cierra
+                    if (e.target === e.currentTarget) close();
+                }}
+            >
+                <div className="carta-share-dialog__body">
+                    <h2 id="carta-share-title" className="carta-share-dialog__title">
+                        Abrí la carta en tu celular
+                    </h2>
+                    <img
+                        src={CARTA_QR_SRC}
+                        alt={`Código QR que abre ${CARTA_QR_LABEL}`}
+                        className="carta-share-dialog__qr"
+                        width="240"
+                        height="240"
+                    />
+                    <p className="carta-share-dialog__text">Escaneá este código con la cámara.</p>
+                    <span className="carta-share-dialog__url">{CARTA_QR_LABEL}</span>
+                    <button type="button" className="carta-share-dialog__close" onClick={close}>
+                        Cerrar
+                    </button>
+                </div>
+            </dialog>
+        </>
+    );
+}
+
 /** Immersive hero header */
 function CartaHero({ isOpen }: { isOpen: boolean }) {
     return (
         <header className="carta-hero" role="banner">
+            <CartaShareQr />
             <img
                 src={businessProfile.logo}
                 alt={`${businessProfile.brandName} logo`}
@@ -348,7 +405,6 @@ const CartaPage = () => {
 
     const { menuItems } = useMenuData();
 
-    const phone = getPhone();
     const wa = getWhatsApp();
     const cartaSchema = generateCartaSchema();
     const isOpen = isCurrentlyOpen();
@@ -536,15 +592,6 @@ const CartaPage = () => {
 
                 {/* CTA buttons */}
                 <div className="carta-footer__cta">
-                    <a
-                        href={phone.href}
-                        className="carta-cta-btn carta-cta-btn--call"
-                        onClick={() => trackReserveCallClick('carta')}
-                        aria-label="Llamar al restaurante"
-                    >
-                        <PhoneIcon />
-                        <span>Llamar</span>
-                    </a>
                     <a
                         href={wa.href}
                         className="carta-cta-btn carta-cta-btn--wa"

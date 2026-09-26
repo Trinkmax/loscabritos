@@ -32,7 +32,7 @@ function prerenderMetaPlugin(): Plugin {
     {
       dir: '',
       title: 'Los Cabritos De Oro | Chivito a las Brasas y Mundial 2026 en San Luis',
-      description: 'Chivito a las brasas con chanfaina en San Luis, con 3 sucursales: Villa de la Quebrada, La Carolina y Nogolí. Viví el Mundial 2026 en Smart TV de 85". Más de 50 años de tradición. Reservá por teléfono o WhatsApp.',
+      description: 'Chivito a las brasas con chanfaina en San Luis, con 3 sucursales: Villa de la Quebrada, La Carolina y Nogolí. Viví el Mundial 2026 en Smart TV de 85". Más de 50 años de tradición. Reservá por WhatsApp.',
       canonical: `${BASE}/`,
       ogTitle: 'Los Cabritos De Oro — Chivito a las Brasas y el Mundial 2026 en San Luis',
       ogDescription: 'Viví el Mundial 2026 en pantalla gigante con el mejor chivito a las brasas. 3 sucursales en San Luis: Villa de la Quebrada, La Carolina y Nogolí.',

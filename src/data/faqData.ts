@@ -1,6 +1,6 @@
-import { businessProfile, getPhone } from '../data/businessProfile';
+import { businessProfile, getWhatsApp } from '../data/businessProfile';
 
-const phone = getPhone();
+const wa = getWhatsApp();
 const loc0 = businessProfile.locations[0];
 const loc1 = businessProfile.locations[1];
 const loc2 = businessProfile.locations[2];
@@ -36,7 +36,7 @@ export const faqData = [
     },
     {
         question: '¿Se puede reservar mesa?',
-        answer: `Sí. Podés reservar llamando al ${phone.value} o por WhatsApp al mismo número. Recomendamos reservar con anticipación los fines de semana, feriados y para los partidos del Mundial.`,
+        answer: `Sí. Las reservas se toman solamente por WhatsApp, al ${wa.value}. Recomendamos reservar con anticipación los fines de semana, feriados y para los partidos del Mundial.`,
     },
     {
         question: '¿Cuál es la especialidad de Los Cabritos De Oro?',

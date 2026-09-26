@@ -56,10 +56,6 @@ export function trackEvent(event: string, params?: Record<string, string | numbe
 
 // ─── Pre-built event functions ────────────────────────────────────────────────
 
-export function trackReserveCallClick(location?: string) {
-    trackEvent('reserve_call_click', { location: location ?? 'unknown' });
-}
-
 export function trackReserveWhatsAppClick(location?: string) {
     trackEvent('reserve_whatsapp_click', { location: location ?? 'unknown' });
 }
@@ -72,6 +68,11 @@ export function trackDirectionsClick(location: string) {
 
 export function trackQrMenuOpen() {
     trackEvent('qr_menu_open');
+}
+
+/** Alguien agrandó el QR de la carta para compartirla con su mesa */
+export function trackQrShareOpen() {
+    trackEvent('qr_share_open');
 }
 
 export function trackMenuCategorySelect(category: string) {
